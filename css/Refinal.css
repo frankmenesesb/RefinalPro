@@ -8,9 +8,23 @@ and open the template in the editor.
     Author     : Frank
 */
 
-footer {
+div.head {
     position: fixed;
-    height: 100px;
+    height: 50px;
+    background: #E2F2DC;
+    //bottom: 0;
+    width: 100%;
+}
+
+div.movil{
+    width: 280px;
+}
+
+div.footer {
+    position: fixed;
+    height: 50px;
+    background: #E2F2DC;
     bottom: 0;
     width: 100%;
 }
+
