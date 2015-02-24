@@ -8,6 +8,10 @@ and open the template in the editor.
     Author     : Frank
 */
 
+body{
+    background: #d9edf7;
+}
+
 div.head {
     position: fixed;
     height: 50px;
