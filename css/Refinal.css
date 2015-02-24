@@ -12,12 +12,14 @@ div.head {
     position: fixed;
     height: 50px;
     background: #E2F2DC;
+    color: #286090;
     //bottom: 0;
     width: 100%;
 }
 
 div.movil{
     width: 280px;
+    background: white;
 }
 
 div.footer {
