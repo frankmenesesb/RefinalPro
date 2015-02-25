@@ -9,11 +9,13 @@ and open the template in the editor.
 */
 
 body{
-    background: #d9edf7;
+    background: #f9f9f9;
 }
 
+
+
 div.head {
-    position: fixed;
+    //position: fixed;
     height: 50px;
     background: #E2F2DC;
     color: #286090;
@@ -26,11 +28,24 @@ div.movil{
     background: white;
 }
 
+div.body{
+    
+    background: #f9f9f9;
+}
+
+div.margen{
+    width: 290px;
+    background: white;
+}
+
 div.footer {
     position: fixed;
     height: 50px;
-    background: #E2F2DC;
+    //background: #E2F2DC;
+    background: transparent;
     bottom: 0;
     width: 100%;
+    
 }
+
 
