@@ -20,7 +20,7 @@ $(function() {
         
         
         var dataString = {'nombre': strNom, 'apellido': strApe, 'usuario': strLog, 'contrasena': strPass, 'email': strEma
-        , 'telefono': strTel};
+        , 'telefono': strTel, 'tipo': strTipo};
         if (strNom === '') {
 
             alert("Ingresa tu nombre..");
@@ -30,6 +30,11 @@ $(function() {
 
             alert("No has ingresado tu apellido :)..");
             $("#txtApellido").focus();
+
+        }else if (strTipo === 'T' ) {
+
+            alert("No has seleccioando un tipo de usuario :)..");
+            $("#txtTipo").focus();
 
         }else if (strLog === '' ) {
 
@@ -60,7 +65,7 @@ $(function() {
             
             $.ajax({
                 type: "POST",
-                url: "../phpSet/regis_user.php",
+                url: "http://refinal.frienderco.com/php/set/setUser.php",
                 data: dataString,
                 dataType: 'json',
                 cache: true,
@@ -68,17 +73,17 @@ $(function() {
 
 
                     
-                    document.getElementById('txtNombre').value = '';
+                    //document.getElementById('txtNombre').value = '';
                     
                     
 
                     if (jsonResp.RESPONSE) {
 
                         alert(jsonResp.MESSAGE);
-                        llevar();
+                        //llevar();
                         
                         
-                    document.getElementById('txtNombre').value = '';
+                    //document.getElementById('txtNombre').value = '';
                     
 
                         if (jsonResp.MESSAGE === "") {
