@@ -70,8 +70,8 @@ $(function () {
 //esta es una prueba
             $.ajax({
                 type: "POST",
-                //url: "http://refinal.frienderco.com/php/set/setUser.php",
-                url: "../php/set/setUser.php",
+                url: "http://refinal.frienderco.com/php/set/setUser.php",
+                //url: "../php/set/setUser.php",
                 data: dataString,
                 dataType: 'json',
                 cache: true,

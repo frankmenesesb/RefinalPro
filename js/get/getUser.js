@@ -38,7 +38,9 @@ $(function () {
                 type: 'POST',
                 data: dataString,
                 dataType: 'json',
-                url: "../php/get/getUser.php",
+                
+                url: "http://refinal.frienderco.com/php/get/getUser.php",
+                //url: "../php/get/getUser.php",
                 success: function (jsonResp) {
 
                     if (jsonResp.RESPONSE) {
