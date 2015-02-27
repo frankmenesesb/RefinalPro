@@ -7,7 +7,7 @@ header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 
 
-include("../php/config.php");
+include("../config.php");
 
 
 
@@ -24,6 +24,7 @@ $pass2 = trim($_REQUEST['contrasena']);
 $email = htmlspecialchars(trim($_REQUEST['email']));
 $tipo = htmlspecialchars(trim($_REQUEST['tipo']));
 $telefono = htmlspecialchars(trim($_REQUEST['telefono']));
+$identificacion = htmlspecialchars(trim($_REQUEST['identificacion']));
 
 
 
@@ -50,7 +51,7 @@ $strMessage = "los password deben considir por favor ingresalos de nuevo!!";
     
     
 $pass1 = sha1(md5($pass1));
-$query = sprintf("INSERT INTO usuario (nombre, apellido, usuario, password, email, telefono, tipo) VALUES ('$nombre','$apell','$login','$pass1','$email','$telefono','$tipo')");
+$query = sprintf("INSERT INTO usuario (nombre, apellido, usuario, password, email, telefono, tipo, identificacion) VALUES ('$nombre','$apell','$login','$pass1','$email','$telefono','$tipo','$identificacion')");
 
 $result = mysqli_query($link,$query);
 

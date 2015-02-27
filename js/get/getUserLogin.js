@@ -11,8 +11,9 @@ $(function () {
 
 
         //variables de entrada
-        var strIde = $("#txtIdentificacion").val();
-        
+        var strLog = $("#txtUsuario").val();
+        var strPass = $("#txtContrasena").val();
+       
         //variables locales
 
         var id;
@@ -25,12 +26,17 @@ $(function () {
         var tipo;
         var log = "";
 
-        var dataString = {'identificacion': strIde};
+        var dataString = {'usuario': strLog,'contrasena': strPass};
 
-        if (strIde === '') {
+        if (strLog === '') {
 
-            alert("No has ingresado la identificacion para buscar el usuario :)..");
-            $("#txtIdentificacion").focus();
+            alert("No has ingresado el usuario :)..");
+            $("#txtUsuario").focus();
+
+        } else if (strPass === '') {
+
+            alert("No has ingresado la contraseña :)..");
+            $("#txtContrasena").focus();
 
         } else
         {
@@ -38,7 +44,7 @@ $(function () {
                 type: 'POST',
                 data: dataString,
                 dataType: 'json',
-                url: "../php/get/getUser.php",
+                url: "php/get/getUserLogin.php",
                 success: function (jsonResp) {
 
                     if (jsonResp.RESPONSE) {
@@ -71,20 +77,22 @@ $(function () {
                                 ;
 
 
-                                var log = "";
+                                log = "";
                                 if ((nombre === null || nombre === "") || (id === null || id === "")) {
 
                                     alert("Error: usuario y contraseña invalidos ");
 
                                 } else {
 
-                                    $("#txtNombre").val(nombre);
-                                    $("#txtApellido").val(apellido);
-                                    $("#txtUsuario").val(login);
-                                    $("#txtEmail").val(email);
-                                    $("#txtTelefono").val(telefono);
-                                    $("#txtTipo").val(tipo);
+                                    if (tipo === 'A') {
+                                       
+                                        location.href = 'frm/frmMainA.html';
+                                    } else if (tipo === 'R') {
+                                        location.href = 'frm/frmMain.html';
+                                    } else if (tipo === 'S') {
+                                        location.href = 'frm/frmMainS.html';
 
+                                    }
                                 }
                             }
 

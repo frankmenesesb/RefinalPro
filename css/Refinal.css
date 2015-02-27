@@ -21,7 +21,12 @@ div.head {
     color: #286090;
     //bottom: 0;
     width: 100%;
+    font-size: 18px;
 }
+
+
+
+
 
 div.movil{
     width: 280px;
@@ -47,3 +52,5 @@ div.footer {
     width: 100%;
     
 }
+
+

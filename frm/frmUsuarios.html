@@ -19,20 +19,24 @@ and open the template in the editor.
         <script src="../js/bootstrap.min.js"></script>
         <script src="../js/printplugin.js"></script>
         <script src="../js/set/setUser.js"></script>
-
+        <script src="../js/get/getUser.js"></script>
     </head>
     <body>
-
     <center>
         <div class="panel panel-heading head">
-            <h4>Registro de Usuarios</h4>
+            Registro de Usuarios
         </div>
         <br>
+        <div class="form-group">
+            <a class="btn btn-default glyphicon glyphicon-search find_button" role="button"></a>
+        </div>
+        <br>
+
         <div class="panel panel-body body">
             <div class="margen">
                 <br>
                 <div class="movil">
-                    
+
                     <div class="form-group">
                         <select id="txtTipo" class="form-control">
                             <option value="T">Seleccione tipo de Usuario</option>
@@ -40,6 +44,10 @@ and open the template in the editor.
                             <option value="R">Recibidor</option>
                             <option value="S">Secretaria</option>
                         </select>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="number" class="form-control" id="txtIdentificacion" placeholder="Identificacion">
                     </div>
                     <br>
                     <div class="form-group">
@@ -80,13 +88,14 @@ and open the template in the editor.
         <br>
         <br>
         <div class="panel panel-footer footer">
-            <ul class="list-inline">
-                <li >
+            <ul class="list-inline footer-bar">
+
+                <li>
                     <a  class="btn btn-primary btn-lg btn-block submit_button" >
                         <span class="glyphicon glyphicon-save" aria-hidden="true"></span> Guardar
                     </a>
                 </li>
-                <li >
+                <li>
                     <a  class="btn btn-primary btn-lg btn-block" href="frmMain.html">
                         <span class="glyphicon glyphicon-hand-down" aria-hidden="true"></span> Cancelar
                     </a>

@@ -10,7 +10,7 @@ $(function () {
         var strPass = $("#txtContrasena").val();
         var strPass2 = $("#txtContrasena2").val();
         var strEma = $("#txtEmail").val();
-
+        var strIde = $("#txtIdentificacion").val();
         var strTel = $("#txtTelefono").val();
         var strTipo = $("#txtTipo").val();
 
@@ -20,7 +20,7 @@ $(function () {
 
 
         var dataString = {'nombre': strNom, 'apellido': strApe, 'usuario': strLog, 'contrasena': strPass, 'email': strEma
-            , 'telefono': strTel, 'tipo': strTipo};
+            , 'telefono': strTel, 'tipo': strTipo, 'identificacion': strIde};
         if (strNom === '') {
 
             alert("Ingresa tu nombre..");
@@ -30,6 +30,11 @@ $(function () {
 
             alert("No has ingresado tu apellido :)..");
             $("#txtApellido").focus();
+
+        } else if (strIde === '') {
+
+            alert("No has ingresado tu Identificacion :)..");
+            $("#txtIdentificacion").focus();
 
         } else if (strTipo === 'T') {
 
@@ -65,7 +70,8 @@ $(function () {
 
             $.ajax({
                 type: "POST",
-                url: "http://refinal.frienderco.com/php/set/setUser.php",
+                //url: "http://refinal.frienderco.com/php/set/setUser.php",
+                url: "../php/set/setUser.php",
                 data: dataString,
                 dataType: 'json',
                 cache: true,
@@ -80,21 +86,19 @@ $(function () {
                         //
                         $("#txtNombre").val('');
                         $("#txtApellido").val('');
+                        $("#txtIdentificacion").val('');
                         $("#txtUsuario").val('');
                         $("#txtContrasena").val('');
                         $("#txtContrasena2").val('');
                         $("#txtEmail").val('');
                         $("#txtTelefono").val('');
                         $("#txtTipo").val('T');
-                        
-                        var html="Se guardo Correctamente!";
-                        
+
+                        var html = "Se guardo Correctamente!";
+
                         $("#txtRespuesta").html(html);
                         $("#txtRespuesta").focus();
-//llevar();
 
-
-                        //document.getElementById('txtNombre').value = '';
 
 
                         if (jsonResp.MESSAGE === "") {
