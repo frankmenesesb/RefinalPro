@@ -19,6 +19,7 @@ and open the template in the editor.
         <!-- Latest compiled and minified JavaScript -->
         <script src="../js/jquery-2.1.3.min.js"></script>
         <script src="../js/bootstrap.min.js"></script>
+        <script src="../js/main.js"></script>
     </head>
     <body>
 
@@ -38,8 +39,9 @@ and open the template in the editor.
 
                     <div class="list-group">
                         
-                        <a href="frmIngreso.html" class="list-group-item"> Realizar recibo</a>
-                        <a href="frmUsuarios.html" class="list-group-item">Usuario</a>
+                        <a  class="list-group-item recibo_button"> Realizar recibo</a>
+                        <a  class="list-group-item">Usuario</a>
+                        <input type="hidden" class="form-control" name="recibirVariable" id="recibirVariable">
                        
                         
                     </div>
@@ -58,7 +60,7 @@ and open the template in the editor.
             <ul class="list-inline">
                 
                 <li >
-                    <a  class="btn btn-primary btn-lg btn-block" href="../">
+                    <a  class="btn btn-primary btn-lg btn-block" href="../" >
                         <span class="glyphicon glyphicon-hand-down" aria-hidden="true"></span> Salir
                     </a>
                 </li>

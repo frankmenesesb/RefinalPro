@@ -13,7 +13,7 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
     //$pass1 = sha1(md5(trim($_REQUEST['contrasena'])));
     
     //variable donde traigo la identificacion
-    $identificacion = htmlspecialchars(trim($_REQUEST['identificacion']));
+    //$identificacion = htmlspecialchars(trim($_REQUEST['identificacion']));
     
     
     $con = mysqli_connect($datos[0],$datos[1],$datos[2],$datos[3]);
@@ -28,9 +28,7 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
     mysqli_select_db($con,"ajax_demo");
 
 
-$sql="SELECT u.id_usuario, u.nombre, u.apellido, u.usuario, u.tipo, u.telefono, u.email, u.identificacion
-FROM usuario u
-WHERE u.identificacion= $identificacion";
+$sql="select a.id_art, a.descripcion from articulos a order by a.id_art";
 //$sql="SELECT id, nombre, apellidos, login, foto FROM usuarios WHERE login= '$login' and password='$pass1'";
 $result = mysqli_query($con,$sql);
 
