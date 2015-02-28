@@ -26,8 +26,8 @@ $(function () {
         type: 'POST',
         //data: dataString,
         dataType: 'json',
-        //url: "http://refinal.frienderco.com/php/get/getUser.php",
-        url: "../php/get/getArticulos.php",
+        url: "http://refinal.frienderco.com/php/get/getArticulos.php",
+        //url: "../php/get/getArticulos.php",
         success: function (jsonResp) {
 
             if (jsonResp.RESPONSE) {
