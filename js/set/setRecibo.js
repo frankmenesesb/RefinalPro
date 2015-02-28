@@ -10,6 +10,7 @@ $(function () {
 
 
         var strLog = $("#recibirVariable").val();
+        var y;
 
 
 
@@ -45,16 +46,21 @@ $(function () {
                             if ($("#" + x).val() !== null) {
 
                                 detallado(x, $("#" + x).val());
+                                y=x;
                             }
                         }
 
-
+                        if(y===17){
+                            
+                            
                         var html = "Se guardo Correctamente!";
 
                         $("#txtRespuesta").html(html);
                         $("#txtRespuesta").focus();
+                        
+                        //location.href = 'frmReciboConsulta.html?var='+strLog+'$'+;
 
-
+                        }
 
                         if (jsonResp.MESSAGE === "") {
 
