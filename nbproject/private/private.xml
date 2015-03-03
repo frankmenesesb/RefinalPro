@@ -3,28 +3,8 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/EasyPHP-DevServer-14.1VC11/data/localweb/RefinalPro/frm/frmMainA.html</file>
-            <file>file:/D:/EasyPHP-DevServer-14.1VC11/data/localweb/RefinalPro/frm/frmReciboBuscar.html</file>
-            <file>file:/D:/EasyPHP-DevServer-14.1VC11/data/localweb/RefinalPro/php/get/getUserLogin.php</file>
-            <file>file:/D:/EasyPHP-DevServer-14.1VC11/data/localweb/RefinalPro/frm/frmIngreso.html</file>
-            <file>file:/D:/EasyPHP-DevServer-14.1VC11/data/localweb/RefinalPro/php/set/setReciboDet.php</file>
-            <file>file:/D:/EasyPHP-DevServer-14.1VC11/data/localweb/RefinalPro/php/get/getReciboGenerado.php</file>
-            <file>file:/D:/EasyPHP-DevServer-14.1VC11/data/localweb/RefinalPro/index.html</file>
-            <file>file:/D:/EasyPHP-DevServer-14.1VC11/data/localweb/RefinalPro/js/get/getArticulos.js</file>
-            <file>file:/D:/EasyPHP-DevServer-14.1VC11/data/localweb/RefinalPro/frm/frmUsuarios.html</file>
-            <file>file:/D:/EasyPHP-DevServer-14.1VC11/data/localweb/RefinalPro/js/set/setUser.js</file>
-            <file>file:/D:/EasyPHP-DevServer-14.1VC11/data/localweb/RefinalPro/js/get/getUser.js</file>
-            <file>file:/D:/EasyPHP-DevServer-14.1VC11/data/localweb/RefinalPro/js/set/setReciboDetallado.js</file>
-            <file>file:/D:/EasyPHP-DevServer-14.1VC11/data/localweb/RefinalPro/php/set/setUser.php</file>
-            <file>file:/D:/EasyPHP-DevServer-14.1VC11/data/localweb/RefinalPro/frm/frmReciboConsulta.html</file>
-            <file>file:/D:/EasyPHP-DevServer-14.1VC11/data/localweb/RefinalPro/js/main.js</file>
-            <file>file:/D:/EasyPHP-DevServer-14.1VC11/data/localweb/RefinalPro/js/get/getReciboGenerado.js</file>
-            <file>file:/D:/EasyPHP-DevServer-14.1VC11/data/localweb/RefinalPro/php/get/getArticulos.php</file>
-            <file>file:/D:/EasyPHP-DevServer-14.1VC11/data/localweb/RefinalPro/js/get/getReciboBuscar.js</file>
-            <file>file:/D:/EasyPHP-DevServer-14.1VC11/data/localweb/RefinalPro/js/get/getUserLogin.js</file>
-            <file>file:/D:/EasyPHP-DevServer-14.1VC11/data/localweb/RefinalPro/js/set/setRecibo.js</file>
-            <file>file:/D:/EasyPHP-DevServer-14.1VC11/data/localweb/RefinalPro/php/get/getUser.php</file>
-            <file>file:/D:/EasyPHP-DevServer-14.1VC11/data/localweb/RefinalPro/php/set/setReciboEnc.php</file>
+            <file>file:/D:/EasyPHP-DevServer-14.1VC11/data/localweb/RefinalPro/js/get/getRecibos.js</file>
+            <file>file:/D:/EasyPHP-DevServer-14.1VC11/data/localweb/RefinalPro/frm/frmRecibos.html</file>
         </group>
     </open-files>
 </project-private>
