@@ -5,6 +5,9 @@
  */
 
 
+
+var titleHeader = "";
+
 window.onload = function()
 {
 var recibiendoVariable = location.search.slice( location.search.indexOf("=") + 1,location.search.indexOf("$"));
@@ -13,8 +16,11 @@ var recibiendoVariable = location.search.slice( location.search.indexOf("=") + 1
 
 //document.getElementById("recibirVariable").innerHTML = recibiendoVariable;
 
+    titleHeader = $(".panel-heading").find("h4").text();
+    $("#recibirVariable").val(recibiendoVariable);
+    
+    updateClock();
 
-$("#recibirVariable").val(recibiendoVariable);
 
 
 };
@@ -53,3 +59,17 @@ $(function () {
 
 });
 
+function updateClock(){
+    
+    var d = new Date();
+    var hour  = d.getHours();
+    var minute = d.getMinutes();
+    
+    if(minute < 9){
+        minute = "0"+minute;
+    }
+    
+    $(".panel-heading").find("h4").text(titleHeader +' Hora: '+d.getHours()+':'+d.getMinutes());//,'Segundos: '+d.getSeconds());
+    
+    setTimeout("updateClock()",1000) ;
+}
