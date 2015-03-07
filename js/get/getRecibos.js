@@ -3,12 +3,33 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+
+var arrayPendientes = new Array();
+
 $(document).ready(function() {
     
     getAllRecibos();
     
     $('#dialogRecibo').modal('hide');    
     
+    $( "#btnImprimir" ).on( "click", function() {
+        //$("#dialogRecibo").print();
+        //window.print();
+        var ficha= $("#dialogRecibo").html();   
+        var ventimp=window.open(' ','popimpr');        
+        ventimp.document.write(ficha);
+        ventimp.document.close();
+        ventimp.print();
+        ventimp.close();
+        
+     });
+     
+     $( "#btnImprPend" ).on( "click", function() {
+        
+        printArrayRecibos(arrayPendientes);
+        
+     });
+      
 });
 
 
@@ -32,6 +53,7 @@ function getAllRecibos(){
                         if (jsonResp.MESSAGE === "") {
                             
                             var html = "<tr><th>No. Fac</th><th>Usuario</th><th>Fecha</th><th>Estado</th><th></th></tr>";
+                            var nuPendientes = 0;
                             
                             for (var i = 0; i < jsonResp.DATA.length; i++) {
 
@@ -39,9 +61,12 @@ function getAllRecibos(){
                                 var nombre_usuario = jsonResp.DATA[i]["nombre_usuario"];
                                 var estado = jsonResp.DATA[i]["estado"];
                                 var fecha = jsonResp.DATA[i]["fecha"];
-
-
-
+                                //lblRecPen
+                                
+                                if(estado === "Pendiente"){
+                                    nuPendientes++;
+                                    arrayPendientes.push(id_rec_enc);
+                                }
                                 /*var log = "";
                                 if ((descripcion === null || descripcion === "") || (id === null || id === "")) {
 
@@ -77,6 +102,9 @@ function getAllRecibos(){
 
 
                             }
+                            
+                            $("#lblRecPen").html("<h3>"+nuPendientes+"</h3>");
+                            
                         $("#listRecibos").html(html);
                         
                         $("#listRecibos tbody").find("tr").each(function() {
@@ -173,4 +201,25 @@ function getRecibo(jsonParams){
 }
 
 
-
+function printArrayRecibos(arrayFacturas){
+    
+    //alert(JSON.stringify(arrayPendientes));
+    
+    $("#listRecibos tbody").find("tr").each(function() {
+        var idRow = $(this).attr('id');
+        var idFact = $(this).find('td').eq(0).text();
+        
+        for (var i = 0; i < arrayFacturas.length; i++) {
+            //alert(arrayFacturas[i] +"==="+ idFact);
+           if(arrayFacturas[i] === idFact){
+               $( '#'+idRow ).trigger( "click" );  
+               setTimeout(function() {
+                     $( "#btnImprimir" ).trigger( "click" );
+              }, 300);
+              
+           }
+       }
+        
+    });
+                               
+}

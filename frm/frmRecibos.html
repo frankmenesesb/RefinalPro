@@ -38,11 +38,24 @@ and open the template in the editor.
 
                 <div class="movil">
                     <div>
-                        <p>Recibos.</p>
+                        <h2>Recibos.</h2>
                     </div>
                     <div>
-                        <div>
-                            <!-- Table -->
+                        <div align="left">
+                            
+                            <fieldset style="width:50%" >
+                                <legend>Pendientes</legend>
+                                    <table width="50%" align="center">
+                                        <tr>
+                                            <td align="center"><label id="lblRecPen"></label></td>
+                                        </tr>
+                                        <tr>
+                                            <td><button type="button" class="btn btn-default glyphicon glyphicon-print" data-dismiss="modal" id="btnImprPend">Imprimir</button></td>
+                                        </tr>
+                                        
+                                    </table>
+                            </fieldset>
+                            <br />
                             <table class="table" id="listRecibos">
                                 
                             </table>
@@ -93,7 +106,7 @@ and open the template in the editor.
           </div>
           <div class="modal-footer">
             <button type="button" class="btn btn-default" data-dismiss="modal">Listo!</button>
-            <button type="button" class="btn btn-default glyphicon glyphicon-print" data-dismiss="modal" onclick="print();">Imprimir</button>
+            <button type="button" class="btn btn-default glyphicon glyphicon-print" data-dismiss="modal" id="btnImprimir">Imprimir</button>
           </div>
         </div>
       </div>
