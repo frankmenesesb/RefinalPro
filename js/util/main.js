@@ -69,7 +69,8 @@ function updateClock(){
         minute = "0"+minute;
     }
     
-    $(".panel-heading").find("h4").text(titleHeader +' Hora: '+d.getHours()+':'+d.getMinutes());//,'Segundos: '+d.getSeconds());
+    $(".panel-hora").find("h5").text('Hora: '+d.getHours()+':'+d.getMinutes());//,'Segundos: '+d.getSeconds());
+    //$(".panel-hora").find("h5").text(titleHeader +' Hora: '+d.getHours()+':'+d.getMinutes());//,'Segundos: '+d.getSeconds());
     
     setTimeout("updateClock()",1000) ;
 }

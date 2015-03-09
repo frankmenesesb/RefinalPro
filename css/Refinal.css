@@ -53,4 +53,20 @@ div.footer {
     
 }
 
+div.pendietes{
+    border: #000;
+}
+
+div.pendientes-a{
+   width: 40%;
+   float: right;
+   text-align: center;
+}
+
+div.pendientes-b{
+   width: 40%; 
+   float: left;
+   text-align: center;
+}
+
 
