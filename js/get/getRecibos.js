@@ -5,27 +5,57 @@
  */
 
 var arrayPendientes = new Array();
+var JSONGLOBAL = {'ALLPENDIENTES':false};
 
 $(document).ready(function() {
-    
+    $('.filterable .btn-filter').click(function(){
+        var $panel = $(this).parents('.filterable'),
+        $filters = $panel.find('.filters input'),
+        $tbody = $panel.find('.table tbody');
+        if ($filters.prop('disabled') == true) {
+            $filters.prop('disabled', false);
+            $filters.first().focus();
+        } else {
+            $filters.val('').prop('disabled', true);
+            $tbody.find('.no-result').remove();
+            $tbody.find('tr').show();
+        }
+    });
+
+    $('.filterable .filters input').keyup(function(e){
+        /* Ignore tab key */
+        var code = e.keyCode || e.which;
+        if (code == '9') return;
+        /* Useful DOM data and selectors */
+        var $input = $(this),
+        inputContent = $input.val().toLowerCase(),
+        $panel = $input.parents('.filterable'),
+        column = $panel.find('.filters th').index($input.parents('th')),
+        $table = $panel.find('.table'),
+        $rows = $table.find('tbody tr');
+        /* Dirtiest filter function ever ;) */
+        var $filteredRows = $rows.filter(function(){
+            var value = $(this).find('td').eq(column).text().toLowerCase();
+            return value.indexOf(inputContent) === -1;
+        });
+        /* Clean previous no-result if exist */
+        $table.find('tbody .no-result').remove();
+        /* Show all rows, hide filtered ones (never do that outside of a demo ! xD) */
+        $rows.show();
+        $filteredRows.hide();
+        /* Prepend no-result row if all rows are filtered */
+        if ($filteredRows.length === $rows.length) {
+            $table.find('tbody').prepend($('<tr class="no-result text-center"><td colspan="'+ $table.find('.filters th').length +'">No result found</td></tr>'));
+        }
+    });
     getAllRecibos();
     
-    $('#dialogRecibo').modal('hide');    
+    $('#dialogRecibo').modal('hide');
+    $('#divContent2').modal('hide');
     
-    $( "#btnImprimir" ).on( "click", function() {
-        //$("#dialogRecibo").print();
-        //window.print();
-        var ficha= $("#dialogRecibo").html();   
-        var ventimp=window.open(' ','popimpr');        
-        ventimp.document.write(ficha);
-        ventimp.document.close();
-        ventimp.print();
-        ventimp.close();
-        
-     });
      
      $( "#btnImprPend" ).on( "click", function() {
-        
+        JSONGLOBAL.ALLPENDIENTES = true;
         printArrayRecibos(arrayPendientes);
         
      });
@@ -52,7 +82,7 @@ function getAllRecibos(){
 
                         if (jsonResp.MESSAGE === "") {
                             
-                            var html = "<tr><th>No. Fac</th><th>Usuario</th><th>Fecha</th><th>Estado</th><th></th></tr>";
+                            var html = "";
                             var nuPendientes = 0;
                             
                             for (var i = 0; i < jsonResp.DATA.length; i++) {
@@ -105,7 +135,7 @@ function getAllRecibos(){
                             
                             $("#lblRecPen").html("<h3>"+nuPendientes+"</h3>");
                             
-                        $("#listRecibos").html(html);
+                        $("#listRecibos tbody").html(html);
                         
                         $("#listRecibos tbody").find("tr").each(function() {
                             var idRow = $(this).attr('id');
@@ -148,12 +178,6 @@ function getRecibo(jsonParams){
     
     var dataParams = {'idRecibo': jsonParams.idRecibo};
     
-    $("#lblNoFactura").text("Factura No. "+ jsonParams.idRecibo);
-    $("#lblFecha").text(jsonParams.fechaGenerado);
-    $("#lblNomCliente").text(jsonParams.nomCliente);
-    
-    
-
             $.ajax({
                 type: 'POST',
                 data: dataParams,
@@ -166,11 +190,32 @@ function getRecibo(jsonParams){
                     if (jsonResp.RESPONSE) {
                         
                         //alert(JSON.stringify(jsonResp));
+                       
 
                         if (jsonResp.MESSAGE === "") {
-                            
                             //alert(JSON.stringify(jsonResp));
-                            var html = "";
+                            var html = '<center><table width="95%" align="center" cellpadding="10" cellspacing="0" style="border:1px solid black;">';
+                            html += "<tr align='center' style='border-bottom: solid;'>";
+                            html += "<td style='border-bottom: 1px solid black;'><label style='font-weight: bold;'>Factura No. "+ jsonParams.idRecibo+"</label></td>";
+                            html += "<td style='border-bottom: 1px solid black;'><label>"+jsonParams.fechaGenerado+"</label></td>";
+                            html += "</tr>";
+                            html += "<tr align='center'>";
+                            html += "<td style='border-bottom: 1px solid black;'><label style='font-weight: bold;'>Usuario:</label></td>";
+                            html += "<td style='border-bottom: 1px solid black;'><label>"+jsonParams.nomCliente+"</label></td>";
+                            html += "</tr>";
+                            html += "<tr>";
+                            html += "<td colspan='2'>";
+
+                                            
+                                        
+                            html += '<table width="100%" border="1" cellspacing="0" style="border:1px solid black;text-align: center;">';
+                            html += "<thead>";
+                            html += "<tr>";
+                            html += "<th style='text-align: center;'>Productos</th>";
+                            html += "<th style='text-align: center;'>Kilos</th>";
+                            html += "</tr>";
+                            html += "</thead>";
+                            html += "<tbody>";
                             //{"nombreArticulo":"SEBO EN RAMA","cantidad":"0"}
                             for (var i = 0; i < jsonResp.DATA.length; i++) {
 
@@ -181,8 +226,103 @@ function getRecibo(jsonParams){
                                     
                             }
                             
-                        $("#tblArticulos tbody").html(html);
-                        $('#dialogRecibo').modal('show'); 
+                            html += "</tbody>";
+                            html += "</table>";                           
+                            
+                            html += "</td>";
+                            html += "</tr>";
+                            html += "</table></center>";
+                            
+                            
+                        if(JSONGLOBAL.ALLPENDIENTES){
+                            html += "<br />";
+                            html += "<br />";
+                            html += "<br />";
+                            html += "<br />";
+                            html += "<br />";
+                            html += "<br />";
+                            html += "<br />";
+                            html += "<br />";
+                            html += "<br />";
+                            html += "<br />";
+                            html += "<br />";
+                            html += "<br />";
+                            html += "<br />";
+                            html += "<br />";
+                            html += "<br />";
+                            html += "<br />";
+                            html += "<br />";
+                            html += "<br />";
+                            html += "<br />";
+                            html += "<br />";
+                            html += "<br />";
+                            html += "<br />";
+                            html += "<br />";
+                            html += "<br />";
+                            $("#divContent2").append(html);
+                        }else{
+                                $("#divContent2").append(html);
+                                var html2 = html;
+                                
+                                html = '<div class="modal-dialog">';
+                                html += '<div class="modal-content">';
+                                html += '<div class="modal-header">';
+                                html += '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
+                                html += '<h4 class="modal-title" id="myModalLabel">Vista previa</h4>';
+                                html += '</div>';
+                                html += '<div class="modal-body" id="divContent">';
+                                html += '<table width="95%" align="center" cellpadding="10" cellspacing="0" style="border:1px solid black;">';
+                                html += '<tr align="center" style="border-bottom: solid;">';
+                                html += '<td style="border-bottom: 1px solid black;"><label id="lblNoFactura" style="font-weight: bold;"></label></td>';
+                                html += '<td style="border-bottom: 1px solid black;"><label id="lblFecha"></label></td>';
+                                html += '</tr>';
+                                html += '<tr align="center" >';
+                                html += '<td style="border-bottom: 1px solid black;"><label style="font-weight: bold;">Usuario:</label></td>';
+                                html += '<td style="border-bottom: 1px solid black;"><label id="lblNomCliente"></label></td>';
+                                html += '</tr>';
+                                html += '<tr>';
+                                html += '<td colspan="2">';
+                                html += '<div id="divContent">'+html2;
+                                html += '</div>';
+                                html += '</td>';
+                                html += '</tr>';
+                                html += '</table>';
+                                html += '</div>';
+                                html += '<div class="modal-footer">';
+                                html += '<button type="button" class="btn btn-default" data-dismiss="modal">Listo!</button>';
+                                html += '<button type="button" class="btn btn-default glyphicon glyphicon-print" data-dismiss="modal" id="btnImprimir">Imprimir</button>';
+                                html += '</div>';
+                                html += '</div>';
+                                html += '</div>';
+                                
+                            $("#dialogRecibo").html(html);
+                            $('#dialogRecibo').modal('show'); 
+                            
+                            $( "#btnImprimir" ).on( "click", function() {
+        
+                                //$("#dialogRecibo").print();
+                                var ficha= $("#divContent2").html(); 
+                                window.document.write(ficha);
+                                window.document.title = "Reporte Factura";
+                                window.print();
+                                
+                                setTimeout(function() {
+                                    alert(window.location.href);
+                                    window.location.href = '../frm/frmRecibos.html';
+                                }, 3000);
+                                
+                                /*  
+                                var ventimp=window.open(' ','popimpr');        
+                                ventimp.document.write(ficha);
+                                ventimp.document.close();
+                                ventimp.print();
+                                ventimp.close();*/
+
+                             });
+                            
+                        }
+                        
+                        
                         
                         } else if (jsonResp.MESSAGE === "EMPTY") {
                             alert("Error: no se encontro datos de registro del usuario!!");
@@ -204,6 +344,9 @@ function getRecibo(jsonParams){
 function printArrayRecibos(arrayFacturas){
     
     //alert(JSON.stringify(arrayPendientes));
+    setUpdRecPen(arrayFacturas);
+    $("#divContent2").html("");
+    
     
     $("#listRecibos tbody").find("tr").each(function() {
         var idRow = $(this).attr('id');
@@ -213,13 +356,60 @@ function printArrayRecibos(arrayFacturas){
             //alert(arrayFacturas[i] +"==="+ idFact);
            if(arrayFacturas[i] === idFact){
                $( '#'+idRow ).trigger( "click" );  
-               setTimeout(function() {
+               /*setTimeout(function() {
                      $( "#btnImprimir" ).trigger( "click" );
-              }, 300);
+              }, 2000);*/
               
            }
        }
-        
+       
+       
     });
-                               
+           
+    
+        //
+        setTimeout(function() {
+            var ficha= $("#divContent2").html();   
+            var ventimp=window;        
+            ventimp.document.write(ficha);
+            window.document.title = "Reporte Facturas Pendientes";
+            ventimp.document.close();
+            ventimp.print();
+            ventimp.close();
+            //$( "#btnImprimir" ).trigger( "click" );
+                JSONGLOBAL.ALLPENDIENTES = false;
+                
+                window.location.href = '../frm/frmRecibos.html';
+                
+         }, 1000);
+}
+
+function setUpdRecPen(arrayPendientes){
+    
+    var dataParams = {'arrayPendientes': arrayPendientes};
+
+            
+            $.ajax({
+                type: "POST",
+                url: "http://refinal.frienderco.com/php/set/setUpdRecPen.php",
+                //url: "../php/set/setReciboEnc.php",
+                data: dataParams,
+                dataType: 'json',
+                cache: true,
+                success: function (jsonResp, html) {
+
+
+                    if (jsonResp.RESPONSE) {
+
+
+                    } else {
+                        alert("Ocurrio Un error:" + jsonResp.MESSAGE);
+                    }
+
+                }
+                ,
+                error: function (jsonResp) {
+                    alert("Ocurrio Un error Diferente");
+                }
+            });
 }
