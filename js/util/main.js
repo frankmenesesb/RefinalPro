@@ -74,3 +74,24 @@ function updateClock(){
     
     setTimeout("updateClock()",1000) ;
 }
+
+$(function () {
+    $(".fact_button").click(function () {
+        
+        location.href = 'frmIngreso.html?var='+$("#recibirVariable").val()+'$';
+        
+   
+    });
+
+});
+
+
+$(function () {
+    $(".cancel_fact_button").click(function () {
+        
+        location.href = 'frmInicio.html?var='+$("#recibirVariable").val()+'$';
+        
+   
+    });
+
+});
