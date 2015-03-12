@@ -26,7 +26,7 @@ $(function () {
         type: 'POST',
         //data: dataString,
         dataType: 'json',
-        url: "http://refinal.frienderco.com/php/get/getArticulos.php",
+        url: "http://refinal.frienderco.com/php/get/getProveedor.php",
         //url: "../php/get/getArticulos.php",
         success: function (jsonResp) {
 
@@ -39,17 +39,10 @@ $(function () {
                 }
                 if (jsonResp.MESSAGE === "") {
 
-
-
                     for (var i = 0; i < jsonResp.DATA.length; i++) {
 
-
-
-
-                        id = jsonResp.DATA[i]["id_art"];
-                        descripcion = jsonResp.DATA[i]["descripcion"];
-
-
+                        id = jsonResp.DATA[i]["id_proveedor"];
+                        descripcion = jsonResp.DATA[i]["nombre"];
 
                         var log = "";
                         if ((descripcion === null || descripcion === "") || (id === null || id === "")) {
@@ -60,17 +53,8 @@ $(function () {
 
 
 
-                            html += '<tr>';
-                            html += '<td>';
-                            html += ''+descripcion+''
-                            html += '</td>';
-                            html += '<td>';
-                            html += '<input type="number" class="form-control" id="'+id+'" placeholder="0 Kg."/>';
-                            html += '</td>';
-                            html += '<td>';
-                            html += '<label>Kg.</label>';
-                            html += '</td>';
-                            html += '</tr>';
+                            html += '<option value="'+id+'">'+descripcion+'</option>';
+                            
                             //articulos.add(id);
 
 
@@ -80,7 +64,7 @@ $(function () {
 
                         }
                     }
-                    $("#recibo").html(html);
+                    $("#nombres").html(html);
                     //$("#txtHint").html(encabezado+html+final);
 
                 } else if (jsonResp.MESSAGE === "EMPTY") {

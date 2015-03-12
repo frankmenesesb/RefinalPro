@@ -10,6 +10,7 @@ $(function () {
 
 
         var strLog = $("#recibirVariable").val();
+        var strProveedor = $("#txtProveedor").val();
         var y;
 
 
@@ -18,7 +19,7 @@ $(function () {
         //var strGen = $('input:radio[name=radioGenero]:checked').val();
 
 
-        var dataString = {'usuario': strLog};
+        var dataString = {'usuario': strLog, 'proveedor': strProveedor};
         if (strLog === '') {
 
             alert("No has iniciado sesion correctamente :)..");

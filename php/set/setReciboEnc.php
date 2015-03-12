@@ -18,6 +18,7 @@ include("../config.php");
 
 
 $login = htmlspecialchars(trim($_REQUEST['usuario']));
+$proveedor = htmlspecialchars(trim($_REQUEST['proveedor']));
 
 
 
@@ -41,8 +42,8 @@ if(mysqli_num_rows($result)){
     
         
 
-$query = sprintf("INSERT INTO rec_enc(observacion,id_usuario,estado,fecha,hora)
-VALUES ('','$login','G',curdate(),curtime())");
+$query = sprintf("INSERT INTO rec_enc(observacion,id_usuario,estado,fecha,hora,proveedor)
+VALUES ('','$login','G',curdate(),curtime(),'$proveedor')");
 
 $result = mysqli_query($link,$query);
 
