@@ -12,6 +12,7 @@ $(function () {
         var strLog = $("#recibirVariable").val();
         var strProveedor = $("#txtProveedor").val();
         var y;
+        var can_totales=0;
 
 
 
@@ -20,9 +21,26 @@ $(function () {
 
 
         var dataString = {'usuario': strLog, 'proveedor': strProveedor};
+        
+        
+        for (x = 1; x < 17; x++) {
+
+                            if ($("#" + x).val() !== null) {
+
+                               can_totales+=Number($("#" + x).val());
+                            }
+                        }
+                        
+                        
+        
         if (strLog === '') {
 
             alert("No has iniciado sesion correctamente :)..");
+
+
+        } else if (can_totales === '' || can_totales === null || can_totales === 0 || can_totales === '0') {
+
+            alert("No puedes guardar un recibo con todas las cantidades en 0 (cero).");
 
 
         } else

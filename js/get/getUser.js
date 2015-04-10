@@ -23,6 +23,7 @@ $(function () {
         var identificacion;
         var email;
         var tipo;
+        var password;
         var log = "";
 
         var dataString = {'identificacion': strIde};
@@ -71,7 +72,8 @@ $(function () {
                                 ;
                                 tipo = jsonResp.DATA[i]["tipo"];
                                 ;
-
+                                password = jsonResp.DATA[i]["password"];
+                                
 
                                 var log = "";
                                 if ((nombre === null || nombre === "") || (id === null || id === "")) {
@@ -86,7 +88,7 @@ $(function () {
                                     $("#txtEmail").val(email);
                                     $("#txtTelefono").val(telefono);
                                     $("#txtTipo").val(tipo);
-
+                                    $("txtContrasena").val(password);
                                 }
                             }
 

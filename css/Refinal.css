@@ -91,6 +91,15 @@ div.pendientes-c{
    text-align: center;
 }
 
+div.input-login{
+    width: 100%;
+    
+   
+   border-top: 1px outset #EBE1FA;
+   
+   
+}
+
 .filterable {
     margin-top: 15px;
 }
@@ -114,4 +123,34 @@ div.pendientes-c{
 .filterable .filters input[disabled]:-ms-input-placeholder {
     color: #333;
 }
+
+
+
+input.text-input{
+    color: #422668;
+    font-size: large;
+    height: 40px;
+    //border: #422668;
+    border-color: white;
+    
+    
+}
+
+
+a.boton-login{
+    //background: #3c3c3c;
+    //background: #422668;
+    
+    color: white;
+    width: 100%;
+    
+    
+    //border-color: #422668;
+    //border: #422668;
+}
+
+.mi-input::-webkit-input-placeholder { color: #66afe9;}
+.mi-input:-moz-placeholder { color: #66afe9; }
+.mi-input::-moz-placeholder { color: #66afe9; }
+.mi-input:-ms-input-placeholder { color: #66afe9; }
 

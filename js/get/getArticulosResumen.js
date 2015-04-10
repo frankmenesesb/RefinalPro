@@ -8,7 +8,14 @@ var articulos = new Array();
 
 $(function () {
     //$(".find_button").click(function () {
+var recibiendoVariable = location.search.slice( location.search.indexOf("=") + 1,location.search.indexOf("$"));
 
+
+
+//document.getElementById("recibirVariable").innerHTML = recibiendoVariable;
+
+    titleHeader = $(".panel-heading").find("h4").text();
+    $("#recibirVariable").val(recibiendoVariable);
 
     //variables de entrada
     var strLog = $("#recibirVariable").val();

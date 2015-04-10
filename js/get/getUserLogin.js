@@ -88,9 +88,9 @@ $(function () {
                                        
                                         location.href = 'frm/frmInicio.html?var='+id+'$';
                                     } else if (tipo === 'R') {
-                                        location.href = 'frm/frmMain.html?var='+id+'$';
+                                        location.href = 'frm/frmInicio.html?var='+id+'$';
                                     } else if (tipo === 'S') {
-                                        location.href = 'frm/frmMainS.html?var='+id+'$';
+                                        location.href = 'frm/frmRecibos.html?var='+id+'$';
 
                                     }
                                 }
