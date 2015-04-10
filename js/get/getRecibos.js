@@ -174,7 +174,7 @@ function getAllRecibos(){
         
 }
 
-function getRecibo(jsonParams){
+function getRecibo(jsonParams){    
     
     var dataParams = {'idRecibo': jsonParams.idRecibo};
     
@@ -260,8 +260,9 @@ function getRecibo(jsonParams){
                             html += "<br />";
                             html += "<br />";
                             $("#divContent2").append(html);
-                        }else{
-                                $("#divContent2").append(html);
+                        
+                            }else{
+                                $("#divContent2").html(html);
                                 var html2 = html;
                                 
                                 html = '<div class="modal-dialog">';
@@ -337,6 +338,7 @@ function getRecibo(jsonParams){
                 }
             });
             
+            $('#divContent2').hide();
         
 }
 
@@ -409,7 +411,8 @@ function setUpdRecPen(arrayPendientes){
                 }
                 ,
                 error: function (jsonResp) {
-                    alert("Ocurrio Un error Diferente");
+                    //alert("Ocurrio Un error Diferente");
+                    alert("Falta hacer el update que cambie el estado a las facturas de pendientes a generadas");
                 }
             });
 }
