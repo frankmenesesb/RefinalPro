@@ -24,7 +24,7 @@ and open the template in the editor.
         <script src="../js/util/main.js"></script>
         <script src="../js/set/setRecibo.js"></script>
         <script src="../js/set/setReciboDetallado.js"></script>
-
+        
     </head>
     <body>
     <center>
@@ -44,10 +44,8 @@ and open the template in the editor.
                     <div>
                         <div>
                             <div>
-                                <input id="txtProveedor" type="text" list="nombres" class="form-control" style="text-align: center;" placeholder="Selecciona Proveedor">
-                                <datalist  id="nombres">
-
-                                </datalist>
+                                <select id="txtProveedor" class="form-control">
+                                </select>
                             </div>
                             <br>
                             <!-- Table -->
@@ -59,6 +57,10 @@ and open the template in the editor.
                             <input type="hidden" class="form-control" name="recibirVariable" id="recibirVariable">
                         </div>
                     </div>
+                    
+                    
+                   
+                    
                 </div>
                 <br>
             </div>
@@ -69,7 +71,7 @@ and open the template in the editor.
         <div class="panel panel-footer footer">
             <ul class="list-inline">
                 <li >
-                    <a  class="btn btn-primary btn-lg btn-block submit_button">
+                    <a    class="btn btn-primary btn-lg btn-block submit_button">
                         <span class="glyphicon glyphicon-save" aria-hidden="true"></span> Guardar
                     </a>
                 </li>

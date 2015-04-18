@@ -86,11 +86,11 @@ $(function () {
 
                                     if (tipo === 'A') {
                                        
-                                        location.href = 'frm/frmInicio.html?var='+id+'$';
+                                        location.href = 'frm/frmMainA.html?var='+id+'$';
                                     } else if (tipo === 'R') {
                                         location.href = 'frm/frmInicio.html?var='+id+'$';
                                     } else if (tipo === 'S') {
-                                        location.href = 'frm/frmRecibos.html?var='+id+'$';
+                                        location.href = 'frm/frmMainS.html?var='+id+'$';
 
                                     }
                                 }

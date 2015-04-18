@@ -38,7 +38,34 @@ div.head-fixed {
 }
 
 
+div.head-left{
+    width: 35%;
+    float: left;
+    background-image: url(../images/refinal-app.png);
+    
+    background-size: 28px 25px;
+    background-repeat: no-repeat;
+    height: 100%;
+    background-position: 10px;
+    z-index: 3;
+}
 
+div.head-center{
+    width: 30%;
+    height: 100%;
+    float: left;
+    text-align: center;
+    //padding-top:10px;
+    
+}
+
+div.head-right{
+    width: 35%;
+    float: right;
+    height: 100%;
+    text-align: right;
+    
+}
 
 
 div.movil{
@@ -154,3 +181,30 @@ a.boton-login{
 .mi-input::-moz-placeholder { color: #66afe9; }
 .mi-input:-ms-input-placeholder { color: #66afe9; }
 
+
+
+a.boton-factura{
+    background: transparent;
+   
+    background-image: url(../images/btn-new-0.png);
+    background-size: 60px 60px;
+    background-repeat: no-repeat;
+    width: 60px;
+    height: 60px;
+    background-position: center;
+    
+    
+}
+
+a.boton-factura:hover{
+    
+    //background: #CDE6D8;
+    background: transparent;
+    background-image: url(../images/btn-new-1.png);
+    background-size: 60px 60px;
+    background-repeat: no-repeat;
+    width: 60px;
+    height: 60px;
+    background-position: center;
+    
+}

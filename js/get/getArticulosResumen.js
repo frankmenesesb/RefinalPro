@@ -63,7 +63,7 @@ var recibiendoVariable = location.search.slice( location.search.indexOf("=") + 1
                         var log = "";
                         if ((descripcion === null || descripcion === "") || (can === null || can=== "")) {
 
-                            alert("Error: articulos con errores o sin existencia ");
+                            //alert("Error: articulos con errores o sin existencia ");
 
                         } else {
 
@@ -93,10 +93,10 @@ var recibiendoVariable = location.search.slice( location.search.indexOf("=") + 1
                     //$("#txtHint").html(encabezado+html+final);
 
                 } else if (jsonResp.MESSAGE === "EMPTY") {
-                    alert("Error: no se encontro datos de articulos!!");
+                    //alert("Error: no se encontro datos de articulos!!");
                 }
             } else {
-                alert("Ocurrio Un error:" + jsonResp.MESSAGE);
+                //alert("Ocurrio Un error:" + jsonResp.MESSAGE);
             }
 
 

@@ -11,7 +11,7 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="../css/bootstrap.min.css">
-        <link rel="stylesheet" href="../css/Refinal.css">
+        <link rel="stylesheet" href="../css/RefinalWeb.css">
         <!-- Optional theme -->
         <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
         <!-- Latest compiled and minified JavaScript -->
@@ -20,26 +20,35 @@ and open the template in the editor.
         <script src="../js/util/printplugin.js"></script>
         <script src="../js/set/setUser.js"></script>
         <script src="../js/get/getUser.js"></script>
+        <script src="../js/get/getUserM.js"></script>
     </head>
     <body>
     <center>
-        <div class="panel panel-heading head">
-            Registro de Usuarios
+        <div class="panel panel-heading head-fixed">
+            <div class="head-left">
+                <a class="btn boton-futduel"></a>
+            </div>
+            <div class="head-center">Registro usuario</div>
+            <div class="head-right">
+                <a class="btn glyphicon glyphicon-menu-hamburger" ></a>
+            </div>
         </div>
+        <br>
+        <br>
         <br>
         <div class="form-group">
             <a class="btn btn-default glyphicon glyphicon-search find_button" role="button"></a>
         </div>
-        <br>
+        
 
         <div class="panel panel-body body">
             <div class="margen">
                 <br>
-                <div class="movil">
+                <div class="movil-usuario">
                     <br>
                     <div class="form-group">
-                        <label class="radio-inline"><input checked type="radio" name="optradio" id="radioOperacion1">Registro</label>
-                        <label class="radio-inline"><input type="radio" name="optradio" id="radioOperacion2">Modificacion</label>    
+                        <label class="radio-inline"><input checked type="radio" name="optradio" id="radioOperacion1" value="R">Registro</label>
+                        <label class="radio-inline"><input type="radio" name="optradio" id="radioOperacion2" value="M" onclick="buscar();" >Modificacion</label>    
                     </div>
                     <div class="form-group">
                         <select id="txtTipo" class="form-control">
@@ -51,8 +60,12 @@ and open the template in the editor.
                     </div>
                     <br>
                     <div class="form-group">
-                        <input type="number" class="form-control" id="txtIdentificacion" placeholder="Identificacion">
+                        <input id="txtIdentificacion" type="text" list="nombres" class="form-control" style="text-align: center;" placeholder="Identificacion">
+                                <datalist  id="nombres">
+
+                                </datalist>
                     </div>
+                    
                     <br>
                     <div class="form-group">
                         <input type="text" class="form-control" id="txtNombre" placeholder="Nombres">
@@ -100,7 +113,7 @@ and open the template in the editor.
                     </a>
                 </li>
                 <li>
-                    <a  class="btn btn-primary btn-lg btn-block" href="frmMain.html">
+                    <a  class="btn btn-primary btn-lg btn-block" href="frmMainA.html">
                         <span class="glyphicon glyphicon-hand-down" aria-hidden="true"></span> Cancelar
                     </a>
                 </li>

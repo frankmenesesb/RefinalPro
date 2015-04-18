@@ -58,26 +58,30 @@ $(function () {
 
                     if (jsonResp.RESPONSE) {
 
-                        alert(jsonResp.MESSAGE);
-
+                        
+                        alert(jsonResp.MESSAGE);   
+                        location.href = '../frm/frmInicio.html?var='+strLog+'$';    
                         for (x = 1; x < 17; x++) {
 
                             if ($("#" + x).val() !== null) {
 
                                 detallado(x, $("#" + x).val());
                                 y=x;
+                                
                             }
                         }
 
                         if(y===17){
-                            
-                            
+                         
                         var html = "Se guardo Correctamente!";
-
+                       
+                                    
+                                
                         $("#txtRespuesta").html(html);
                         $("#txtRespuesta").focus();
                         
                         //location.href = 'frmReciboConsulta.html?var='+strLog+'$'+;
+                        
 
                         }
 
@@ -102,3 +106,15 @@ $(function () {
         return false;
     });
 });
+
+
+
+function mensaje() {
+    var x;
+    if (confirm("¿Esta correcta la informacion?") === true) {
+        x = "You pressed OK!";
+    } else {
+        x = "You pressed Cancel!";
+    }
+    document.getElementById("demo").innerHTML = x;
+}

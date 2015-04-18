@@ -64,7 +64,7 @@ $(function () {
 
                         }
                     }
-                    $("#nombres").html(html);
+                    $("#txtProveedor").html(html);
                     //$("#txtHint").html(encabezado+html+final);
 
                 } else if (jsonResp.MESSAGE === "EMPTY") {

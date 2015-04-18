@@ -52,7 +52,7 @@ $(function () {
 $(function () {
     $(".consulta_button").click(function () {
         
-        location.href = 'frmReciboBuscar.html?var='+$("#recibirVariable").val()+'$';
+        location.href = 'frmRecibos.html?var='+$("#recibirVariable").val()+'$';
         
         
   });

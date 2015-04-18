@@ -99,9 +99,7 @@ function getAllRecibos(){
                                 }
                                 /*var log = "";
                                 if ((descripcion === null || descripcion === "") || (id === null || id === "")) {
-
                                     alert("Error: articulos con errores o sin existencia ");
-
                                 } else {*/
 
 
