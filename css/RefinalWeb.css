@@ -41,9 +41,9 @@ div.head-fixed {
 div.head-left{
     width: 35%;
     float: left;
-    background-image: url(../images/refinal-app.png);
+    background-image: url(../images/refinal-web-2.png);
     
-    background-size: 28px 25px;
+    background-size: 100px 30px;
     background-repeat: no-repeat;
     height: 100%;
     background-position: 10px;

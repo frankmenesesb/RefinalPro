@@ -118,7 +118,7 @@ function getAllRecibos(){
                                     html += ''+estado+''
                                     html += '</td>';
                                     html += '<td>';
-                                    html += '<a id="btnVisRec_'+i+'"><span class="glyphicon glyphicon-file" aria-hidden="true" ></span></a></li>';
+                                    html += '<a id="btnVisRec_'+i+'"><span style="background-size: 110px; height: 35px; background-image: url(\'../images/btn-ver-0.png\'); display:block; background-repeat: no-repeat;" ></span></a></li>';
                                     //html += '<input type="button" id="btnReimprRec_'+i+'" class="glyphicon glyphicon-file"/>';
                                     html += '</td>';
                                     html += '</tr>';
