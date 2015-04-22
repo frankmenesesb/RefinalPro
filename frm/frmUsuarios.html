@@ -95,6 +95,100 @@ and open the template in the editor.
         
         <div class="modal fade" id="dialogUpdUsuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             
+        <!--<br>
+        <br>
+        <br>
+        -->
+        
+        
+        <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+       
+            <div align="left" class="modal-title" id="myModalLabel">
+                <img src="../images/icon 09.png" alt="Smiley face" height="42" width="42"><label style="color:#99CC33;font-size: 180%;">&nbsp;Modificacion usuario</label>
+            </div>
+        </div>
+        <div class="modal-body" id="divContent">
+        <div class="panel panel-body body">
+            <div class="margen">
+                <br>
+                <div class="form-group" style="display: none;">
+                        <label class="radio-inline"><input  type="radio" name="optradio" id="radioOperacion1" value="R">Registro</label>
+                        <label class="radio-inline"><input checked type="radio" name="optradio" id="radioOperacion2" value="M"  >Modificacion</label>    
+                    </div>
+                    <div class="form-group">
+                        <select id="txtTipo" class="form-control">
+                            <option value="T">Seleccione tipo de Usuario</option>
+                            <option value="A">Administrador</option>
+                            <option value="R">Recibidor</option>
+                            <option value="S">Secretaria</option>
+                        </select>
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input id="txtIdentificacion" type="text" list="nombres" class="form-control" style="text-align: center;" placeholder="Identificacion">
+                                <datalist  id="nombres">
+
+                                </datalist>
+                    </div>
+                    
+                    <br>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="txtNombre" placeholder="Nombres">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="txtApellido" placeholder="Apellidos">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="number" class="form-control" id="txtTelefono" placeholder="Telefono">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="email" class="form-control" id="txtEmail" placeholder="Email">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="txtUsuario" placeholder="Usuario">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="txtContrasena" placeholder="Password">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="password" class="form-control" id="txtContrasena2" placeholder="Repita Password">
+                    </div>
+                    <div class="form-group">
+                        <p class="bg-success" id="txtRespuesta"></p>
+                    </div>
+                <br>
+            </div>
+        </div>
+        </div>
+        <div class="modal-footer">
+        <div class="panel panel-footer footer">
+            <ul class="list-inline footer-bar">
+
+                <li>
+                    <a  class="btn btn-primary btn-lg btn-block submit_button" >
+                        <span class="glyphicon glyphicon-save" aria-hidden="true"></span> Guardar
+                    </a>
+                </li>
+                <li>
+                    <a  class="btn btn-primary btn-lg btn-block" href="frmUsuarios.html">
+                        <span class="glyphicon glyphicon-hand-down" aria-hidden="true"></span> Cancelar
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+        </div>
+        </div>
+        </div>
         </div>
 
     </center>

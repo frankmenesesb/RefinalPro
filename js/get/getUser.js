@@ -14,7 +14,6 @@ $(function () {
         var strIde = $("#txtIdentificacion").val();
         
         //variables locales
-
         var id;
         var nombre;
         var apellido;

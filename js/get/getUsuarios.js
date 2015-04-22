@@ -51,10 +51,10 @@ $(document).ready(function() {
     $('#dialogInsUsuario').modal('hide');
     
     
-    $( "#btnNewUsuario" ).on( "click", function() {
+    /*$( "#btnNewUsuario" ).on( "click", function() {
         
         $('#dialogInsUsuario').modal('show'); 
-     });
+     });*/
       
 });
 
@@ -89,7 +89,7 @@ function getAllUsuarios(){
                                 var tipo = jsonResp.DATA[i]["tipo"];
                                 
                                 var jsonParams = {
-                                   'id_usuario': id_usuario,
+                                   'identificacion': identificacion,
                                    'indexRow': i
                                };
 
@@ -134,166 +134,74 @@ function getAllUsuarios(){
 
 function updUsuario(jsonParams){    
     
-    alert("En construccion...");
-    alert(JSON.stringify(jsonParams));
+    //alert("En construccion...");
+    //alert(JSON.stringify(jsonParams));
     
-    /*var dataParams = {'idRecibo': jsonParams.idRecibo};
-    
-        $.ajax({
-            type: 'POST',
-            data: dataParams,
-            dataType: 'json',
+    $.ajax({
+        type: 'POST',
+        data: jsonParams,
+        dataType: 'json',
 
-            url: "http://refinal.frienderco.com/php/get/getReciboDet.php",
-            //url: "../php/get/getUser.php",
-            success: function (jsonResp) {
+        url: "http://refinal.frienderco.com/php/get/getUser.php",
+        //url: "../php/get/getUser.php",
+        success: function (jsonResp) {
 
-                if (jsonResp.RESPONSE) {
-
-                    //alert(JSON.stringify(jsonResp));
+            if (jsonResp.RESPONSE) {
 
 
-                    if (jsonResp.MESSAGE === "") {
-                        //alert(JSON.stringify(jsonResp));
-                        var html = '<center><table width="95%" align="center" cellpadding="10" cellspacing="0" style="border:1px solid black;">';
-                        html += "<tr align='center' style='border-bottom: solid;'>";
-                        html += "<td style='border-bottom: 1px solid black;'><label style='font-weight: bold;'>Factura No. "+ jsonParams.idRecibo+"</label></td>";
-                        html += "<td style='border-bottom: 1px solid black;'><label>"+jsonParams.fechaGenerado+"</label></td>";
-                        html += "</tr>";
-                        html += "<tr align='center'>";
-                        html += "<td style='border-bottom: 1px solid black;'><label style='font-weight: bold;'>Usuario:</label></td>";
-                        html += "<td style='border-bottom: 1px solid black;'><label>"+jsonParams.nomCliente+"</label></td>";
-                        html += "</tr>";
-                        html += "<tr>";
-                        html += "<td colspan='2'>";
+                if (jsonResp.MESSAGE === "undefined" || jsonResp.MESSAGE === undefined) {
 
-
-
-                        html += '<table width="100%" border="1" cellspacing="0" style="border:1px solid black;text-align: center;">';
-                        html += "<thead>";
-                        html += "<tr>";
-                        html += "<th style='text-align: center;'>Productos</th>";
-                        html += "<th style='text-align: center;'>Kilos</th>";
-                        html += "</tr>";
-                        html += "</thead>";
-                        html += "<tbody>";
-                        //{"nombreArticulo":"SEBO EN RAMA","cantidad":"0"}
-                        for (var i = 0; i < jsonResp.DATA.length; i++) {
-
-                            var nombreArticulo = jsonResp.DATA[i]["nombreArticulo"];
-                            var cantidad = jsonResp.DATA[i]["cantidad"];
-
-                                html +="<tr align='left' id='rowDet_"+i+"'><td width='60%'><label style='margin-left: 20px;'>"+nombreArticulo+"</label></td><td style='text-align: center;'>"+cantidad+" Kg.</td></tr>";
-
-                        }
-
-                        html += "</tbody>";
-                        html += "</table>";                           
-
-                        html += "</td>";
-                        html += "</tr>";
-                        html += "</table></center>";
-
-
-                    if(JSONGLOBAL.ALLPENDIENTES){
-                        html += "<br />";
-                        html += "<br />";
-                        html += "<br />";
-                        html += "<br />";
-                        html += "<br />";
-                        html += "<br />";
-                        html += "<br />";
-                        html += "<br />";
-                        html += "<br />";
-                        html += "<br />";
-                        html += "<br />";
-                        html += "<br />";
-                        html += "<br />";
-                        html += "<br />";
-                        html += "<br />";
-                        html += "<br />";
-                        html += "<br />";
-                        html += "<br />";
-                        html += "<br />";
-                        html += "<br />";
-                        html += "<br />";
-                        html += "<br />";
-                        html += "<br />";
-                        html += "<br />";
-                        $("#divContent2").append(html);
-
-                        }else{
-                            $("#divContent2").html(html);
-                            var html2 = html;
-
-                            html = '<div class="modal-dialog">';
-                            html += '<div class="modal-content">';
-                            html += '<div class="modal-header">';
-                            html += '<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>';
-                            html += '<h4 class="modal-title" id="myModalLabel">Vista previa</h4>';
-                            html += '</div>';
-                            html += '<div class="modal-body" id="divContent">';
-                            html += '<table width="95%" align="center" cellpadding="10" cellspacing="0" style="border:1px solid black;">';
-                            html += '<tr align="center" style="border-bottom: solid;">';
-                            html += '<td style="border-bottom: 1px solid black;"><label id="lblNoFactura" style="font-weight: bold;"></label></td>';
-                            html += '<td style="border-bottom: 1px solid black;"><label id="lblFecha"></label></td>';
-                            html += '</tr>';
-                            html += '<tr align="center" >';
-                            html += '<td style="border-bottom: 1px solid black;"><label style="font-weight: bold;">Usuario:</label></td>';
-                            html += '<td style="border-bottom: 1px solid black;"><label id="lblNomCliente"></label></td>';
-                            html += '</tr>';
-                            html += '<tr>';
-                            html += '<td colspan="2">';
-                            html += '<div id="divContent">'+html2;
-                            html += '</div>';
-                            html += '</td>';
-                            html += '</tr>';
-                            html += '</table>';
-                            html += '</div>';
-                            html += '<div class="modal-footer">';
-                            html += '<button type="button" class="btn btn-default" data-dismiss="modal">Listo!</button>';
-                            html += '<button type="button" class="btn btn-default glyphicon glyphicon-print" data-dismiss="modal" id="btnImprimir">Imprimir</button>';
-                            html += '</div>';
-                            html += '</div>';
-                            html += '</div>';
-
-                        $("#dialogRecibo").html(html);
-                        $('#dialogRecibo').modal('show'); 
-
-                        $( "#btnImprimir" ).on( "click", function() {
-
-                            //$("#dialogRecibo").print();
-                            var ficha= $("#divContent2").html(); 
-                            window.document.write(ficha);
-                            window.document.title = "Reporte Factura";
-                            window.print();
-
-                            setTimeout(function() {
-                                alert(window.location.href);
-                                window.location.href = '../frm/frmRecibos.html';
-                            }, 3000);
-
-
-                         });
-
-                    }
-
-
-
-                    } else if (jsonResp.MESSAGE === "EMPTY") {
-                        alert("Error: no se encontro datos de registro del usuario!!");
-                    }
-                } else {
-                    alert("Ocurrio Un error:" + jsonResp.MESSAGE);
+                    alert('Error Usuario no registrado!!');
                 }
+                if (jsonResp.MESSAGE === "") {
 
-            },
-            error: function (jsonResp) {
-                alert("Ocurrio Un error");
+
+
+                    for (var i = 0; i < jsonResp.DATA.length; i++) {
+
+
+                        var id = jsonResp.DATA[i]["id_usuario"];
+                        var nombre = jsonResp.DATA[i]["nombre"];
+                        var apellido = jsonResp.DATA[i]["apellido"];
+                        var login = jsonResp.DATA[i]["usuario"];
+                        var telefono = jsonResp.DATA[i]["telefono"];
+                        var identificacion = jsonResp.DATA[i]["identificacion"];
+                        var email = jsonResp.DATA[i]["email"];
+                        var tipo = jsonResp.DATA[i]["tipo"];
+                        var password = jsonResp.DATA[i]["password"];
+
+                        if ((nombre === null || nombre === "") || (id === null || id === "")) {
+
+                            alert("Error: usuario y contraseña invalidos ");
+
+                        } else {
+
+                            $("#txtNombre").val(nombre);
+                            $("#txtApellido").val(apellido);
+                            $("#txtIdentificacion").val(identificacion);
+                            $("#txtUsuario").val(login);
+                            $("#txtEmail").val(email);
+                            $("#txtTelefono").val(telefono);
+                            $("#txtTipo").val(tipo);
+                            $("txtContrasena").val(password);
+                        }
+                    }
+
+                } else if (jsonResp.MESSAGE === "EMPTY") {
+                    alert("Error: no se encontro datos de registro del usuario!!");
+                }
+            } else {
+                alert("Ocurrio Un error:" + jsonResp.MESSAGE);
             }
-        });
 
-        $('#divContent2').hide();*/
+
+        },
+        error: function (jsonResp) {
+            alert("Ocurrio Un error");
+        }
+    });
+    
+    $('#dialogUpdUsuario').modal('show'); 
 
 }
 
