@@ -20,6 +20,7 @@ and open the template in the editor.
         <script src="../js/util/printplugin.js"></script>
         <script src="../js/set/setUser.js"></script>
         <script src="../js/get/getUser.js"></script>
+        <script src="../js/get/getUsuarios.js"></script>
         <script src="../js/get/getUserM.js"></script>
     </head>
     <body>
@@ -28,7 +29,7 @@ and open the template in the editor.
             <div class="head-left">
                 <a class="btn boton-futduel"></a>
             </div>
-            <div class="head-center">Registro usuario</div>
+            <div class="head-center"></div>
             <div class="head-right">
                 <a class="btn glyphicon glyphicon-menu-hamburger" ></a>
             </div>
@@ -45,57 +46,31 @@ and open the template in the editor.
             <div class="margen">
                 <br>
                 <div class="movil-usuario">
-                    <br>
-                    <div class="form-group">
-                        <label class="radio-inline"><input checked type="radio" name="optradio" id="radioOperacion1" value="R">Registro</label>
-                        <label class="radio-inline"><input type="radio" name="optradio" id="radioOperacion2" value="M" onclick="buscar();" >Modificacion</label>    
+                    <div align="left">
+                    <img src="../images/icon 09.png" alt="Smiley face" height="42" width="42"><label style="color:#99CC33;font-size: 180%;">&nbsp;Listado de usuarios</label>
                     </div>
-                    <div class="form-group">
-                        <select id="txtTipo" class="form-control">
-                            <option value="T">Seleccione tipo de Usuario</option>
-                            <option value="A">Administrador</option>
-                            <option value="R">Recibidor</option>
-                            <option value="S">Secretaria</option>
-                        </select>
-                    </div>
-                    <br>
-                    <div class="form-group">
-                        <input id="txtIdentificacion" type="text" list="nombres" class="form-control" style="text-align: center;" placeholder="Identificacion">
-                                <datalist  id="nombres">
+                    <div class="panel panel-primary filterable">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">&nbsp;</h3>
+                            <div class="pull-right">
+                                <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filtro</button>
+                            </div>
+                        </div>
 
-                                </datalist>
-                    </div>
-                    
-                    <br>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="txtNombre" placeholder="Nombres">
-                    </div>
-                    <br>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="txtApellido" placeholder="Apellidos">
-                    </div>
-                    <br>
-                    <div class="form-group">
-                        <input type="number" class="form-control" id="txtTelefono" placeholder="Telefono">
-                    </div>
-                    <br>
-                    <div class="form-group">
-                        <input type="email" class="form-control" id="txtEmail" placeholder="Email">
-                    </div>
-                    <br>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="txtUsuario" placeholder="Usuario">
-                    </div>
-                    <br>
-                    <div class="form-group">
-                        <input type="password" class="form-control" id="txtContrasena" placeholder="Password">
-                    </div>
-                    <br>
-                    <div class="form-group">
-                        <input type="password" class="form-control" id="txtContrasena2" placeholder="Repita Password">
-                    </div>
-                    <div class="form-group">
-                        <p class="bg-success" id="txtRespuesta"></p>
+                        <table class="table" id="listUsuarios">
+                            <thead>
+                                <tr class="filters" >
+                                    <th><input type="text" class="form-control" placeholder="Identificación" style="font-size: 10px;color:#00CCFF;" disabled></th>
+                                    <th><input type="text" class="form-control" placeholder="Nombre" style="font-size: 10px;" disabled></th>
+                                    <th><input type="text" class="form-control" placeholder="Apellido" style="font-size: 10px;" disabled></th>                                        
+                                    <th><input type="text" class="form-control" placeholder="Rol" style="font-size: 10px;" disabled></th>
+                                    <th><input type="text" class="form-control" placeholder="Actualizar" style="font-size: 10px;" disabled></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                            </tbody>
+                        </table>
                     </div>
                 </div>
                 <br>
@@ -104,21 +79,22 @@ and open the template in the editor.
         <br>
         <br>
         <br>
+        
         <div class="panel panel-footer footer">
             <ul class="list-inline footer-bar">
 
                 <li>
-                    <a  class="btn btn-primary btn-lg btn-block submit_button" >
-                        <span class="glyphicon glyphicon-save" aria-hidden="true"></span> Guardar
-                    </a>
-                </li>
-                <li>
-                    <a  class="btn btn-primary btn-lg btn-block" href="frmMainA.html">
-                        <span class="glyphicon glyphicon-hand-down" aria-hidden="true"></span> Cancelar
+                    <a id="btnNewUsuario" href="frmRegistroUsuario.html">
+                        <span style="width:302px; background-size: 302px; height: 42px; background-image: url('../images/btn-user-0.png'); display:block; background-repeat: no-repeat;" ></span>
                     </a>
                 </li>
             </ul>
 
+        </div>
+        <!-- Modals -->   
+        
+        <div class="modal fade" id="dialogUpdUsuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            
         </div>
 
     </center>

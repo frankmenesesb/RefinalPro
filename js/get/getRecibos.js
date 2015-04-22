@@ -109,11 +109,11 @@ function getAllRecibos(){
                                     html += ''+id_rec_enc+''
                                     html += '</td>';
                                     html += '<td>';
-                                    html += ''+nombre_usuario+''
-                                    html += '</td>';
-                                    html += '<td>';
                                     html += ''+fecha+''
                                     html += '</td>';
+                                    html += '<td>';
+                                    html += ''+nombre_usuario+''
+                                    html += '</td>';                                    
                                     html += '<td>';
                                     html += ''+estado+''
                                     html += '</td>';
