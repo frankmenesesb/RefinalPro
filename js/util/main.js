@@ -20,7 +20,7 @@ var recibiendoVariable = location.search.slice( location.search.indexOf("=") + 1
     $("#recibirVariable").val(recibiendoVariable);
     
     updateClock();
-
+    conecctionStatus();
 
 
 };
@@ -65,11 +65,11 @@ function updateClock(){
     var hour  = d.getHours();
     var minute = d.getMinutes();
     
-    if(minute < 9){
+    if((minute)*1 <= 9){
         minute = "0"+minute;
     }
     
-    $(".panel-hora").find("h5").text('Hora: '+d.getHours()+':'+d.getMinutes());//,'Segundos: '+d.getSeconds());
+    $(".panel-hora").find("h5").text('Hora: '+d.getHours()+':'+minute);//,'Segundos: '+d.getSeconds());
     //$(".panel-hora").find("h5").text(titleHeader +' Hora: '+d.getHours()+':'+d.getMinutes());//,'Segundos: '+d.getSeconds());
     
     setTimeout("updateClock()",1000) ;
@@ -95,3 +95,31 @@ $(function () {
     });
 
 });
+
+
+function conecctionStatus(){
+    $(".panel-statusConn").html('<img src="../images/icon 03 1.png" alt="Smiley face" height="25" width="25" title="Sin conexión"/><a class="btn glyphicon glyphicon-menu-hamburger" ></a>');
+    $.ajax({
+        type: "POST",
+        url: "http://refinal.frienderco.com/php/get/conecctionStatus.php",
+        data: "NULL",
+        dataType: 'json',
+        cache: true,
+        success: function (jsonResp, html) {
+
+            if (jsonResp.RESPONSE) {
+                $(".panel-statusConn").html('<img src="../images/icon 03 0.png" alt="Smiley face" height="25" width="25" title="Conexión correcta"/><a class="btn glyphicon glyphicon-menu-hamburger" ></a>');
+            } else {
+                $(".panel-statusConn").html('<img src="../images/icon 03 1.png" alt="Smiley face" height="25" width="25" title="Sin conexión"/><a class="btn glyphicon glyphicon-menu-hamburger" ></a>');
+            }
+
+        }
+        ,
+        error: function (jsonResp) {
+            $(".panel-statusConn").html('<img src="../images/icon 03 1.png" alt="Smiley face" height="25" width="25" title="Sin conexión"/><a class="btn glyphicon glyphicon-menu-hamburger" ></a>');
+        }
+    });
+    
+    setTimeout("conecctionStatus()",10000) ;
+    
+}
