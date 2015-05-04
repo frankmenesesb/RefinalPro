@@ -59,6 +59,31 @@ $(document).ready(function() {
         printArrayRecibos(arrayPendientes);
         
      });
+     
+     $( "#btnPrueba" ).on( "click", function() {
+         
+         var arrayRecibos = new Array();
+        
+        $("#listRecibos tbody").find("tr").each(function() {
+            var idRow = $(this).attr('id');
+            
+            
+            if($('#'+idRow).is(':visible')){
+                var idFact = $(this).find('td').eq(0).text();
+                var nomCliente = $(this).find('td').eq(1).text();
+                var fechaGenerado = $(this).find('td').eq(2).text();
+                var estado = $(this).find('td').eq(3).text();
+                
+                arrayRecibos.push([idFact,nomCliente,fechaGenerado,estado]);
+                //arrayRecibos.push(idFact);
+            }
+        });
+        
+        generarArchivoPlano(arrayRecibos);
+        
+        
+     });
+     
       
 });
 
@@ -118,7 +143,7 @@ function getAllRecibos(){
                                     html += ''+estado+''
                                     html += '</td>';
                                     html += '<td>';
-                                    html += '<a id="btnVisRec_'+i+'"><span style="background-size: 110px; height: 35px; background-image: url(\'../images/btn-ver-0.png\'); display:block; background-repeat: no-repeat;" ></span></a></li>';
+                                    html += '<a id="btnVisRec_'+i+'"><span style="background-size: 110px; height: 35px; background-image: url(\'../images/btn-ver-0.png\'); display:block; background-repeat: no-repeat;" ></span></a>';
                                     //html += '<input type="button" id="btnReimprRec_'+i+'" class="glyphicon glyphicon-file"/>';
                                     html += '</td>';
                                     html += '</tr>';
@@ -414,3 +439,61 @@ function setUpdRecPen(arrayPendientes){
                 }
             });
 }
+
+function generarArchivoPlano(arrayRecibos){
+    
+    var dataParams = {'arrayRecibos': arrayRecibos};
+            
+    $.ajax({
+        type: "POST",
+        url: "http://refinal.frienderco.com/php/get/getRecArchivoPlano.php",
+        data: dataParams,
+        dataType: 'json',
+        cache: true,
+        success: function (jsonResp, html) {
+
+            if (jsonResp.RESPONSE) {
+                descargarArchivo(generarTexto(jsonResp.DATA), 'archivo.txt');
+            
+            } else {
+                alert("Ocurrio Un error:" + jsonResp.MESSAGE);
+            }
+
+        }
+        ,
+        error: function (jsonResp) {
+            alert("Ocurrio Un error Diferente");
+        }
+    });
+    
+    
+}
+
+function generarTexto(txt) {
+    
+    var texto = [txt];
+    //El contructor de Blob requiere un Array en el primer parámetro
+    //así que no es necesario usar toString. el segundo parámetro
+    //es el tipo MIME del archivo
+    return new Blob(texto, {
+        type: 'text/plain'
+    });
+};
+
+function descargarArchivo(contenidoEnBlob, nombreArchivo) {
+    var reader = new FileReader();
+    reader.onload = function (event) {
+        var save = document.createElement('a');
+        save.href = event.target.result;
+        save.target = '_blank';
+        save.download = nombreArchivo || 'archivo.dat';
+        var clicEvent = new MouseEvent('click', {
+            'view': window,
+                'bubbles': true,
+                'cancelable': true
+        });
+        save.dispatchEvent(clicEvent);
+        (window.URL || window.webkitURL).revokeObjectURL(save.href);
+    };
+    reader.readAsDataURL(contenidoEnBlob);
+};
