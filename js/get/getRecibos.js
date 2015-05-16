@@ -140,7 +140,14 @@ function getAllRecibos(){
                                     html += ''+nombre_usuario+''
                                     html += '</td>';                                    
                                     html += '<td>';
-                                    html += ''+estado+''
+                                    //html += ''+estado+''
+                                    if(estado === "Generado"){
+                                        html += '<img src="../images/icon activo.png" alt="Smiley face" height="32" width="31" title="Generado">';
+                                    }else if(estado === "Pendiente"){
+                                        html += '<img src="../images/icon inactivo.png" alt="Smiley face" height="32" width="31" title="Pendiente">';
+                                    }else{
+                                        html += '<img src="../images/icon 08.png" alt="Smiley face" height="32" width="31" title="Pendiente">'; 
+                                    }
                                     html += '</td>';
                                     html += '<td>';
                                     html += '<a id="btnVisRec_'+i+'"><span style="background-size: 110px; height: 35px; background-image: url(\'../images/btn-ver-0.png\'); display:block; background-repeat: no-repeat;" ></span></a>';
