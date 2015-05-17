@@ -98,7 +98,7 @@ $(function () {
 
 
 function conecctionStatus(){
-    $(".panel-statusConn").html('<img src="../images/icon 03 1.png" alt="Smiley face" height="25" width="25" title="Sin conexión"/><a class="btn glyphicon glyphicon-menu-hamburger" ></a>');
+    //$(".panel-statusConn").html('<img src="../images/icon 03 1.png" alt="Smiley face" height="25" width="25" title="Sin conexión"/><a class="btn glyphicon glyphicon-menu-hamburger" ></a>');
     $.ajax({
         type: "POST",
         url: "http://refinal.frienderco.com/php/get/conecctionStatus.php",

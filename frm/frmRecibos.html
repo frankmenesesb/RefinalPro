@@ -21,25 +21,25 @@ and open the template in the editor.
         <script src="../js/util/bootstrap.min.js"></script>
         <script src="../js/util/main.js"></script>
         <script src="../js/get/getArticulos.js"></script>
-        
+
         <script src="../js/get/getRecibos.js"></script>
         <script src="../js/util/printplugin.js"></script>        
-            
-   
+
+
     </head>
     <body>
     <center>
         <div class="panel panel-heading head">
-           <div class="head-left">
+            <div class="head-left">
                 <a class="btn boton-futduel"></a>
             </div>
             <div class="head-center">
-                
+
             </div>
             <div class="head-right" style="width: 30%;">
                 <div class="panel-statusConn" ><a class="btn glyphicon glyphicon-menu-hamburger" ></a></div>
-                
-                
+
+
             </div>
         </div>
         <br>
@@ -48,39 +48,40 @@ and open the template in the editor.
                 <br>
 
                 <div class="movil">
-                    
+
                     <div>
                         <div align="left">
                             <img src="../images/icon 09.png" alt="Smiley face" height="42" width="42"><label style="color:#99CC33;font-size: 180%;">&nbsp;Listado de recibos</label>
                             <br />
                             <div class="panel panel-primary filterable">
-                            <div class="panel-heading">
-                                <h3 class="panel-title">&nbsp;</h3>
-                                <div class="pull-right">                                    
-                                    <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filtro</button>
+                                <div class="panel-heading">
+                                    <h3 class="panel-title">&nbsp;</h3>
+                                    <div class="pull-right">                                    
+                                        <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filtro</button>
+                                    </div>
                                 </div>
-                            </div>
-                                
-                            <table class="table" id="listRecibos">
-                                <thead>
-                                    <tr class="filters" >
-                                        <th><input type="text" class="form-control" placeholder="Consecutivo" style="font-size: 10px;color:#00CCFF;" disabled></th>
-                                        <th><input type="text" class="form-control" placeholder="Fecha" style="font-size: 10px;" disabled></th>
-                                        <th><input type="text" class="form-control" placeholder="Recolector" style="font-size: 10px;" disabled></th>                                        
-                                        <th><input type="text" class="form-control" placeholder="Estado" style="font-size: 10px;" disabled></th>
-                                        <th><input type="text" class="form-control" placeholder="Recibo" style="font-size: 10px;" disabled></th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    
-                                </tbody>
-                            </table>
-                                
+
+                                <table class="table" id="listRecibos">
+                                    <thead>
+                                        <tr class="filters" >
+                                            <th><input type="text" class="form-control" placeholder="Consecutivo" style="font-size: 10px;color:#00CCFF;" disabled></th>
+                                            <th><input type="text" class="form-control" placeholder="Fecha" style="font-size: 10px;" disabled></th>
+                                            <th><input type="text" class="form-control" placeholder="Recolector" style="font-size: 10px;" disabled></th>                                        
+                                            <th><input type="text" class="form-control" placeholder="Estado" style="font-size: 10px;" disabled></th>
+                                            <th><input type="text" class="form-control" placeholder="Recibo" style="font-size: 10px;" disabled></th>
+                                            <th><input type="text" class="form-control" placeholder="Actualizar" style="font-size: 10px;" disabled></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+
                                 <div style="margin-left: 35%;">
                                     <a id="btnPrueba"><span style="background-size: 302px; height: 40px; background-image: url('../images/btn-descargar-0.png'); display:block; background-repeat: no-repeat;" ></span></a>
                                 </div>
-                        </div>
-                            
+                            </div>
+
                             <input type="hidden" class="form-control" name="recibirVariable" id="recibirVariable">
                         </div>
                     </div>
@@ -90,13 +91,68 @@ and open the template in the editor.
         </div>
         <br>
     </center>
-    
+
     <!-- Modal -->   
     <div class="modal fade" id="dialogRecibo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        
+
     </div>
-                        
+
     <div id="divContent2"></div>
-    
+
+    <div class="modal fade" id="dialogUpdRecibo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+                    <div align="left" class="modal-title" id="myModalLabel">
+                        <img src="../images/icon 09.png" alt="Smiley face" height="42" width="42"><label style="color:#99CC33;font-size: 180%;">&nbsp;Actualización Recibo</label>
+                    </div>
+                </div>
+                <div class="modal-body" id="divContent">
+                    <div class="panel panel-body body">
+                        <div class="margen">
+                            <br>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="txtIdRecibo" placeholder="Codigo id" disabled="disabled">
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="txtFechaRec" placeholder="Fecha" disabled="disabled">
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <select id="selEstadoRec" class="form-control">
+                                    <option value="G">Generado</option>
+                                    <option value="P">Pendiente</option>
+                                    <option value="A">Anulado</option>
+                                </select>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="panel panel-footer footer">
+                        <ul class="list-inline footer-bar">
+
+                            <li>
+                                <a  class="btn btn-primary btn-lg btn-block" id="btnUpdateRec">
+                                    <span class="glyphicon glyphicon-save" aria-hidden="true"></span> Guardar
+                                </a>
+                            </li>
+                            <li>
+                                <a  class="btn btn-primary btn-lg btn-block" data-dismiss="modal">
+                                    <span class="glyphicon glyphicon-hand-down" aria-hidden="true"></span> Cancelar
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
 </body>
 </html>
