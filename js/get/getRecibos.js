@@ -512,8 +512,8 @@ function updRecibo(jsonParams) {
 
     if (estado === "Generado") {
         estado = "G";
-    } else if (estado === "Pendiente") {
-        estado = "P";
+    } else if (estado === "Entregado") {
+        estado = "E";
     } else {
         estado = "A";
     }
