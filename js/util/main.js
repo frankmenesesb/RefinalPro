@@ -20,7 +20,7 @@ var recibiendoVariable = location.search.slice( location.search.indexOf("=") + 1
     $("#recibirVariable").val(recibiendoVariable);
     
     updateClock();
-    conecctionStatus();
+    //conecctionStatus();
 
 
 };
