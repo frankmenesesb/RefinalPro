@@ -7,6 +7,10 @@
 var arrayPendientes = new Array();
 var JSONGLOBAL = {'ALLPENDIENTES': false};
 
+
+var path = window.location.pathname;
+var pageName = path.split("/").pop();
+
 $(document).ready(function () {
     $('.filterable .btn-filter').click(function () {
         var $panel = $(this).parents('.filterable'),
@@ -84,7 +88,8 @@ $(document).ready(function () {
 
 
     });
-
+    
+    
 
 });
 
@@ -131,31 +136,33 @@ function getAllRecibos() {
 
                         html += '<tr id="row_' + i + '">';
                         html += '<td>';
-                        html += '' + id_rec_enc + ''
+                        html += '' + id_rec_enc + '';
                         html += '</td>';
                         html += '<td>';
-                        html += '' + fecha + ''
+                        html += '' + fecha + '';
                         html += '</td>';
                         html += '<td>';
-                        html += '' + nombre_usuario + ''
+                        html += '' + nombre_usuario + '';
                         html += '</td>';
                         html += '<td>';
                         //html += ''+estado+''
                         if (estado === "Generado") {
                             html += '<img src="../images/icon activo.png" alt="Smiley face" height="32" width="31" title="Generado">';
-                        } else if (estado === "Pendiente") {
-                            html += '<img src="../images/icon inactivo.png" alt="Smiley face" height="32" width="31" title="Pendiente">';
-                        } else {
-                            html += '<img src="../images/icon 08.png" alt="Smiley face" height="32" width="31" title="Pendiente">';
+                        } else if (estado === "Anulado") {
+                            html += '<img src="../images/icon inactivo.png" alt="Smiley face" height="32" width="31" title="Anulado">';
+                        } else if (estado === "Entregado"){
+                            html += '<img src="../images/icon entregado.png" alt="Smiley face" height="32" width="31" title="Entregado">';
                         }
                         html += '</td>';
                         html += '<td>';
                         html += '<a id="btnVisRec_' + i + '"><span style="background-size: 110px; height: 35px; background-image: url(\'../images/btn-ver-0.png\'); display:block; background-repeat: no-repeat;" ></span></a>';
                         //html += '<input type="button" id="btnReimprRec_'+i+'" class="glyphicon glyphicon-file"/>';
                         html += '</td>';
-                        html += '<td>';
-                        html += "<a id='btnUpdRec_" + i + "' onclick='updRecibo(" + JSON.stringify(jsonResp.DATA[i]) + ");'><span style='background-size: 80px; height: 20px; background-image: url(\"../images/btn-editar-0.png\"); display:block; background-repeat: no-repeat;' ></span></a></li>";
-                        html += '</td>';
+                        if(pageName === "frmGestionRecibos.html"){
+                            html += '<td>';
+                            html += "<a id='btnUpdRec_" + i + "' onclick='updRecibo(" + JSON.stringify(jsonResp.DATA[i]) + ");'><span style='background-size: 110px; height: 35px; background-image: url(\"../images/btn-editar-0.png\"); display:block; background-repeat: no-repeat;' ></span></a></li>";
+                            html += '</td>';
+                        }
                         html += '</tr>';
                         //articulos.add(id);
 
@@ -541,6 +548,8 @@ function updRecibo(jsonParams) {
 
                 if (jsonResp.RESPONSE) {
                     //descargarArchivo(generarTexto(jsonResp.DATA), 'archivo.txt');
+                    $('#dialogUpdRecibo').modal('hide');
+                    getAllRecibos();
 
                 } else {
                     alert("Ocurrio Un error:" + jsonResp.MESSAGE);

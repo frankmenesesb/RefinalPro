@@ -56,8 +56,29 @@ $(function () {
         
         
   });
+  
+  
 
 });
+
+$(function () {
+    $(".gestionRecibo_button").click(function () {
+        
+        location.href = 'frmGestionRecibos.html?var='+$("#recibirVariable").val()+'$';        
+        
+    });
+
+});
+
+$(function () {
+    $(".gestionProveedores_button").click(function () {
+          
+        location.href = 'frmGestionProveedores.html?var='+$("#recibirVariable").val()+'$';        
+        
+    });
+
+});
+
 
 function updateClock(){
     

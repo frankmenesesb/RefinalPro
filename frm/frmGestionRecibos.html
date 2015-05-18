@@ -69,6 +69,7 @@ and open the template in the editor.
                                             <th><input type="text" class="form-control" placeholder="Recolector" style="font-size: 10px;" disabled></th>                                        
                                             <th><input type="text" class="form-control" placeholder="Estado" style="font-size: 10px;" disabled></th>
                                             <th><input type="text" class="form-control" placeholder="Recibo" style="font-size: 10px;" disabled></th>
+                                            <th><input type="text" class="form-control" placeholder="Actualizar" style="font-size: 10px;" disabled></th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -97,6 +98,61 @@ and open the template in the editor.
     </div>
 
     <div id="divContent2"></div>
+
+    <div class="modal fade" id="dialogUpdRecibo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+                    <div align="left" class="modal-title" id="myModalLabel">
+                        <img src="../images/icon 09.png" alt="Smiley face" height="42" width="42"><label style="color:#99CC33;font-size: 180%;">&nbsp;Actualización Recibo</label>
+                    </div>
+                </div>
+                <div class="modal-body" id="divContent">
+                    <div class="panel panel-body body">
+                        <div class="margen">
+                            <br>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="txtIdRecibo" placeholder="Codigo id" disabled="disabled">
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="txtFechaRec" placeholder="Fecha" disabled="disabled">
+                            </div>
+                            <br>
+                            <div class="form-group">
+                                <select id="selEstadoRec" class="form-control">
+                                    <option value="G">Generado</option>
+                                    <option value="E">Entregado</option>
+                                    <option value="A">Anulado</option>
+                                </select>
+                            </div>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div class="panel panel-footer footer">
+                        <ul class="list-inline footer-bar">
+
+                            <li>
+                                <a  class="btn btn-primary btn-lg btn-block" id="btnUpdateRec">
+                                    <span class="glyphicon glyphicon-save" aria-hidden="true"></span> Guardar
+                                </a>
+                            </li>
+                            <li>
+                                <a  class="btn btn-primary btn-lg btn-block" data-dismiss="modal">
+                                    <span class="glyphicon glyphicon-hand-down" aria-hidden="true"></span> Cancelar
+                                </a>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>
