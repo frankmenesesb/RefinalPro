@@ -224,7 +224,8 @@ function getArticulosProveedor() {
                         html += '' + descripcion + '';
                         html += '</td>';
                         html += '<td>';
-                        html += '<img src="../images/' + imagen + ' alt="Smiley face" height="32" width="31" title="Generado">';
+                        //html += '<img src="../images/'+ imagen +'.png" alt="Smiley face" height="32" width="31" title="Generado">';
+                        html +='<img src="../images/'+imagen+'" alt="">';
                         html += '</td>';
                         html += '</tr>';
                         //articulos.add(id);
