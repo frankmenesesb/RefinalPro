@@ -22,26 +22,31 @@ and open the template in the editor.
         <script src="../js/util/main.js"></script>
         <script src="../js/get/getGestionProveedor.js"></script>
         <script src="../js/util/printplugin.js"></script>        
-        
+
 
     </head>
     <body>
     <center>
-        <div class="panel panel-heading head">
-            <div class="head-left">
-                <a class="btn boton-futduel"></a>
-            </div>
-            <div class="head-center">
+        <div class="super-head">
+            <div class="panel head">
+                <div class="head-left">
+                    <a class="btn boton-futduel"></a>
+                </div>
+                <div class="head-center">
 
-            </div>
-            <div class="head-right" style="width: 30%;">
-                <div class="panel-statusConn" ><a class="btn glyphicon glyphicon-menu-hamburger" ></a></div>
+                </div>
+                <div class="head-right" style="width: 30%;">
+                    <div class="panel-statusConn" ><a class="btn glyphicon glyphicon-menu-hamburger" ></a></div>
 
 
+                </div>
             </div>
         </div>
         <br>
-        <div class="panel panel-body body">
+        <br>
+        <br>
+        <br>
+        <div class="panel body">
             <div class="margen">
                 <br>
 
@@ -51,39 +56,41 @@ and open the template in the editor.
                         <ul class="list-group" >
                             <li class="list-group-item">
                                 <div align="left">
-                            <img src="../images/icon 09.png" alt="Smiley face" height="42" width="42"><label style="color:#99CC33;font-size: 180%;">&nbsp;Gestion de proveedor</label>
+                                    <img src="../images/icon 09.png" alt="Smiley face" height="42" width="42"><label style="color:#99CC33;font-size: 180%;">&nbsp;Gestion de proveedor</label>
                                 </div>
-                            <br />
-                            <br />
-                            <br />
+                                <br />
+                                <br />
+                                <br />
 
-
-                            <ul class="list-inline footer-bar" style=" width:100%">
-
-                                <li style=" width:40%">
-                                    <label>Proveedor</label>
-
-                                    <select id="selProveedores" class="form-control"></select>
-                                </li>
-
-                                <li style=" width:40%">
-                                    <label>Articulo</label>                            
-
-                                    <select id="selArticulos" class="form-control"></select>
-                                </li>
-                                <li>
-                                    <a id="btnAddArticulo">
-                                        <span style="background-position: center bottom; width:60px; background-size:40px; height: 50px; background-image: url('../images/btn-plus.png'); display:block; background-repeat: no-repeat;" title="Agregar articulo"></span>
-                                    </a>
-                                </li>
-                            </ul>
                             </li>
                             <li class="list-group-item">
-                            <div class="panel panel-primary filterable">
-                                <div class="panel-heading">
+
+
+                                <table>
+                                    <tr>
+                                        <td><label for="selProveedores">Proveedor:&nbsp;&nbsp;</label></td>
+                                        <td><select id="selProveedores" class="form-control"></select></td>
+                                    
+                                        <td><label for="selArticulos">&nbsp;&nbsp;Articulo:&nbsp;&nbsp;</label></td>
+                                        <td><select id="selArticulos" class="form-control">&nbsp;&nbsp;</select></td>
+                                        <td><label>&nbsp;&nbsp;&nbsp;</label></td>
+                                        <td>
+                                            
+                                            <a id="btnAddArticulo">
+                                                <span style="background-position: center bottom; width:30px; background-size:30px; height: 30px; background-image: url('../images/btn-plus.png'); display:block; background-repeat: no-repeat;" title="Agregar articulo"></span>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </table>
+
+                        
+                       
+                        <li class="list-group-item">
+                            <div class="panel panel-primary filterable" >
+                                <div class="panel-heading" style="background: #2e6399;">
                                     <h3 class="panel-title">&nbsp;</h3>
                                     <div class="pull-right">                                    
-                                        <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filtro</button>
+                                        <button class="btn boton-filtro btn-xs btn-filter"></button>
                                     </div>
                                 </div>
 
@@ -102,22 +109,22 @@ and open the template in the editor.
                                 </table>
 
                             </div>
-                            </li>
+                        </li>
                         </ul>
 
-                            <input type="hidden" class="form-control" name="recibirVariable" id="recibirVariable">
-                       
+                        <input type="hidden" class="form-control" name="recibirVariable" id="recibirVariable">
+
                     </div>
-                    
+
                     <div align="left">
 
                     </div>   
-                    
+
                 </div>
                 <br>
             </div>
         </div>
-        <div class="panel panel-footer footer">
+        <div class="footer-transparent">
             <ul class="list-inline footer-bar">
 
                 <li>
@@ -129,64 +136,54 @@ and open the template in the editor.
 
         </div>
         <!-- Modals -->   
-        
+
         <div class="modal fade" id="dialogAddProveedor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            
-        <!--<br>
-        <br>
-        <br>
-        -->
-        
-        
-        <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-       
-            <div align="left" class="modal-title" id="myModalLabel">
-                <img src="../images/icon 09.png" alt="Smiley face" height="42" width="42"><label style="color:#99CC33;font-size: 180%;">&nbsp;Nuevo proveedor</label>
-            </div>
-        </div>
-        <div class="modal-body" id="divContent">
-        <div class="panel panel-body body">
-            <div class="margen">
-                <br>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="txtIdentificacionProveedor" placeholder="Identificacion">
-                    </div>
-                    
-                    <br>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="txtNombreProveedor" placeholder="Nombre">
-                    </div>
-                    <br>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="txtObservacionProveedor" placeholder="Observacion">
-                    </div>                    
-                <br>
-            </div>
-        </div>
-        </div>
-        <div class="modal-footer">
-        <div class="panel panel-footer footer">
-            <ul class="list-inline footer-bar">
 
-                <li>
-                    <a  class="btn btn-primary btn-lg btn-block" onclick="saveAddProveedor();">
-                        <span class="glyphicon glyphicon-save" aria-hidden="true"></span> Guardar
-                    </a>
-                </li>
-                <li>
-                    <a  class="btn btn-primary btn-lg btn-block" data-dismiss="modal">
-                        <span class="glyphicon glyphicon-hand-down" aria-hidden="true"></span> Cancelar
-                    </a>
-                </li>
-            </ul>
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header" style="background: #2e6399;">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
-        </div>
-        </div>
-        </div>
-        </div>
+                        <div align="left" class="modal-title" id="myModalLabel">
+                            <img src="../images/btn-proveedor-0.png" ><label style="color:#99CC33;font-size: 180%;"></label>
+                        </div>
+                    </div>
+                    <div class="modal-body" id="divContent">
+                        <div class="panel panel-body body">
+                            <div class="margen">
+                                <br>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="txtIdentificacionProveedor" placeholder="Identificacion">
+                                </div>
+
+                                <br>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="txtNombreProveedor" placeholder="Nombre">
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="txtObservacionProveedor" placeholder="Observacion">
+                                </div>                    
+                                <br>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <div class="panel panel-footer ">
+                            <ul class="list-inline footer-bar">
+
+                                <li>
+                                    <a  class="btn boton-crear" onclick="saveAddProveedor();">
+
+                                    </a>
+                                </li>
+
+                            </ul>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </center>
 

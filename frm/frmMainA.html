@@ -22,67 +22,58 @@ and open the template in the editor.
         <script src="../js/util/main.js"></script>
 
     </head>
-    <body>
+    <body class="login">
 
     <center>
-        <div class="panel panel-heading head">
-            <div class="head-left">
-                <a class="btn boton-futduel"></a>
-            </div>
-            <div class="head-center">Menu Administrador</div>
-            <div class="head-right">
-                <a class="btn glyphicon glyphicon-menu-hamburger" ></a>
-            </div>
-        </div>
         <br>
-        <div class="panel panel-body body">
-            <div class="margen">
-                <br>
+        <br>
 
-                <div class="movil">
-                    <br />
+        <div class="panel  body-login">
+            <div class="margen-menu">
+
+
+                <div class="movil-menu">
                     <div align="center">
                         <img src="../images/refinal-web-1.png" alt="Smiley face" height="121" width="90"/>
                         <br />
-                        <label>
-                            Bienvenido al panel administrativo de Refinal
-                        </label>
-
-                    </div>
-                    <br>
-                    <div class="list-group" align="left" style="width:30%">
-
-                        <a  class="list-group-item usuario_button"><img src="../images/btn-adminUser.png" alt="Smiley face" height="42" width="42"/> Gestionar usuarios</a>
-                        <a  class="list-group-item gestionProveedores_button"><img src="../images/btn-adminProvee.png" alt="Smiley face" height="42" width="42"/> Gestionar proveedores</a>
-                        <a  class="list-group-item gestionRecibo_button"><img src="../images/btn-adminRecib.png" alt="Smiley face" height="42" width="42"/> Gestionar recibos</a>
-                        <a  class="list-group-item consulta_button"><img src="../images/btn-adminRecib.png" alt="Smiley face" height="42" width="42"/> Ver recibos</a>
-
-                        <input type="hidden" class="form-control" name="recibirVariable" id="recibirVariable">
+                        <br>
 
 
                     </div>
+                    <ul class="list-group" >
+                        <li class="list-group-item">
 
-                    <br>
+                            <p>
+                                Bienvenido al panel administrativo de Refinal
+                            </p>
 
+                        </li>
+                        <li class="list-group-item">
+
+                            <br>
+                            <div class="list-group" align="left" style="width:100%">
+
+                                <a  class="list-group-item usuario_button"><img src="../images/btn-adminUser.png" alt="Smiley face" height="42" width="42"/> Gestionar usuarios</a>
+                                <a  class="list-group-item gestionProveedores_button"><img src="../images/btn-adminProvee.png" alt="Smiley face" height="42" width="42"/> Gestionar proveedores</a>
+                                <a  class="list-group-item gestionRecibo_button"><img src="../images/btn-adminRecib.png" alt="Smiley face" height="42" width="42"/> Gestionar recibos</a>
+                                <a  class="list-group-item consulta_button"><img src="../images/btn-adminRecib.png" alt="Smiley face" height="42" width="42"/> Ver recibos</a>
+
+                                <input type="hidden" class="form-control" name="recibirVariable" id="recibirVariable">
+
+
+                            </div>
+
+                            <br>
+                        </li>
+                    </ul>
                 </div>
                 <br>
             </div>
         </div>
 
+        
         <br>
-        <br>
-        <br>
-        <div class="panel panel-footer footer">
-            <ul class="list-inline">
 
-                <li >
-                    <a  class="btn btn-primary btn-lg btn-block" href="../" >
-                        <span class="glyphicon glyphicon-hand-down" aria-hidden="true"></span> Salir
-                    </a>
-                </li>
-            </ul>
-
-        </div>
 
     </center>
 </body>

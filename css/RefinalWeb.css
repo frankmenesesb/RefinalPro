@@ -12,7 +12,16 @@ body{
    background: #F3F3F3;
 }
 
+body.login{
+   background: white;
+}
 
+div.super-head{
+    position: fixed; 
+    height: 80px; 
+    z-index: 4; 
+    width: 100%;
+}
 
 div.head {
     //position: fixed;
@@ -75,6 +84,13 @@ div.movil{
     z-index: 1;
 }
 
+div.movil-menu{
+    width: 400px;
+    background: white;
+    z-index: 1;
+}
+
+
 div.movil-usuario{
     width: 50%;
     background: white;
@@ -86,10 +102,28 @@ div.body{
     background: #F3F3F3;
 }
 
+div.body-login{
+    
+    background: white;
+}
+
 div.margen{
-    width: 80%;
+    width: 90%;
     //background: white;
     background: #F3F3F3;
+}
+
+div.margen-menu{
+    width: 100%;
+    height: 100%;
+    //background: white;
+    background: white;
+}
+
+div.margen-login{
+    width: 400px;
+    //background: white;
+    background: white;
 }
 
 div.footer {
@@ -97,6 +131,16 @@ div.footer {
     height: 50px;
     //background: #E2F2DC;
     background: transparent;
+    bottom: 0;
+    width: 100%;
+    
+}
+
+div.footer-transparent {
+    position: fixed;
+    height: 70px;
+    background: transparent;
+    border: transparent;
     bottom: 0;
     width: 100%;
     
@@ -161,7 +205,7 @@ div.input-login{
 
 
 input.text-input{
-    color: #422668;
+    color: #66afe9;
     font-size: large;
     height: 40px;
     //border: #422668;
@@ -190,6 +234,19 @@ a.boton-login{
 
 
 
+button.boton-cerrar{
+    background: transparent;
+   
+    background-image: url(../images/btn-cerrar.png);
+    background-size: 32px 32px;
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+    background-position: center;
+    
+    
+}
+
 a.boton-factura{
     background: transparent;
    
@@ -215,3 +272,79 @@ a.boton-factura:hover{
     background-position: center;
     
 }
+
+a.boton-crear{
+    background: transparent;
+   
+    background-image: url(../images/btn-crear.png);
+    background-size: 129px 34px;
+    background-repeat: no-repeat;
+    width: 129px;
+    height: 34px;
+    background-position: center;
+    
+    
+}
+
+button.boton-filtro{
+    background: transparent;
+   
+    background-image: url(../images/btn-filtro-0.png);
+    background-size: 100px 25px;
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 25px;
+    background-position: center;
+    
+    
+}
+
+
+
+
+
+
+
+button.boton-filtro:hover{
+    
+    //background: #CDE6D8;
+    background: transparent;
+    background-image: url(../images/btn-filtro-1.png);
+    background-size: 100px 25px;
+    background-repeat: no-repeat;
+    width: 100px;
+    height: 25px;
+    background-position: center;
+    
+}
+
+a.btn-generico{
+    //background: transparent;
+    color: white;
+    background-image: url(../images/btn-generico-0.png);
+    background-size: 100% 52px;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 52px;
+    background-position: center;
+    
+    
+}
+
+
+a.btn-generico:hover{
+    
+    //background: #CDE6D8;
+    //background: transparent;
+    background-image: url(../images/btn-generico-1.png);
+    background-size: 100% 52px;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 52px;
+    background-position: center;
+    color: white;
+    
+}
+
+
+

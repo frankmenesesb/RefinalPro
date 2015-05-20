@@ -11,7 +11,7 @@ and open the template in the editor.
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/Refinal.css">
+        <link rel="stylesheet" href="css/RefinalWeb.css">
         <!-- Optional theme -->
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
         <!-- Latest compiled and minified JavaScript -->
@@ -20,43 +20,57 @@ and open the template in the editor.
         <script src="js/get/getUserLogin.js"></script>
         <link rel="shortcut icon" href="images/LOG.PNG">
     </head>
-    <body>
+    <body class="login">
+        
     <center>
-        <div class="panel panel-heading head">
-            <h4>Inicio de sesion</h4>
-        </div>
-        <div class="panel panel-body body">
-            <div class="margen">
+        <div class="panel body-login">
+            <br>
+            <br>
+            <br>
+            <div>
+                <div>
+                    <img src="images/refinal-app.png" alt="" >
+                </div>
+            </div>
+            <br>
+            <br>
+            <div class="margen-login">
                 <br>
                 <div class="movil">
                     <br>
-                    <div>
-                        <div>
+                    <ul class="list-group" >
+                        <li class="list-group-item">
                             <div>
-                                <img src="images/refinal-app.png" alt="" >
+
+                                <br>
+                                <br>
+                                <div style="width: 280px;">
+                                    <div class="input-group input-login">
+                                        <input type="text" class="form-control text-input mi-input" placeholder="Usuario" id="txtUsuario">
+                                    </div>
+                                    <br>
+                                    <div class="input-group input-login">
+                                        <input type="password" class="form-control text-input mi-input" placeholder="Contraseña" id="txtContrasena" >
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <div>
+                                        <a  class="btn btn-generico find_button"  ><h4>Iniciar Sesión</h4></a>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <br>
+                                    <br>
+                                </div>
                             </div>
-                        </div>
-                        <br>
-                        <br>
-                        <div style="width: 280px;">
-                            <div class="input-group input-login">
-                                <input type="text" class="form-control text-input mi-input" placeholder="Username" id="txtUsuario">
-                            </div>
-                            <br>
-                            <div class="input-group input-login">
-                                <input type="password" class="form-control text-input mi-input" placeholder="Contraseña" id="txtContrasena" >
-                            </div>
-                            <br>
-                            <br>
-                            <div>
-                                <a  class="btn btn-primary btn-lg find_button boton-login"  role="button">Iniciar</a>
-                            </div>
-                            <br>
-                            <br>
-                        </div>
-                    </div>
+                        </li>
+                    </ul>
+
                 </div>
             </div>
+            <br>
+            <br>
+            <br>
         </div>
     </center>
 </body>
