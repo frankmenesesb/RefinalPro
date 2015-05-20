@@ -73,7 +73,7 @@ and open the template in the editor.
                                 </li>
                                 <li>
                                     <a id="btnAddArticulo">
-                                        <span style=" width:100px; background-size:50px; height: 50px; background-image: url('../images/btn-plus.png'); display:block; background-repeat: no-repeat;" title="Agregar articulo"></span>
+                                        <span style="background-position: center bottom; width:60px; background-size:40px; height: 50px; background-image: url('../images/btn-plus.png'); display:block; background-repeat: no-repeat;" title="Agregar articulo"></span>
                                     </a>
                                 </li>
                             </ul>
@@ -93,6 +93,7 @@ and open the template in the editor.
                                             <th><input type="text" class="form-control" placeholder="Id articulo" style="font-size: 10px;color:#00CCFF;" disabled></th>
                                             <th><input type="text" class="form-control" placeholder="Nombre" style="font-size: 10px;" disabled></th>
                                             <th><input type="text" class="form-control" placeholder="Imagen" style="font-size: 10px;" disabled></th>                                        
+                                            <th><input type="text" class="form-control" placeholder="Eliminar" style="font-size: 10px;" disabled></th>                                        
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -116,7 +117,77 @@ and open the template in the editor.
                 <br>
             </div>
         </div>
+        <div class="panel panel-footer footer">
+            <ul class="list-inline footer-bar">
+
+                <li>
+                    <a id="btnNewProveedor" onclick="$('#dialogAddProveedor').modal('show');">
+                        <span style="width:302px; background-size: 302px; height: 42px; background-image: url('../images/btn-proveedor-0.png'); display:block; background-repeat: no-repeat;" ></span>
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+        <!-- Modals -->   
+        
+        <div class="modal fade" id="dialogAddProveedor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            
+        <!--<br>
         <br>
+        <br>
+        -->
+        
+        
+        <div class="modal-dialog">
+        <div class="modal-content">
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+       
+            <div align="left" class="modal-title" id="myModalLabel">
+                <img src="../images/icon 09.png" alt="Smiley face" height="42" width="42"><label style="color:#99CC33;font-size: 180%;">&nbsp;Nuevo proveedor</label>
+            </div>
+        </div>
+        <div class="modal-body" id="divContent">
+        <div class="panel panel-body body">
+            <div class="margen">
+                <br>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="txtIdentificacionProveedor" placeholder="Identificacion">
+                    </div>
+                    
+                    <br>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="txtNombreProveedor" placeholder="Nombre">
+                    </div>
+                    <br>
+                    <div class="form-group">
+                        <input type="text" class="form-control" id="txtObservacionProveedor" placeholder="Observacion">
+                    </div>                    
+                <br>
+            </div>
+        </div>
+        </div>
+        <div class="modal-footer">
+        <div class="panel panel-footer footer">
+            <ul class="list-inline footer-bar">
+
+                <li>
+                    <a  class="btn btn-primary btn-lg btn-block" onclick="saveAddProveedor();">
+                        <span class="glyphicon glyphicon-save" aria-hidden="true"></span> Guardar
+                    </a>
+                </li>
+                <li>
+                    <a  class="btn btn-primary btn-lg btn-block" data-dismiss="modal">
+                        <span class="glyphicon glyphicon-hand-down" aria-hidden="true"></span> Cancelar
+                    </a>
+                </li>
+            </ul>
+
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
     </center>
 
 

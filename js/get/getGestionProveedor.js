@@ -59,6 +59,13 @@ $(document).ready(function () {
     $('#selProveedores').on('change', function () {
         getArticulosProveedor();
     });
+    
+    /*$('#btnNewProveedor').on('change', function () {
+        alert("x");
+       $('#dialogAddProveedor').modal('show');
+    });*/
+    
+    // 
 });
 
 
@@ -227,6 +234,10 @@ function getArticulosProveedor() {
                         //html += '<img src="../images/'+ imagen +'.png" alt="Smiley face" height="32" width="31" title="Generado">';
                         html +='<img src="../images/'+imagen+'" alt="">';
                         html += '</td>';
+                        html += '<td>';
+                        //html += '<a id="btnRemoveArticulo_"'+i+'><span style="background-position: center bottom; width:60px; background-size:40px; height: 50px; background-image: url(\'../images/btn-plus.png\'); display:block; background-repeat: no-repeat;" title="Agregar articulo"></span></a>';
+                        html += "<a id='btnRemoveArticulo_" + i + "' onclick='removeArticuloProveedor(" + idProveedor + ","+id_art+");'><span style='background-size: 35px; height: 50px; background-image: url(\"../images/icon inactivo.png\"); display:block; background-repeat: no-repeat;' ></span></a>";
+                        html += '</td>';
                         html += '</tr>';
                         //articulos.add(id);
 
@@ -251,4 +262,78 @@ function getArticulosProveedor() {
         }
     });
 
+}
+
+function removeArticuloProveedor(idProveedor,id_articulo){
+    //alert(idProveedor+","+id_articulo);
+    
+    var dataParams = {'idProveedor': idProveedor, 'idArticulo': id_articulo, 'opcion':"DEL"};
+
+
+    $.ajax({
+        type: "POST",
+        url: "http://refinal.frienderco.com/php/set/setArticulosInterveentor.php",
+        //url: "../php/set/setReciboEnc.php",
+        data: dataParams,
+        dataType: 'json',
+        cache: true,
+        success: function (jsonResp, html) {
+
+            if (jsonResp.RESPONSE) {
+                alert(jsonResp.MESSAGE);
+                getArticulosProveedor();
+
+            } else {
+                alert("Ocurrio Un error:" + jsonResp.MESSAGE);
+            }
+
+        }
+        ,
+        error: function (jsonResp) {
+            //alert("Ocurrio Un error Diferente");
+            alert("Falta hacer el update que cambie el estado a las facturas de pendientes a generadas");
+        }
+    });
+}
+
+function saveAddProveedor(){
+    
+    
+    var identificacion = $("#txtIdentificacionProveedor").val();
+    var nombre = $("#txtNombreProveedor").val();
+    var observacion = $("#txtObservacionProveedor").val();
+    
+    var dataParams = {'identificacion': identificacion, 'nombre': nombre, 'observacion':observacion};
+
+
+    $.ajax({
+        type: "POST",
+        url: "http://refinal.frienderco.com/php/set/setProveedor.php",
+        //url: "../php/set/setReciboEnc.php",
+        data: dataParams,
+        dataType: 'json',
+        cache: true,
+        success: function (jsonResp, html) {
+
+            if (jsonResp.RESPONSE) {
+                alert(jsonResp.MESSAGE);
+                setSelectArticulos();
+                setSelectProveedores();
+                getArticulosProveedor();
+                $('#dialogAddProveedor').modal('hide');
+                $("#txtIdentificacionProveedor").val("");
+                $("#txtNombreProveedor").val("");
+                $("#txtObservacionProveedor").val("");
+
+            } else {
+                alert("Ocurrio Un error:" + jsonResp.MESSAGE);
+            }
+
+        }
+        ,
+        error: function (jsonResp) {
+            //alert("Ocurrio Un error Diferente");
+            alert("Falta hacer el update que cambie el estado a las facturas de pendientes a generadas");
+        }
+    });
 }
