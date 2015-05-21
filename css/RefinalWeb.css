@@ -347,4 +347,27 @@ a.btn-generico:hover{
 }
 
 
+a.boton-descargar{
+    
+    color: white;
+    background-image: url(../images/btn-descargar-0.png);
+    background-size: 302px 42px;
+    background-repeat: no-repeat;
+    width: 302px;
+    height: 42px;
+    background-position: center;
+}
+
+a.boton-descargar:hover{
+    
+    //background: #CDE6D8;
+    //background: transparent;
+    background-image: url(../images/btn-descargar-1.png);
+    background-size: 302px 42px;
+    background-repeat: no-repeat;
+    width: 302px;
+    height: 42px;
+    background-position: center;
+    
+}
 

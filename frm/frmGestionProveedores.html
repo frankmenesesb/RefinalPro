@@ -22,8 +22,6 @@ and open the template in the editor.
         <script src="../js/util/main.js"></script>
         <script src="../js/get/getGestionProveedor.js"></script>
         <script src="../js/util/printplugin.js"></script>        
-
-
     </head>
     <body>
     <center>
@@ -37,8 +35,6 @@ and open the template in the editor.
                 </div>
                 <div class="head-right" style="width: 30%;">
                     <div class="panel-statusConn" ><a class="btn glyphicon glyphicon-menu-hamburger" ></a></div>
-
-
                 </div>
             </div>
         </div>
@@ -49,9 +45,7 @@ and open the template in the editor.
         <div class="panel body">
             <div class="margen">
                 <br>
-
                 <div class="movil">
-
                     <div>
                         <ul class="list-group" >
                             <li class="list-group-item">
@@ -61,79 +55,63 @@ and open the template in the editor.
                                 <br />
                                 <br />
                                 <br />
-
                             </li>
                             <li class="list-group-item">
-
-
                                 <table>
                                     <tr>
                                         <td><label for="selProveedores">Proveedor:&nbsp;&nbsp;</label></td>
                                         <td><select id="selProveedores" class="form-control"></select></td>
-                                    
+
                                         <td><label for="selArticulos">&nbsp;&nbsp;Articulo:&nbsp;&nbsp;</label></td>
                                         <td><select id="selArticulos" class="form-control">&nbsp;&nbsp;</select></td>
                                         <td><label>&nbsp;&nbsp;&nbsp;</label></td>
                                         <td>
-                                            
                                             <a id="btnAddArticulo">
                                                 <span style="background-position: center bottom; width:30px; background-size:30px; height: 30px; background-image: url('../images/btn-plus.png'); display:block; background-repeat: no-repeat;" title="Agregar articulo"></span>
                                             </a>
                                         </td>
                                     </tr>
                                 </table>
-
-                        
-                       
-                        <li class="list-group-item">
-                            <div class="panel panel-primary filterable" >
-                                <div class="panel-heading" style="background: #2e6399;">
-                                    <h3 class="panel-title">&nbsp;</h3>
-                                    <div class="pull-right">                                    
-                                        <button class="btn boton-filtro btn-xs btn-filter"></button>
+                            <li class="list-group-item">
+                                <div class="panel panel-primary filterable" >
+                                    <div class="panel-heading" style="background: #2e6399;">
+                                        <h3 class="panel-title">&nbsp;</h3>
+                                        <div class="pull-right">                                    
+                                            <button class="btn boton-filtro btn-xs btn-filter"></button>
+                                        </div>
                                     </div>
+                                    <table class="table" id="listArticulos">
+                                        <thead>
+                                            <tr class="filters" >
+                                                <th><input type="text" class="form-control" placeholder="Id articulo" style="font-size: 10px;color:#00CCFF;" disabled></th>
+                                                <th><input type="text" class="form-control" placeholder="Nombre" style="font-size: 10px;" disabled></th>
+                                                <th><input type="text" class="form-control" placeholder="Imagen" style="font-size: 10px;" disabled></th>                                        
+                                                <th><input type="text" class="form-control" placeholder="Eliminar" style="font-size: 10px;" disabled></th>                                        
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        </tbody>
+                                    </table>
                                 </div>
-
-                                <table class="table" id="listArticulos">
-                                    <thead>
-                                        <tr class="filters" >
-                                            <th><input type="text" class="form-control" placeholder="Id articulo" style="font-size: 10px;color:#00CCFF;" disabled></th>
-                                            <th><input type="text" class="form-control" placeholder="Nombre" style="font-size: 10px;" disabled></th>
-                                            <th><input type="text" class="form-control" placeholder="Imagen" style="font-size: 10px;" disabled></th>                                        
-                                            <th><input type="text" class="form-control" placeholder="Eliminar" style="font-size: 10px;" disabled></th>                                        
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-
-                                    </tbody>
-                                </table>
-
-                            </div>
-                        </li>
+                            </li>
                         </ul>
-
                         <input type="hidden" class="form-control" name="recibirVariable" id="recibirVariable">
-
                     </div>
-
                     <div align="left">
-
                     </div>   
-
                 </div>
                 <br>
             </div>
         </div>
         <div class="footer-transparent">
             <ul class="list-inline footer-bar">
-
                 <li>
                     <a id="btnNewProveedor" onclick="$('#dialogAddProveedor').modal('show');">
                         <span style="width:302px; background-size: 302px; height: 42px; background-image: url('../images/btn-proveedor-0.png'); display:block; background-repeat: no-repeat;" ></span>
                     </a>
                 </li>
             </ul>
-
         </div>
         <!-- Modals -->   
 

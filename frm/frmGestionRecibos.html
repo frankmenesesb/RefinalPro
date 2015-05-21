@@ -50,43 +50,52 @@ and open the template in the editor.
                 <div class="movil">
 
                     <div>
-                        <div align="left">
-                            <img src="../images/icon 09.png" alt="Smiley face" height="42" width="42"><label style="color:#99CC33;font-size: 180%;">&nbsp;Listado de recibos</label>
-                            <br />
-                            <div class="panel panel-primary filterable">
-                                <div class="panel-heading">
-                                    <h3 class="panel-title">&nbsp;</h3>
-                                    <div class="pull-right">                                    
-                                        <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filtro</button>
+                        <ul class="list-group" >
+                            <li class="list-group-item">
+                                <div align="left">
+                                    <img src="../images/icon 09.png" alt="Smiley face" height="42" width="42"><label style="color:#99CC33;font-size: 180%;">&nbsp;Listado de recibos</label>
+                                    <br />
+                                </div>
+                            </li>
+                            <li class="list-group-item">
+                                <div class="panel panel-primary filterable">
+                                    <div class="panel-heading">
+                                        <h3 class="panel-title">&nbsp;</h3>
+                                        <div class="pull-right">                                    
+                                            <button class="btn boton-filtro btn-xs btn-filter"></button>
+                                        </div>
                                     </div>
+
+                                    <table class="table" id="listRecibos">
+                                        <thead>
+                                            <tr class="filters" >
+                                                <th><input type="text" class="form-control" placeholder="Consecutivo" style="font-size: 10px;color:#00CCFF;" disabled></th>
+                                                <th><input type="text" class="form-control" placeholder="Fecha" style="font-size: 10px;" disabled></th>
+                                                <th><input type="text" class="form-control" placeholder="Recolector" style="font-size: 10px;" disabled></th>                                        
+                                                <th><input type="text" class="form-control" placeholder="Estado" style="font-size: 10px;" disabled></th>
+                                                <th><input type="text" class="form-control" placeholder="Recibo" style="font-size: 10px;" disabled></th>
+                                                <th><input type="text" class="form-control" placeholder="Actualizar" style="font-size: 10px;" disabled></th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+
+                                        </tbody>
+                                    </table>
+
+
                                 </div>
+                            </li>
+                        </ul>
 
-                                <table class="table" id="listRecibos">
-                                    <thead>
-                                        <tr class="filters" >
-                                            <th><input type="text" class="form-control" placeholder="Consecutivo" style="font-size: 10px;color:#00CCFF;" disabled></th>
-                                            <th><input type="text" class="form-control" placeholder="Fecha" style="font-size: 10px;" disabled></th>
-                                            <th><input type="text" class="form-control" placeholder="Recolector" style="font-size: 10px;" disabled></th>                                        
-                                            <th><input type="text" class="form-control" placeholder="Estado" style="font-size: 10px;" disabled></th>
-                                            <th><input type="text" class="form-control" placeholder="Recibo" style="font-size: 10px;" disabled></th>
-                                            <th><input type="text" class="form-control" placeholder="Actualizar" style="font-size: 10px;" disabled></th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
 
-                                    </tbody>
-                                </table>
+                        <input type="hidden" class="form-control" name="recibirVariable" id="recibirVariable">
 
-                                <div style="margin-left: 35%;">
-                                    <a id="btnPrueba"><span style="background-size: 302px; height: 40px; background-image: url('../images/btn-descargar-0.png'); display:block; background-repeat: no-repeat;" ></span></a>
-                                </div>
-                            </div>
-
-                            <input type="hidden" class="form-control" name="recibirVariable" id="recibirVariable">
-                        </div>
                     </div>
                 </div>
                 <br>
+            </div>
+            <div class="footer-transparent">
+                <a id="btnPrueba" class="btn boton-descargar"></a>
             </div>
         </div>
         <br>
