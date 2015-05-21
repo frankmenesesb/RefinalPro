@@ -11,13 +11,14 @@ var titleHeader = "";
 window.onload = function()
 {
 var recibiendoVariable = location.search.slice( location.search.indexOf("=") + 1,location.search.indexOf("$"));
-
+var tipoU = location.search.slice( location.search.indexOf("^") + 1,location.search.indexOf("}"));
 
 
 //document.getElementById("recibirVariable").innerHTML = recibiendoVariable;
 
     titleHeader = $(".panel-heading").find("h4").text();
     $("#recibirVariable").val(recibiendoVariable);
+    $("#tipoU").val(tipoU);
     
     updateClock();
     //conecctionStatus();
@@ -144,3 +145,14 @@ function conecctionStatus(){
     setTimeout("conecctionStatus()",10000) ;
     
 }
+
+
+$(function () {
+    $(".atras_button").click(function () {
+        
+        location.href = 'frmInicio.html?var='+$("#recibirVariable").val()+'$';
+        
+   
+    });
+
+});

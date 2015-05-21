@@ -29,24 +29,39 @@ and open the template in the editor.
     </head>
     <body>
     <center>
-        <div class="panel panel-heading head">
-            <div class="head-left">
-                <a class="btn boton-futduel"></a>
-            </div>
-            <div class="head-center">
+        <div class="super-head">
+            <div class="panel head">
+                <div class="head-left">
+                    <a class="btn boton-futduel"></a>
+                </div>
+                <div class="head-center">
 
-            </div>
-            <div class="head-right" style="width: 30%;">
-                <div class="panel-statusConn" ><a class="btn glyphicon glyphicon-menu-hamburger" ></a></div>
-
-
+                </div>
+                <div class="head-right" >
+                    <div>
+                        <table>
+                            <tr>
+                                
+                                <td>
+                                    <p style="color: #71a1d1;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Frank Meneses&nbsp;&nbsp;</p>
+                                </td>
+                                <td>
+                                    <img src="../images/icon 10.png" style="width: 24px;">
+                                </td>
+                            </tr>
+                        
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
         <br>
-        <div class="panel panel-body body">
+        <br>
+        <div class="panel body">
+            <br>
             <div class="margen">
                 <br>
-
+                
                 <div class="movil">
 
                     <div>
@@ -86,9 +101,8 @@ and open the template in the editor.
                                 </div>
                             </li>
                         </ul>
-
-
                         <input type="hidden" class="form-control" name="recibirVariable" id="recibirVariable">
+                        <input type="hidden" class="form-control" name="tipoU" id="tipoU">
 
                     </div>
                 </div>
@@ -99,7 +113,7 @@ and open the template in the editor.
             </div>
         </div>
         <br>
-    </center>
+    
 
     <!-- Modal -->   
     <div class="modal fade" id="dialogRecibo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
@@ -111,16 +125,16 @@ and open the template in the editor.
     <div class="modal fade" id="dialogUpdRecibo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header" style="background: #2e6399; width: 100%;">
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
                     <div align="left" class="modal-title" id="myModalLabel">
-                        <img src="../images/icon 09.png" alt="Smiley face" height="42" width="42"><label style="color:#99CC33;font-size: 180%;">&nbsp;Actualización Recibo</label>
+                        <label style="color:white; font-size: 180%;">&nbsp;Actualización Recibo</label>
                     </div>
                 </div>
                 <div class="modal-body" id="divContent">
-                    <div class="panel panel-body body">
-                        <div class="margen">
+                    <div class="panel panel-body body-white">
+                        <div class="margen-white">
                             <br>
                             <div class="form-group">
                                 <input type="text" class="form-control" id="txtIdRecibo" placeholder="Codigo id" disabled="disabled">
@@ -137,31 +151,20 @@ and open the template in the editor.
                                     <option value="A">Anulado</option>
                                 </select>
                             </div>
+                            
                             <br>
+                            <div class="form-group">
+                                <a  class="btn boton-listo" id="btnUpdateRec">
+                                    
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <div class="panel panel-footer footer">
-                        <ul class="list-inline footer-bar">
-
-                            <li>
-                                <a  class="btn btn-primary btn-lg btn-block" id="btnUpdateRec">
-                                    <span class="glyphicon glyphicon-save" aria-hidden="true"></span> Guardar
-                                </a>
-                            </li>
-                            <li>
-                                <a  class="btn btn-primary btn-lg btn-block" data-dismiss="modal">
-                                    <span class="glyphicon glyphicon-hand-down" aria-hidden="true"></span> Cancelar
-                                </a>
-                            </li>
-                        </ul>
-
-                    </div>
-                </div>
+                
             </div>
         </div>
     </div>
-
+</center>
 </body>
 </html>

@@ -47,17 +47,19 @@ $(document).ready(function () {
         }
     });
 
-    setSelectArticulos();
+    
     setSelectProveedores();
-
+    
 
 
     $("#btnAddArticulo").on("click", function () {
         setArticulosInterveentor();
+        
     });
 
     $('#selProveedores').on('change', function () {
         getArticulosProveedor();
+        
     });
     
     /*$('#btnNewProveedor').on('change', function () {
@@ -69,12 +71,15 @@ $(document).ready(function () {
 });
 
 
-function setSelectArticulos() {
+function setSelectArticulos(id) {
+    
+    var idProveedor = id;
+    var dataParams = {'nit': idProveedor};
     $.ajax({
         type: 'POST',
-        //data: dataString,
+        data: dataParams,
         dataType: 'json',
-        url: "http://refinal.frienderco.com/php/get/getArticulos.php",
+        url: "http://refinal.frienderco.com/php/get/getArticulosDProveedor.php",
         //url: "../php/get/getArticulos.php",
         success: function (jsonResp) {
 
@@ -115,6 +120,8 @@ function setSelectArticulos() {
 
 
 function setSelectProveedores() {
+    
+    
     $.ajax({
         type: 'POST',
         //data: dataString,
@@ -183,6 +190,8 @@ function setArticulosInterveentor() {
             } else {
                 alert("Ocurrio Un error:" + jsonResp.MESSAGE);
             }
+            
+            
 
         }
         ,
@@ -237,13 +246,16 @@ function getArticulosProveedor() {
                         html += '<td>';
                         //html += '<a id="btnRemoveArticulo_"'+i+'><span style="background-position: center bottom; width:60px; background-size:40px; height: 50px; background-image: url(\'../images/btn-plus.png\'); display:block; background-repeat: no-repeat;" title="Agregar articulo"></span></a>';
                         html += "<a id='btnRemoveArticulo_" + i + "' onclick='removeArticuloProveedor(" + idProveedor + ","+id_art+");'><span style='background-size: 35px; height: 50px; background-image: url(\"../images/icon inactivo.png\"); display:block; background-repeat: no-repeat;' ></span></a>";
+                        //html += "<a class='boton-eliminar' id='btnRemoveArticulo_" + i + "' onclick='removeArticuloProveedor(" + idProveedor + ","+id_art+");' ></a>";
+                        
                         html += '</td>';
                         html += '</tr>';
                         //articulos.add(id);
 
                     }
-
+                    setSelectArticulos(idProveedor);
                     $("#listArticulos tbody").html(html);
+                    
 
 
                 } else if (jsonResp.MESSAGE === "EMPTY") {

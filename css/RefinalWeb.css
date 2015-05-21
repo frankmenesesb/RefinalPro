@@ -61,7 +61,7 @@ div.head-left{
 }
 
 div.head-center{
-    width: 30%;
+    width: 35%;
     height: 100%;
     float: left;
     text-align: center;
@@ -70,11 +70,17 @@ div.head-center{
 }
 
 div.head-right{
-    width: 35%;
+    width: 30%;
     float: right;
     height: 100%;
     text-align: right;
+    padding-top:10px;
+}
+
+div.head-filtro{
     
+    background: #2e6399;
+    height: 40px;
 }
 
 
@@ -102,6 +108,11 @@ div.body{
     background: #F3F3F3;
 }
 
+div.body-white{
+    
+    background: white;
+}
+
 div.body-login{
     
     background: white;
@@ -111,6 +122,11 @@ div.margen{
     width: 90%;
     //background: white;
     background: #F3F3F3;
+}
+
+div.margen-white{
+    width: 90%;
+    background: white;
 }
 
 div.margen-menu{
@@ -371,3 +387,100 @@ a.boton-descargar:hover{
     
 }
 
+tr.filters{
+    
+  color: #286090;
+}
+
+a.boton-eliminar{
+    
+    
+    background-image: url("../images/icon inactivo.png"); 
+    background-size: 32px 32px;
+    background-repeat: no-repeat;
+    width: 32px;
+    height: 32px;
+    background-position: center;
+}
+
+
+a.boton-listo{
+    background: transparent;
+   
+    background-image: url(../images/btn-listo-0.png);
+    background-size: 166px 40px;
+    background-repeat: no-repeat;
+    width: 166px;
+    height: 40px;
+    background-position: center;
+    
+    
+}
+
+a.boton-listo:hover{
+    
+    //background: #CDE6D8;
+    background: transparent;
+    background-image: url(../images/btn-listo-1.png);
+    background-size: 166px 40px;
+    background-repeat: no-repeat;
+    width: 166px;
+    height: 40px;
+    background-position: center;
+    
+}
+
+
+a.boton-atras-w{
+    background: transparent;
+   
+    background-image: url(../images/btn-atras-w-0.png);
+    background-size: 166px 40px;
+    background-repeat: no-repeat;
+    width: 166px;
+    height: 40px;
+    background-position: center;
+    
+    
+}
+
+a.boton-atras-w:hover{
+    
+    //background: #CDE6D8;
+    background: transparent;
+    background-image: url(../images/btn-atras-w-1.png);
+    background-size: 166px 40px;
+    background-repeat: no-repeat;
+    width: 166px;
+    height: 40px;
+    background-position: center;
+    
+}
+
+
+
+a.boton-user{
+    
+   
+    background-image: url(../images/btn-user-0.png);
+    background-size: 302px 42px;
+    background-repeat: no-repeat;
+    width: 302px;
+    height: 42px;
+    background-position: center;
+    
+    
+}
+
+a.boton-user:hover{
+    
+    //background: #CDE6D8;
+    
+    background-image: url(../images/btn-user-1.png);
+    background-size: 302px 42px;
+    background-repeat: no-repeat;
+    width: 302px;
+    height: 42px;
+    background-position: center;
+    
+}

@@ -108,7 +108,7 @@ function getAllUsuarios(){
                                 html += ''+tipo+'';
                                 html += '</td>';
                                 html += '<td width="20%">';                                
-                                html += "<a id='btnUpdUsu_"+i+"' onclick='updUsuario("+JSON.stringify(jsonParams)+");'><span style='background-size: 80px; height: 20px; background-image: url(\"../images/btn-editar-0.png\"); display:block; background-repeat: no-repeat;' ></span></a></li>";
+                                html += "<a id='btnUpdUsu_"+i+"' onclick='updUsuario("+JSON.stringify(jsonParams)+");'><span style='background-size: 80px; height: 28px; background-image: url(\"../images/btn-editar-0.png\"); display:block; background-repeat: no-repeat;' ></span></a></li>";
                                 html += '</td>';
                                 html += '</tr>';
 

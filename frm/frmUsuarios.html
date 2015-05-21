@@ -19,57 +19,79 @@ and open the template in the editor.
         <script src="../js/util/bootstrap.min.js"></script>
         <script src="../js/util/printplugin.js"></script>
         <script src="../js/set/setUser.js"></script>
+        <script src="../js/set/setGUser.js"></script>
         <script src="../js/get/getUser.js"></script>
         <script src="../js/get/getUsuarios.js"></script>
         <script src="../js/get/getUserM.js"></script>
     </head>
     <body>
     <center>
-        <div class="panel panel-heading head-fixed">
-            <div class="head-left">
-                <a class="btn boton-futduel"></a>
-            </div>
-            <div class="head-center"></div>
-            <div class="head-right">
-                <a class="btn glyphicon glyphicon-menu-hamburger" ></a>
+        <div class="super-head">
+            <div class="panel head">
+
+                <div class="head-left">
+                    <a class="btn boton-futduel"></a>
+                </div>
+                <div class="head-center"></div>
+                <div class="head-right" >
+                    <div>
+                        <table>
+                            <tr>
+
+                                <td>
+                                    <p style="color: #71a1d1;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Frank Meneses&nbsp;&nbsp;</p>
+                                </td>
+                                <td>
+                                    <img src="../images/icon 10.png" style="width: 24px;">
+                                </td>
+                            </tr>
+
+                        </table>
+                    </div>
+                </div>
             </div>
         </div>
         <br>
         <br>
         <br>
-        
-        
 
-        <div class="panel panel-body body">
+
+
+        <div class="panel body">
             <div class="margen">
                 <br>
                 <div class="movil">
-                    <div align="left">
-                    <img src="../images/icon 09.png" alt="Smiley face" height="42" width="42"><label style="color:#99CC33;font-size: 180%;">&nbsp;Listado de usuarios</label>
-                    </div>
-                    <div class="panel panel-primary filterable">
-                        <div class="panel-heading">
-                            <h3 class="panel-title">&nbsp;</h3>
-                            <div class="pull-right">
-                                <button class="btn btn-default btn-xs btn-filter"><span class="glyphicon glyphicon-filter"></span> Filtro</button>
+                    <ul class="list-group" >
+                        <li class="list-group-item">
+                            <div align="left">
+                                <img src="../images/icon 09.png" alt="Smiley face" height="42" width="42"><label style="color:#99CC33;font-size: 180%;">&nbsp;Listado de usuarios</label>
                             </div>
-                        </div>
-                        
-                       <table class="table" id="listUsuarios">
-                            <thead>
-                                <tr class="filters" >
-                                    <th><input type="text" class="form-control" placeholder="Identificación" style="font-size: 10px;color:#00CCFF;" disabled></th>
-                                    <th><input type="text" class="form-control" placeholder="Nombre" style="font-size: 10px;" disabled></th>
-                                    <th><input type="text" class="form-control" placeholder="Apellido" style="font-size: 10px;" disabled></th>                                        
-                                    <th><input type="text" class="form-control" placeholder="Rol" style="font-size: 10px;" disabled></th>
-                                    <th><input type="text" class="form-control" placeholder="Actualizar" style="font-size: 10px;" disabled></th>
-                                </tr>
-                            </thead>
-                            <tbody>
+                        </li>
+                        <li class="list-group-item">
+                            <div class="panel panel-primary filterable">
+                                <div class="panel-heading" style="background: #2e6399;">
+                                    <h3 class="panel-title">&nbsp;</h3>
+                                    <div class="pull-right">                                    
+                                        <button class="btn boton-filtro btn-xs btn-filter"></button>
+                                    </div>
+                                </div>
 
-                            </tbody>
-                        </table>
-                    </div>
+                                <table class="table" id="listUsuarios">
+                                    <thead>
+                                        <tr class="filters" >
+                                            <th><input type="text" class="form-control" placeholder="Identificación" style="font-size: 10px;color:#00CCFF;" disabled></th>
+                                            <th><input type="text" class="form-control" placeholder="Nombre" style="font-size: 10px;" disabled></th>
+                                            <th><input type="text" class="form-control" placeholder="Apellido" style="font-size: 10px;" disabled></th>                                        
+                                            <th><input type="text" class="form-control" placeholder="Rol" style="font-size: 10px;" disabled></th>
+                                            <th><input type="text" class="form-control" placeholder="Actualizar" style="font-size: 10px;" disabled></th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                    </tbody>
+                                </table>
+                            </div>
+                        </li>
                 </div>
                 <br>
             </div>
@@ -77,12 +99,12 @@ and open the template in the editor.
         <br>
         <br>
         <br>
-        
-        <div class="panel panel-footer footer">
+
+        <div class="footer-transparent">
             <ul class="list-inline footer-bar">
 
                 <li>
-                    <a id="btnNewUsuario" href="frmRegistroUsuario.html">
+                    <a id="btnNewUsuario" onclick="$('#dialogAddUsuario').modal('show');">
                         <span style="width:302px; background-size: 302px; height: 42px; background-image: url('../images/btn-user-0.png'); display:block; background-repeat: no-repeat;" ></span>
                     </a>
                 </li>
@@ -90,104 +112,167 @@ and open the template in the editor.
 
         </div>
         <!-- Modals -->   
-        
-        <div class="modal fade" id="dialogUpdUsuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            
-        <!--<br>
-        <br>
-        <br>
-        -->
-        
-        
-        <div class="modal-dialog">
-        <div class="modal-content">
-        <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-       
-            <div align="left" class="modal-title" id="myModalLabel">
-                <img src="../images/icon 09.png" alt="Smiley face" height="42" width="42"><label style="color:#99CC33;font-size: 180%;">&nbsp;Modificacion usuario</label>
-            </div>
-        </div>
-        <div class="modal-body" id="divContent">
-        <div class="panel panel-body body">
-            <div class="margen">
-                <br>
-                <div class="form-group" style="display: none;">
-                        <label class="radio-inline"><input  type="radio" name="optradio" id="radioOperacion1" value="R">Registro</label>
-                        <label class="radio-inline"><input checked type="radio" name="optradio" id="radioOperacion2" value="M"  >Modificacion</label>    
-                    </div>
-                    <div class="form-group">
-                        <select id="txtTipo" class="form-control">
-                            <option value="T">Seleccione tipo de Usuario</option>
-                            <option value="A">Administrador</option>
-                            <option value="R">Recibidor</option>
-                            <option value="S">Secretaria</option>
-                        </select>
-                    </div>
-                    <br>
-                    <div class="form-group">
-                        <input id="txtIdentificacion" type="text" list="nombres" class="form-control" style="text-align: center;" placeholder="Identificacion">
-                                <datalist  id="nombres">
 
-                                </datalist>
+        <div class="modal fade" id="dialogUpdUsuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header " style="background: #2e6399; width: 100%;">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+                        <div align="left" class="modal-title" id="myModalLabel">
+                            <label style="color: white;font-size: 180%;">&nbsp;Modificacion usuario</label>
+                        </div>
+                    </div>
+                    <div class="modal-body" id="divContent">
+                        <div class="panel panel-body body-white">
+                            <div class="margen-white">
+                                <br>
+                                <div class="form-group" style="display: none;">
+                                    <label class="radio-inline"><input  type="radio" name="optradio" id="radioOperacion1" value="R">Registro</label>
+                                    <label class="radio-inline"><input checked type="radio" name="optradio" id="radioOperacion2" value="M"  >Modificacion</label>    
+                                </div>
+                                <div class="form-group">
+                                    <select id="txtTipo" class="form-control">
+                                        <option value="T">Seleccione tipo de Usuario</option>
+                                        <option value="A">Administrador</option>
+                                        <option value="R">Recibidor</option>
+                                        <option value="S">Oficina</option>
+                                    </select>
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <input id="txtIdentificacion" type="text" list="nombres" class="form-control text-input" style="text-align: center;" placeholder="Identificacion">
+                                    <datalist  id="nombres">
+
+                                    </datalist>
+                                </div>
+
+                                <br>
+                                <div class="form-group">
+                                    <input type="text" class="form-control text-input" id="txtNombre" placeholder="Nombres">
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <input type="text" class="form-control text-input" id="txtApellido" placeholder="Apellidos">
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <input type="number" class="form-control text-input" id="txtTelefono" placeholder="Telefono">
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <input type="email" class="form-control text-input" id="txtEmail" placeholder="Email">
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <input type="text" class="form-control text-input" id="txtUsuario" placeholder="Usuario">
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <input type="password" class="form-control text-input" id="txtContrasena" placeholder="Password">
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <input type="password" class="form-control text-input" id="txtContrasena2" placeholder="Repita Password">
+                                </div>
+                                <div class="form-group">
+                                   
+                                    <p class="bg-success" id="txtRespuesta"></p>
+                                    <a  class="btn boton-listo submit_button" >
+                                        
+                                    </a>
+                                    <input type="hidden" class="form-control" name="recibirVariable" id="recibirVariable">
+                                    <input type="hidden" class="form-control" name="tipoU" id="tipoU">
+                                </div>
+                               
+                            </div>
+                        </div>
                     </div>
                     
-                    <br>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="txtNombre" placeholder="Nombres">
-                    </div>
-                    <br>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="txtApellido" placeholder="Apellidos">
-                    </div>
-                    <br>
-                    <div class="form-group">
-                        <input type="number" class="form-control" id="txtTelefono" placeholder="Telefono">
-                    </div>
-                    <br>
-                    <div class="form-group">
-                        <input type="email" class="form-control" id="txtEmail" placeholder="Email">
-                    </div>
-                    <br>
-                    <div class="form-group">
-                        <input type="text" class="form-control" id="txtUsuario" placeholder="Usuario">
-                    </div>
-                    <br>
-                    <div class="form-group">
-                        <input type="password" class="form-control" id="txtContrasena" placeholder="Password">
-                    </div>
-                    <br>
-                    <div class="form-group">
-                        <input type="password" class="form-control" id="txtContrasena2" placeholder="Repita Password">
-                    </div>
-                    <div class="form-group">
-                        <p class="bg-success" id="txtRespuesta"></p>
-                    </div>
-                <br>
+                </div>
             </div>
         </div>
-        </div>
-        <div class="modal-footer">
-        <div class="panel panel-footer footer">
-            <ul class="list-inline footer-bar">
 
-                <li>
-                    <a  class="btn btn-primary btn-lg btn-block submit_button" >
-                        <span class="glyphicon glyphicon-save" aria-hidden="true"></span> Guardar
-                    </a>
-                </li>
-                <li>
-                    <a  class="btn btn-primary btn-lg btn-block" href="frmUsuarios.html">
-                        <span class="glyphicon glyphicon-hand-down" aria-hidden="true"></span> Cancelar
-                    </a>
-                </li>
-            </ul>
+        <div class="modal fade" id="dialogAddUsuario" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div align="left" class="modal-header" style="background: #2e6399; width: 100%;">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+                        <div  class="modal-title" id="myModalLabel" style="width: 100%;">
+                            <img src="../images/btn-user-0.png" ><label style="color:#99CC33;font-size: 180%;"></label>
+                        </div>
+                    </div>
+                    <div class="modal-body" id="divContent">
+                        <div class="panel panel-body body-white">
+                            <div class="margen-white">
+                                <br>
+                                <div class="form-group">
+                                    <select id="txtTipo2" class="form-control">
+                                        <option value="T">Seleccione tipo de Usuario</option>
+                                        <option value="A">Administrador</option>
+                                        <option value="R">Recibidor</option>
+                                        <option value="S">Oficina</option>
+                                    </select>
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <input id="txtIdentificacion2" type="text" list="nombres" class="form-control text-input" style="text-align: center;" placeholder="Identificacion">
+                                    <datalist  id="nombres">
+
+                                    </datalist>
+                                </div>
+
+                                <br>
+                                <div class="form-group">
+                                    <input type="text" class="form-control text-input" id="txtNombre2" placeholder="Nombres">
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <input type="text" class="form-control text-input" id="txtApellido2" placeholder="Apellidos">
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <input type="number" class="form-control text-input" id="txtTelefono2" placeholder="Telefono">
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <input type="email" class="form-control text-input" id="txtEmail2" placeholder="Email">
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <input type="text" class="form-control text-input" id="txtUsuario2" placeholder="Usuario">
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <input type="password" class="form-control text-input" id="txtContrasena3" placeholder="Password">
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <input type="password" class="form-control text-input" id="txtContrasena22" placeholder="Repita Password">
+                                </div>
+                                <br>
+                                <div>
+                                    <ul class="list-inline footer-bar">
+
+                                        <li>
+                                            <a  class="btn boton-crear user_save_button "  >
+
+                                            </a>
+                                        </li>
+
+                                    </ul>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
-        </div>
-        </div>
-        </div>
-        </div>
+
 
     </center>
 </body>
