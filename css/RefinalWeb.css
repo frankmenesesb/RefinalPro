@@ -18,14 +18,14 @@ body.login{
 
 div.super-head{
     position: fixed; 
-    height: 80px; 
+    height: 60px; 
     z-index: 4; 
     width: 100%;
 }
 
 div.head {
     //position: fixed;
-    height: 50px;
+    height: 55px;
     //background: #f9f9f9;
     background: white;
     color: yellowgreen;
@@ -194,6 +194,12 @@ div.input-login{
    border-top: 1px outset #EBE1FA;
    
    
+}
+
+navbar.nav-head-re{
+    background: white;
+    height: 60px;
+    border-bottom: 2px solid #9d9d9d;
 }
 
 .filterable {
@@ -491,13 +497,20 @@ a.boton-user:hover{
 a.boton-user-sesion{
     
    
-    background-image: url(../images/icon_10.png);
-    background-size: 27px 35px;
+    background-image: url(../images/icon_10.png); background-size: 27px 35px;
     background-repeat: no-repeat;
-    width: 40px;
-    height: 40px;
-    background-position: center;
-    padding-top: 0px;
+    width: 50px;
+    height: 50px;
+    background-position: center; 
     
     
+}
+
+a.boton-refinal-head{
+    background-image: url(../images/refinal-web-2.png);
+    background-size: 100px 30px;
+    background-repeat: no-repeat;
+    width: 120px;
+    height: 50px;
+    background-position: center; 
 }
