@@ -9,7 +9,7 @@ $(document).ready(function () {
         var $panel = $(this).parents('.filterable'),
                 $filters = $panel.find('.filters input'),
                 $tbody = $panel.find('.table tbody');
-        if ($filters.prop('disabled') == true) {
+        if ($filters.prop('disabled') === true) {
             $filters.prop('disabled', false);
             $filters.first().focus();
         } else {
@@ -22,7 +22,7 @@ $(document).ready(function () {
     $('.filterable .filters input').keyup(function (e) {
         /* Ignore tab key */
         var code = e.keyCode || e.which;
-        if (code == '9')
+        if (code === '9')
             return;
         /* Useful DOM data and selectors */
         var $input = $(this),
@@ -233,7 +233,7 @@ function getArticulosProveedor() {
 
 
                         html += '<tr id="row_' + i + '">';
-                        html += '<td>';
+                        html += '<td style="width: 20%;">';
                         html += '' + id_art + '';
                         html += '</td>';
                         html += '<td>';
