@@ -39,7 +39,7 @@ div.head-fixed {
 
 
 div.head-left{
-    width: 35%;
+    width: 40%;
     float: left;
     background-image: url(../images/refinal-web-2.png);
     
@@ -60,7 +60,7 @@ div.head-center{
 }
 
 div.head-right{
-    width: 35%;
+    width: 30%;
     float: right;
     height: 100%;
     text-align: right;
