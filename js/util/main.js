@@ -73,6 +73,17 @@ $(function () {
 });
 
 $(function () {
+    $(".gestionPlaza_button").click(function () {
+        
+        location.href = 'frmPlazas.html?var='+$("#recibirVariable").val()+'$';
+        
+        
+  });
+
+});
+
+
+$(function () {
     $(".gestionRecibo_button").click(function () {
         
         location.href = 'frmGestionRecibos.html?var='+$("#recibirVariable").val()+'$';        
