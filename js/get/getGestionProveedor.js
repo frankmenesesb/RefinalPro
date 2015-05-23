@@ -49,8 +49,7 @@ $(document).ready(function () {
 
     
     setSelectProveedores();
-    
-
+    setSelectImagenes();
 
     $("#btnAddArticulo").on("click", function () {
         setArticulosInterveentor();
@@ -196,8 +195,7 @@ function setArticulosInterveentor() {
         }
         ,
         error: function (jsonResp) {
-            //alert("Ocurrio Un error Diferente");
-            alert("Falta hacer el update que cambie el estado a las facturas de pendientes a generadas");
+            alert("Ocurrio Un error Diferente");
         }
     });
 }
@@ -277,10 +275,8 @@ function getArticulosProveedor() {
 }
 
 function removeArticuloProveedor(idProveedor,id_articulo){
-    //alert(idProveedor+","+id_articulo);
     
     var dataParams = {'idProveedor': idProveedor, 'idArticulo': id_articulo, 'opcion':"DEL"};
-
 
     $.ajax({
         type: "POST",
@@ -302,8 +298,7 @@ function removeArticuloProveedor(idProveedor,id_articulo){
         }
         ,
         error: function (jsonResp) {
-            //alert("Ocurrio Un error Diferente");
-            alert("Falta hacer el update que cambie el estado a las facturas de pendientes a generadas");
+            alert("Ocurrio Un error Diferente");
         }
     });
 }

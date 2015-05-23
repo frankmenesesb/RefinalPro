@@ -38,7 +38,7 @@ $(function () {
     var strLog = $("#recibirVariable").val();
     var strRec = $("#reciboNo").val();
 
-    var dataString = {'recibo': strRec};
+    var dataString = {'recibo': "NULL"};
 
 
     $.ajax({

@@ -63,6 +63,16 @@ $(function () {
 });
 
 $(function () {
+    $(".articulos_button").click(function () {
+        
+        location.href = 'frmArticulos.html?var='+$("#recibirVariable").val()+'$';
+        
+        
+  });
+
+});
+
+$(function () {
     $(".gestionRecibo_button").click(function () {
         
         location.href = 'frmGestionRecibos.html?var='+$("#recibirVariable").val()+'$';        

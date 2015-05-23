@@ -19,12 +19,12 @@ $(function () {
     var descripcion;
     var html;
 
-    //var dataString = {'identificacion': strIde};
+    var dataString = {'identificacion': "NULL"};
 
 
     $.ajax({
         type: 'POST',
-        //data: dataString,
+        data: dataString,
         dataType: 'json',
         url: "http://refinal.frienderco.com/php/get/getArticulos.php",
         //url: "../php/get/getArticulos.php",
