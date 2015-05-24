@@ -23,6 +23,12 @@ and open the template in the editor.
         <script src="../js/get/getUser.js"></script>
         <script src="../js/get/getUsuarios.js"></script>
         <script src="../js/get/getUserM.js"></script>
+        <script>
+            $('.selectpicker').selectpicker({
+                width: '270px',
+                style: 'btn btn-xs btn-default'
+            });
+        </script>
     </head>
     <body>
     <center>
@@ -44,7 +50,7 @@ and open the template in the editor.
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
-
+                                
                             </ul>
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a class="boton-user-sesion"></a></li>
@@ -115,8 +121,7 @@ and open the template in the editor.
             <ul class="list-inline footer-bar">
 
                 <li>
-                    <a id="btnNewUsuario" onclick="$('#dialogAddUsuario').modal('show');">
-                        <span style="width:302px; background-size: 302px; height: 42px; background-image: url('../images/btn-user-0.png'); display:block; background-repeat: no-repeat;" ></span>
+                    <a id="btnNewUsuario" class="btn boton-user" onclick="$('#dialogAddUsuario').modal('show');">
                     </a>
                 </li>
             </ul>
@@ -139,11 +144,11 @@ and open the template in the editor.
                             <div class="margen-white">
                                 <br>
                                 <div class="form-group" style="display: none;">
-                                    <label class="radio-inline"><input  type="radio" name="optradio" id="radioOperacion1" value="R">Registro</label>
+                                    <label class="radio-inline" style="background-image: url(); "><input  type="radio" name="optradio" id="radioOperacion1" value="R">Registro</label>
                                     <label class="radio-inline"><input checked type="radio" name="optradio" id="radioOperacion2" value="M"  >Modificacion</label>    
                                 </div>
                                 <div class="form-group">
-                                    <select id="txtTipo" class="form-control">
+                                    <select id="txtTipo" class="form-control selectpicker">
                                         <option value="T">Seleccione tipo de Usuario</option>
                                         <option value="A">Administrador</option>
                                         <option value="R">Recibidor</option>

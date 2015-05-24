@@ -93,10 +93,10 @@ function getAllPlazas(){
                                 html += ''+observacion+'';
                                 html += '</td>';
                                 html += '<td width="20%">';                                
-                                html += "<a id='btnUpdPla_"+i+"' onclick='modalUpdPlaza("+JSON.stringify(jsonParams)+");'><span style='background-size: 80px; height: 28px; background-image: url(\"../images/btn-editar-0.png\"); display:block; background-repeat: no-repeat;' ></span></a></li>";
+                                html += "<a id='btnUpdPla_"+i+"' class='btn boton-editar' onclick='modalUpdPlaza("+JSON.stringify(jsonParams)+");'></a></li>";
                                 html += '</td>';
                                 html += '<td>';
-                                html += "<a id='btnRemovePlaza_" + i + "' onclick='removePlaza(" + id + ");'><span style='background-size: 35px; height: 50px; background-image: url(\"../images/icon inactivo.png\"); display:block; background-repeat: no-repeat;' ></span></a>";
+                                html += "<a id='btnRemovePlaza_" + i + "' onclick='removePlaza(" + id + ");'><span style='background-size: 35px; height: 35px; background-image: url(\"../images/icon inactivo.png\"); display:block; background-repeat: no-repeat;' ></span></a>";
                                 html += '</td>';
                                 html += '</tr>';
 

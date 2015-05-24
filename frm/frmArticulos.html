@@ -18,6 +18,12 @@ and open the template in the editor.
         <script src="../js/util/jquery-2.1.3.min.js"></script>
         <script src="../js/util/bootstrap.min.js"></script>
         <script src="../js/get/getListArticulos.js"></script>
+        <script>
+            $('.selectpicker').selectpicker({
+                width: '270px',
+                style: 'btn btn-xs btn-default'
+            });
+        </script>
     </head>
     <body>
     <center>
@@ -106,8 +112,7 @@ and open the template in the editor.
         <div class="footer-transparent">
             <ul class="list-inline footer-bar">
                 <li>
-                    <a id="btnNewArticulo" onclick="$('#dialogAddArticulo').modal('show');">
-                        <span style="width:302px; background-size: 302px; height: 42px; background-image: url('../images/btn-proveedor-0.png'); display:block; background-repeat: no-repeat;" ></span>
+                    <a id="btnNewArticulo" class="btn boton-item" onclick="$('#dialogAddArticulo').modal('show');">
                     </a>
                 </li>
             </ul>
@@ -133,13 +138,13 @@ and open the template in the editor.
                                 <br>
                                 <label>Identificación</label>
                                 <div class="form-group">
-                                    <input type="text" class="form-control text-input" id="txtIdentificacionArticulo" placeholder="Identificacion" disabled="disabled">
+                                    <input type="text" class="form-control text-input" id="txtIdentificacionArticulo" placeholder="Codigo" disabled="disabled">
                                 </div>
 
                                 <br>
                                 <label>Nombre</label>
                                 <div class="form-group">
-                                    <input type="text" class="form-control text-input" id="txtNombreArticulo" placeholder="Nombre">
+                                    <input type="text" class="form-control text-input" id="txtNombreArticulo" placeholder="Descripcion">
                                 </div>
                                 <br>
                                 <label>Observación</label>
@@ -147,7 +152,7 @@ and open the template in the editor.
                                     <input type="text" class="form-control text-input" id="txtObservacionArticulo" placeholder="Observacion">
                                 </div>
                                 <br>
-                                <label aling>Imagen</label>
+                                <label>Imagen</label>
                                 <div class="form-group">
                                     <select id="selImagenesUpd" class="form-control"></select>
                                 </div>
@@ -166,7 +171,7 @@ and open the template in the editor.
                             </div>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -178,7 +183,7 @@ and open the template in the editor.
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
 
                         <div  class="modal-title" id="myModalLabel" style="width: 100%;">
-                            <label style="color:white;font-size: 180%;">Nuevo proveedor</label>
+                            <img src="../images/btn-item-0.png" >
                         </div>
                     </div>
                     <div class="modal-body" id="divContent">
@@ -186,21 +191,21 @@ and open the template in the editor.
                             <div class="margen-white">
                                 <br>
                                 <div class="form-group">
-                                    <input type="text" class="form-control text-input" id="txtIdentificacionArticuloNew" placeholder="Identificacion">
+                                    <input type="text" class="form-control text-input" id="txtIdentificacionArticuloNew" placeholder="Codigo">
                                 </div>
 
                                 <br>
                                 <div class="form-group">
-                                    <input type="text" class="form-control text-input" id="txtNombreArticuloNew" placeholder="Nombre">
+                                    <input type="text" class="form-control text-input" id="txtNombreArticuloNew" placeholder="Descripcion">
                                 </div>
                                 <br>
                                 <div class="form-group">
                                     <input type="text" class="form-control text-input" id="txtObservacionArticuloNew" placeholder="Observacion">
                                 </div>
                                 <div class="form-group">
-                                    <select id="selImagenesNew" class="form-control"></select>
+                                    <select id="selImagenesNew" class="form-control selectpicker"></select>
                                 </div>
-                                
+
                                 <br>
                                 <div>
                                     <ul class="list-inline footer-bar">

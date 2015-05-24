@@ -170,3 +170,49 @@ function allProveedores() {
 
 };
 
+
+function saveAddProveedor(){
+    
+    
+    var identificacion = $("#txtIdentificacionProveedor").val();
+    var nombre = $("#txtNombreProveedor").val();
+    var observacion = $("#txtObservacionProveedor").val();
+    var rut = $("#txtRutProveedor").val();
+    var plaza = $("#txtPlazaProveedor").val();
+    
+    var dataParams = {'identificacion': identificacion, 'nombre': nombre, 'observacion':observacion, 'rut': rut, 'plaza': plaza};
+
+
+    $.ajax({
+        type: "POST",
+        url: "http://refinal.frienderco.com/php/set/setProveedor.php",
+        //url: "../php/set/setReciboEnc.php",
+        data: dataParams,
+        dataType: 'json',
+        cache: true,
+        success: function (jsonResp, html) {
+
+            if (jsonResp.RESPONSE) {
+                alert(jsonResp.MESSAGE);
+                setSelectArticulos();
+                setSelectProveedores();
+                getArticulosProveedor();
+                $('#dialogAddProveedor').modal('hide');
+                $("#txtIdentificacionProveedor").val("");
+                $("#txtNombreProveedor").val("");
+                $("#txtObservacionProveedor").val("");
+                $("#txtRutProveedor").val();
+                $("#txtPlazaProveedor").val();
+
+            } else {
+                alert("Ocurrio Un error:" + jsonResp.MESSAGE);
+            }
+
+        }
+        ,
+        error: function (jsonResp) {
+            //alert("Ocurrio Un error Diferente");
+            alert("Falta hacer el update que cambie el estado a las facturas de pendientes a generadas");
+        }
+    });
+}

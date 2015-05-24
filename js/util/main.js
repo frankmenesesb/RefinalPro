@@ -18,6 +18,12 @@ var tipoU = location.search.slice( location.search.indexOf("^") + 1,location.sea
 
     titleHeader = $(".panel-heading").find("h4").text();
     $("#recibirVariable").val(recibiendoVariable);
+    
+    if(recibiendoVariable === null || recibiendoVariable === '' || recibiendoVariable=== 'undefined') {
+    alert('Debes iniciar sesión');    
+    location.href = '../index.html';
+    }
+
     $("#tipoU").val(tipoU);
     
     updateClock();

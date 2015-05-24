@@ -508,9 +508,89 @@ a.boton-user-sesion{
 
 a.boton-refinal-head{
     background-image: url(../images/refinal-web-2.png);
-    background-size: 100px 30px;
+    background-size: 160px 45px;
     background-repeat: no-repeat;
-    width: 120px;
+    width: 176px;
     height: 50px;
     background-position: center; 
+}
+
+a.boton-editar{
+    
+    background: transparent; 
+    background-image: url("../images/btn-editar-0.png"); 
+    background-size: 129px 35px;
+    background-repeat: no-repeat;
+    width: 129px;
+    height: 35px;
+    background-position: center;
+}
+
+a.boton-editar:hover{
+    
+    //background: #CDE6D8;
+    
+    background-image: url(../images/btn-editar-1.png);
+    background-size: 129px 35px;
+    background-repeat: no-repeat;
+    width: 129px;
+    height: 35px;
+    background-position: center;
+    
+}
+
+
+a.boton-item{
+    
+   
+    background-image: url(../images/btn-item-0.png);
+    background-size: 302px 42px;
+    background-repeat: no-repeat;
+    width: 302px;
+    height: 42px;
+    background-position: center;
+    
+    
+    
+}
+
+a.boton-item:hover{
+    
+    //background: #CDE6D8;
+    
+    background-image: url(../images/btn-item-1.png);
+    background-size: 302px 42px;
+    background-repeat: no-repeat;
+    width: 302px;
+    height: 42px;
+    background-position: center;
+    
+}
+
+
+a.boton-plaza{
+    
+   
+    background-image: url(../images/btn-plaza-0.png);
+    background-size: 302px 42px;
+    background-repeat: no-repeat;
+    width: 302px;
+    height: 42px;
+    background-position: center;
+    
+    
+    
+}
+
+a.boton-plaza:hover{
+    
+    //background: #CDE6D8;
+    
+    background-image: url(../images/btn-plaza-1.png);
+    background-size: 302px 42px;
+    background-repeat: no-repeat;
+    width: 302px;
+    height: 42px;
+    background-position: center;
+    
 }

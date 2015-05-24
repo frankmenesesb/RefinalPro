@@ -9,7 +9,7 @@ $(document).ready(function() {
         var $panel = $(this).parents('.filterable'),
         $filters = $panel.find('.filters input'),
         $tbody = $panel.find('.table tbody');
-        if ($filters.prop('disabled') == true) {
+        if ($filters.prop('disabled') === true) {
             $filters.prop('disabled', false);
             $filters.first().focus();
         } else {
@@ -22,7 +22,7 @@ $(document).ready(function() {
     $('.filterable .filters input').keyup(function(e){
         /* Ignore tab key */
         var code = e.keyCode || e.which;
-        if (code == '9') return;
+        if (code === '9') return;
         /* Useful DOM data and selectors */
         var $input = $(this),
         inputContent = $input.val().toLowerCase(),
@@ -102,10 +102,10 @@ function getAllArticulos(){
                                 html +='<img src="../images/'+imagen+'" alt="">';
                                 html += '</td>';
                                 html += '<td width="20%">';                                
-                                html += "<a id='btnUpdArt_"+i+"' onclick='modalUpdArticulo("+JSON.stringify(jsonParams)+");'><span style='background-size: 80px; height: 28px; background-image: url(\"../images/btn-editar-0.png\"); display:block; background-repeat: no-repeat;' ></span></a></li>";
+                                html += "<a id='btnUpdArt_"+i+"' class='btn boton-editar' onclick='modalUpdArticulo("+JSON.stringify(jsonParams)+");'></a></li>";
                                 html += '</td>';
                                 html += '<td>';
-                                html += "<a id='btnRemoveArticulo_" + i + "' onclick='removeArticulo(" + id + ");'><span style='background-size: 35px; height: 50px; background-image: url(\"../images/icon inactivo.png\"); display:block; background-repeat: no-repeat;' ></span></a>";
+                                html += "<a id='btnRemoveArticulo_" + i + "' onclick='removeArticulo(" + id + ");'><span style='background-size: 35px; height: 35px; background-image: url(\"../images/icon inactivo.png\"); display:block; background-repeat: no-repeat;' ></span></a>";
                                 html += '</td>';
                                 html += '</tr>';
 
@@ -179,7 +179,7 @@ function modalUpdArticulo(jsonParams){
 }
 
 function setSelectImagenes() {
-    
+    var urlima;
     
     $.ajax({
         type: 'POST',
@@ -198,12 +198,16 @@ function setSelectImagenes() {
                 }
                 if (jsonResp.MESSAGE === "") {
 
-                    var options = "";
-
+                    var options = "<option value='N'>Seleccione Imagen</option>";
+                    
                     for (var i = 0; i < jsonResp.DATA.length; i++) {
                         var imagen = jsonResp.DATA[i]["imagen"];
-
-                        options += '<option value="' + imagen + '" style="background-image:url(../images/'+imagen+');no-repeat; height:100px;">'+imagen+'</option>';
+                        urlima="'../images/"+imagen+"'";
+                        var span="</span>  <span style='display:inline-block; width:100px;'>  美金</span>";
+                        //options += '<option value="" data-content="'+urlima+' '+span+'"></option>';
+                        options += '<option value="' + imagen + '" style="background-image:url('+urlima+'); background-repeat:no-repeat; height:40px; background-position: right;">'+imagen+'</option>';
+                        
+                        //options += '<option value="' + imagen + '" style="background-image:url(../images/'+imagen+');no-repeat; height:100px;">'+imagen+'</option>';
                     }
 
                     $('#selImagenesUpd').html(options);
