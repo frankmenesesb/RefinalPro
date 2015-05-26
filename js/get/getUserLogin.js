@@ -75,6 +75,17 @@ $(function () {
                                 ;
                                 tipo = jsonResp.DATA[i]["tipo"];
                                 ;
+                                
+                                
+                                if (typeof (Storage) !== "undefined") {
+                                    // Store
+                                    localStorage.setItem("id_usuario", id);
+                                    localStorage.setItem("nombre", nombre);
+                                    // Retrieve
+
+                                } else {
+                                    alert("Sorry, your browser does not support Web Storage...");
+                                }
 
 
                                 log = "";
@@ -86,11 +97,11 @@ $(function () {
 
                                     if (tipo === 'A') {
                                        
-                                        location.href = 'frm/frmMainA.html?var='+id+'$';
+                                        location.href = 'frm/frmMainA.html';
                                     } else if (tipo === 'R') {
-                                        location.href = 'frm/frmInicio.html?var='+id+'$';
+                                        location.href = 'frm/frmInicio.html';
                                     } else if (tipo === 'S') {
-                                        location.href = 'frm/frmMainS.html?var='+id+'$';
+                                        location.href = 'frm/frmMainS.html';
 
                                     }
                                 }
