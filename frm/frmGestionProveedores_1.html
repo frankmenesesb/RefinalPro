@@ -19,9 +19,10 @@ and open the template in the editor.
         <!-- Latest compiled and minified JavaScript -->
         <script src="../js/util/jquery-2.1.3.min.js"></script>
         <script src="../js/util/bootstrap.min.js"></script>
-        
+
         
         <script src="../js/get/getGProveedor.js"></script>
+        <script src="../js/get/getGestionProveedor.js"></script>
         <script src="../js/util/printplugin.js"></script>        
     </head>
     <body>
@@ -49,7 +50,7 @@ and open the template in the editor.
                             <ul class="nav navbar-nav navbar-right">
                                 <li><a class="boton-user-sesion"></a></li>
                                 <li class="dropdown">
-                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" style="color: #71a1d1;">Frank Meneses<span class="caret"></span></a>
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"  style="color: #71a1d1;">Frank Meneses<span class="caret"></span></a>
                                     <ul class="dropdown-menu" role="menu">
                                         <li><a href="#">Inicio</a></li>
                                         <li class="divider"></li>
@@ -67,17 +68,15 @@ and open the template in the editor.
         <br>
         <br>
         <div class="panel body">
-            
+
             <div class="margen">
 
                 <div class="movil">
                     <ul class="list-group" >
                         <li class="list-group-item">
                             <div align="left">
-                                <img src="../images/icon 09.png" alt="Smiley face" height="42" width="42"><label style="color:#99CC33;font-size: 180%;">&nbsp;Gestion de proveedor</label>
+                                <img src="../images/icon 09.png" alt="Smiley face" height="42" width="42"><label style="color:#99CC33;font-size: 180%;">&nbsp;Gestion de proveedores</label>
                             </div>
-
-
                         </li>
                         <li class="list-group-item">
                             <div class="panel panel-primary filterable" >
@@ -113,8 +112,8 @@ and open the template in the editor.
         <div class="footer-transparent">
             <ul class="list-inline footer-bar">
                 <li>
-                    <a id="btnNewProveedor" onclick="$('#dialogAddProveedor').modal('show');">
-                        <span style="width:302px; background-size: 302px; height: 42px; background-image: url('../images/btn-proveedor-0.png'); display:block; background-repeat: no-repeat;" ></span>
+                    <a id="btnNewProveedor" class="btn boton-proveedor" onclick="$('#dialogAddProveedor').modal('show');">
+                        
                     </a>
                 </li>
             </ul>
@@ -149,6 +148,10 @@ and open the template in the editor.
                                     <input type="text" class="form-control text-input" id="txtObservacionProveedor" placeholder="Observacion">
                                 </div>
                                 <br>
+                                <div class="form-group">
+                                    <select id="txtPlazaProveedor" class="form-control"></select>
+                                </div>
+                                <br>
                                 <div>
                                     <ul class="list-inline footer-bar">
 
@@ -168,7 +171,46 @@ and open the template in the editor.
                 </div>
             </div>
         </div>
-    </center>
+        </center>
+        <div class="modal fade" id="dialogAddArt" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+
+            <div class="modal-dialog" style="width: 95%;">
+                <div class="modal-content">
+                    <div align="left" class="modal-header" style="background: #2e6399; width: 100%;">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+
+                        <div  class="modal-title" id="myModalLabel" style="width: 100%;">
+                            <img src="../images/icon-encabezadosIte.png" style="height: 35px;"><label style="color:white;font-size: 180%;">Gestionar Item</label>
+                        </div>
+                    </div>
+                    <div class="modal-body" id="divContent">
+                        <div class="panel panel-body body-white">
+                            <div class="margen-white">
+                                
+                                    <div id="agregados" style="width: 45%; float: left;">
+                                        <p style="color: #71a1d1; font-size: 18px;">Agregados</p>
+                                        <table id="tabla-a" class="table" style=" text-align: left;">
+                                            
+                                        </table>
+                                    </div>
+                                    <div id="noagregados" style="width: 45%; float: right;">
+                                        <p style="color: #71a1d1; font-size: 18px;">Items</p>
+                                        <table id="tabla-n" class="table" style=" text-align: left;">
+                                            
+                                        </table>
+                                    </div>
+                            
+                                
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        
+    
 
 
 

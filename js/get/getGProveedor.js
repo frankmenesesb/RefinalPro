@@ -74,7 +74,12 @@ $(document).ready(function () {
     // 
 });
 
-
+function dialogItem(id){
+    
+    $('#dialogAddArt').modal('show');
+    getArticulosProveedor(id);
+    
+}
 
 function allProveedores() {
     
@@ -122,7 +127,7 @@ function allProveedores() {
 
 
                             html += '<tr id="row_' + i + '">';
-                        html += '<td style="width: 10%;">';
+                        html += '<td >';
                         html += '' + id + '';
                         html += '</td>';
                         html += '<td>';
@@ -139,15 +144,17 @@ function allProveedores() {
                         html += '' + plaza + '';
                         html += '</td>';
                         html += '<td>';
-                        
+                        html +="<a id='btnUpdArt_"+i+"' class='btn boton-gestionar-item' onclick='dialogItem(\""+id+"\");'></a>";
                         html += '</td>';
-                        html += '<td>';
                         
+                        html += '<td>';
+                        html +="<a id='btnUpdArt_"+i+"' class='btn boton-editar' onclick=''></a>";
                         html += '</td>';
                         html += '</tr>';
 
                         }
                     }
+                    setSelectPlaza();
                     $("#listProveedores tbody").html(html);
                     //$("#txtHint").html(encabezado+html+final);
 
@@ -194,17 +201,20 @@ function saveAddProveedor(){
 
             if (jsonResp.RESPONSE) {
                 alert(jsonResp.MESSAGE);
-                setSelectArticulos();
-                setSelectProveedores();
-                getArticulosProveedor();
+                
                 $('#dialogAddProveedor').modal('hide');
                 $("#txtIdentificacionProveedor").val("");
                 $("#txtNombreProveedor").val("");
                 $("#txtObservacionProveedor").val("");
                 $("#txtRutProveedor").val();
                 $("#txtPlazaProveedor").val();
-
-            } else {
+                
+                
+                allProveedores();
+            }
+            
+            
+            else {
                 alert("Ocurrio Un error:" + jsonResp.MESSAGE);
             }
 
@@ -213,6 +223,55 @@ function saveAddProveedor(){
         error: function (jsonResp) {
             //alert("Ocurrio Un error Diferente");
             alert("Falta hacer el update que cambie el estado a las facturas de pendientes a generadas");
+        }
+    });
+}
+
+
+function setSelectPlaza() {
+    var plaza='%';
+    var dataParams = {'idPlaza': plaza};
+
+    
+    $.ajax({
+        type: 'POST',
+        data: dataParams,
+        dataType: 'json',
+        url: "http://refinal.frienderco.com/php/get/getPlazas.php",
+        //url: "../php/get/getArticulos.php",
+        success: function (jsonResp) {
+
+            if (jsonResp.RESPONSE) {
+
+
+                if (jsonResp.MESSAGE === "undefined" || jsonResp.MESSAGE === undefined) {
+
+                    alert('Error no hay articulos!!');
+                }
+                if (jsonResp.MESSAGE === "") {
+
+                    var options = "";
+
+                    for (var i = 0; i < jsonResp.DATA.length; i++) {
+                        var id = jsonResp.DATA[i]["id_plaza"];
+                        var descripcion = jsonResp.DATA[i]["nombre"];
+
+                        options += '<option value="' + id + '">' + descripcion + '</option>';
+                    }
+
+                    $('#txtPlazaProveedor').html(options);
+
+                } else if (jsonResp.MESSAGE === "EMPTY") {
+                    alert("Error: no se encontro datos de articulos!!");
+                }
+            } else {
+                alert("Ocurrio Un error:" + jsonResp.MESSAGE);
+            }
+
+
+        },
+        error: function (jsonResp) {
+            alert("Ocurrio Un error");
         }
     });
 }

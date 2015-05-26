@@ -209,3 +209,17 @@ a.boton-factura:hover{
     background-position: center;
     
 }
+
+
+
+div.left-art{
+    width:  30%;
+    float: left;
+    height: 100%;
+}
+
+div.right-art{
+    width:  30%;
+    float: right;
+    height: 100%;
+}

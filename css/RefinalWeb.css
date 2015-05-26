@@ -594,3 +594,54 @@ a.boton-plaza:hover{
     background-position: center;
     
 }
+
+a.boton-gestionar-item{
+    
+    background: transparent; 
+    background-image: url("../images/btn-gestionar-0.png"); 
+    background-size: 129px 35px;
+    background-repeat: no-repeat;
+    width: 129px;
+    height: 35px;
+    background-position: center;
+}
+
+a.boton-gestionar-item:hover{
+    
+    //background: #CDE6D8;
+    
+    background-image: url(../images/btn-gestionar-1.png);
+    background-size: 129px 35px;
+    background-repeat: no-repeat;
+    width: 129px;
+    height: 35px;
+    background-position: center;
+    
+}
+
+
+a.boton-proveedor{
+    
+   
+    background-image: url(../images/btn-proveedor-0.png);
+    background-size: 302px 42px;
+    background-repeat: no-repeat;
+    width: 302px;
+    height: 42px;
+    background-position: center;
+    
+    
+}
+
+a.boton-proveedor:hover{
+    
+    //background: #CDE6D8;
+    
+    background-image: url(../images/btn-proveedor-1.png);
+    background-size: 302px 42px;
+    background-repeat: no-repeat;
+    width: 302px;
+    height: 42px;
+    background-position: center;
+    
+}
