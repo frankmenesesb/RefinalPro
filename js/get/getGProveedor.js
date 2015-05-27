@@ -76,8 +76,9 @@ $(document).ready(function () {
 
 function dialogItem(id){
     
-    $('#dialogAddArt').modal('show');
+   
     getArticulosProveedor(id);
+    $('#dialogAddArt').modal('show');
     
 }
 
@@ -144,6 +145,7 @@ function allProveedores() {
                         html += '' + plaza + '';
                         html += '</td>';
                         html += '<td>';
+                        //alert("<a id='btnUpdArt_"+i+"' class='btn boton-gestionar-item' onclick='dialogItem(\""+id+"\");'></a>");
                         html +="<a id='btnUpdArt_"+i+"' class='btn boton-gestionar-item' onclick='dialogItem(\""+id+"\");'></a>";
                         html += '</td>';
                         
@@ -275,3 +277,268 @@ function setSelectPlaza() {
         }
     });
 }
+
+
+function getArticulosProveedor(id) {
+
+     
+
+    //var idProveedor = $("#selProveedores").val();
+    var idProveedor = id;
+    var dataParams = {'idproveedor': idProveedor};
+    var html = "";
+
+    $.ajax({
+        type: 'POST',
+        data: dataParams,
+        dataType: 'json',
+        url: "http://refinal.frienderco.com/php/get/getArticulosProveedor.php",
+        //url: "../php/get/getUser.php",
+        success: function (jsonResp) {
+
+            if (jsonResp.RESPONSE) {
+
+                //alert(JSON.stringify(jsonResp));
+
+                if (jsonResp.MESSAGE === "") {
+
+
+
+                    for (var i = 0; i < jsonResp.DATA.length; i++) {
+
+                        var id_art = jsonResp.DATA[i]["id_art"];
+                        var descripcion = jsonResp.DATA[i]["descripcion"];
+                        var imagen = jsonResp.DATA[i]["imagen"];
+
+
+                        html += '<tr id="row_' + i + '">';
+                        html += '<td style="width: 10%;">';
+                        html += '' + id_art + '';
+                        html += '</td>';
+                        html += '<td style="width: 10%;">';
+                        //html += '<img src="../images/'+ imagen +'.png" alt="Smiley face" height="32" width="31" title="Generado">';
+                        html +='<img src="../images/'+imagen+'" alt="">';
+                        html += '</td>';
+                        html += '<td style="width: 30%;">';
+                        html += '' + descripcion + '';
+                        html += '</td>';
+                        
+                        html += '<td style="width: 10%;">';
+                        //html += '<a id="btnRemoveArticulo_"'+i+'><span style="background-position: center bottom; width:60px; background-size:40px; height: 50px; background-image: url(\'../images/btn-plus.png\'); display:block; background-repeat: no-repeat;" title="Agregar articulo"></span></a>';
+                        html += "<a id='btnRemoveArticulo_" + i + "' onclick='removeArticuloProveedor(\"" + idProveedor + "\",\""+id_art+"\");'><span style='background-size: 31px 32px; height: 32px; background-image: url(\"../images/btn-remover.png\"); display:block; background-repeat: no-repeat;' ></span></a>";
+                        //html += "<a class='boton-eliminar' id='btnRemoveArticulo_" + i + "' onclick='removeArticuloProveedor(" + idProveedor + ","+id_art+");' ></a>";
+                        
+                        html += '</td>';
+                        html += '</tr>';
+                        //articulos.add(id);
+
+                    }
+                    
+                    
+                    $("#tabla-a").html(html);
+                    
+
+
+                } else if (jsonResp.MESSAGE === "EMPTY") {
+                    //alert("Error: no se encontro datos de registro del usuario!!");
+                    html += '<tr><td colspan="3"  align="center"><h2>No se han asignado articulos</h2></td></tr>';
+
+                    $("#tabla-a").html(html);
+                }
+                setSelectArticulos(idProveedor);
+                
+            } else {
+                alert("Ocurrio Un error:" + jsonResp.MESSAGE);
+            }
+
+        },
+        error: function (jsonResp) {
+            alert("Ocurrio Un error");
+        }
+    });
+
+}
+
+
+function removeArticuloProveedor(idProveedor,id_articulo){
+    
+    var dataParams = {'idProveedor': idProveedor, 'idArticulo': id_articulo, 'opcion':"DEL"};
+
+    $.ajax({
+        type: "POST",
+        url: "http://refinal.frienderco.com/php/set/setArticulosInterveentor.php",
+        //url: "../php/set/setReciboEnc.php",
+        data: dataParams,
+        dataType: 'json',
+        cache: true,
+        success: function (jsonResp, html) {
+
+            if (jsonResp.RESPONSE) {
+                alert(jsonResp.MESSAGE);
+                getArticulosProveedor(idProveedor);
+
+            } else {
+                alert("Ocurrio Un error:" + jsonResp.MESSAGE);
+            }
+
+        }
+        ,
+        error: function (jsonResp) {
+            alert("Ocurrio Un error Diferente");
+        }
+    });
+}
+
+function setArticulosInterveentor(id,art) {
+
+    var idProveedor = id;
+    var idArticulo = art;
+
+    var dataParams = {'idProveedor': idProveedor, 'idArticulo': idArticulo};
+
+
+    $.ajax({
+        type: "POST",
+        url: "http://refinal.frienderco.com/php/set/setArticulosInterveentor.php",
+        //url: "../php/set/setReciboEnc.php",
+        data: dataParams,
+        dataType: 'json',
+        cache: true,
+        success: function (jsonResp, html) {
+
+            if (jsonResp.RESPONSE) {
+                alert(jsonResp.MESSAGE);
+                getArticulosProveedor(id);
+
+            } else {
+                alert("Ocurrio Un error:" + jsonResp.MESSAGE);
+            }
+            
+            
+
+        }
+        ,
+        error: function (jsonResp) {
+            alert("Ocurrio Un error Diferente");
+        }
+    });
+}
+
+
+function setSelectProveedores() {
+    
+    
+    $.ajax({
+        type: 'POST',
+        //data: dataString,
+        dataType: 'json',
+        url: "http://refinal.frienderco.com/php/get/getGestionProveedores.php",
+        //url: "../php/get/getArticulos.php",
+        success: function (jsonResp) {
+
+            if (jsonResp.RESPONSE) {
+
+
+                if (jsonResp.MESSAGE === "undefined" || jsonResp.MESSAGE === undefined) {
+
+                    alert('Error no hay proveedores!!');
+                }
+                if (jsonResp.MESSAGE === "") {
+
+                    var options = "";
+
+                    for (var i = 0; i < jsonResp.DATA.length; i++) {
+                        var id = jsonResp.DATA[i]["id_proveedor"];
+                        var descripcion = jsonResp.DATA[i]["nombre"];
+
+                        options += '<option value="' + id + '">' + descripcion + '</option>';
+                    }
+
+                    $('#selProveedores').html(options);
+                    getArticulosProveedor();
+
+                } else if (jsonResp.MESSAGE === "EMPTY") {
+                    alert("Error: no se encontro datos de articulos!!");
+                }
+            } else {
+                alert("Ocurrio Un error:" + jsonResp.MESSAGE);
+            }
+
+
+        },
+        error: function (jsonResp) {
+            alert("Ocurrio Un error");
+        }
+    });
+}
+
+
+function setSelectArticulos(id) {
+    
+    var idProveedor = id;
+    var dataParams = {'nit': idProveedor};
+    $.ajax({
+        type: 'POST',
+        data: dataParams,
+        dataType: 'json',
+        url: "http://refinal.frienderco.com/php/get/getArticulosDProveedor.php",
+        //url: "../php/get/getArticulos.php",
+        success: function (jsonResp) {
+
+            if (jsonResp.RESPONSE) {
+
+
+                if (jsonResp.MESSAGE === "undefined" || jsonResp.MESSAGE === undefined) {
+
+                    alert('Error no hay articulos!!');
+                }
+                if (jsonResp.MESSAGE === "") {
+
+                    var html = "";
+
+                    for (var i = 0; i < jsonResp.DATA.length; i++) {
+                        var id = jsonResp.DATA[i]["id_art"];
+                        var descripcion = jsonResp.DATA[i]["descripcion"];
+                        var imagen= jsonResp.DATA[i]["imagen"];;
+                        html += '<tr id="row_' + i + '">';
+                        html += '<td style="width: 5%;">';
+                        html += '' + id + '';
+                        html += '</td>';
+                        html += '<td style="width: 5%;">';
+                        //html += '<img src="../images/'+ imagen +'.png" alt="Smiley face" height="32" width="31" title="Generado">';
+                        html +='<img src="../images/'+imagen+'" alt="">';
+                        html += '</td>';
+                        html += '<td style="width: 30%;">';
+                        html += '' + descripcion + '';
+                        html += '</td>';
+                        
+                        html += '<td style="width: 5%;">';
+                        //html += '<a id="btnRemoveArticulo_"'+i+'><span style="background-position: center bottom; width:60px; background-size:40px; height: 50px; background-image: url(\'../images/btn-plus.png\'); display:block; background-repeat: no-repeat;" title="Agregar articulo"></span></a>';
+                        html += "<a id='btnAddArticulo_" + i + "' onclick='setArticulosInterveentor(" + idProveedor + ","+id+");'><span style='background-size: 31px 32px; height: 32px; background-image: url(\"../images/btn-agregar.png\"); display:block; background-repeat: no-repeat;' ></span></a>";
+                        //html += "<a class='boton-eliminar' id='btnRemoveArticulo_" + i + "' onclick='removeArticuloProveedor(" + idProveedor + ","+id_art+");' ></a>";
+                        
+                        html += '</td>';
+                        html += '</tr>';
+                        //articulos.add(id);
+                    }
+
+                    $('#tabla-n').html(html);
+
+                } else if (jsonResp.MESSAGE === "EMPTY") {
+                    alert("Error: no se encontro datos de articulos!!");
+                }
+            } else {
+                alert("Ocurrio Un error:" + jsonResp.MESSAGE);
+            }
+
+
+        },
+        error: function (jsonResp) {
+            alert("Ocurrio Un error");
+        }
+    });
+}
+
+
+
+
