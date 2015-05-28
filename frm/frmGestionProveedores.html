@@ -12,17 +12,12 @@ and open the template in the editor.
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="../css/bootstrap.min.css">
         <link rel="stylesheet" href="../css/RefinalWeb.css">
-
         <!-- Optional theme -->
         <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
-
         <!-- Latest compiled and minified JavaScript -->
         <script src="../js/util/jquery-2.1.3.min.js"></script>
         <script src="../js/util/bootstrap.min.js"></script>
         <script src="../js/util/main.js"></script>
-        
-        
-        
         <script src="../js/get/getGProveedor.js"></script>
         <script src="../js/get/getGestionProveedor.js"></script>
         <script src="../js/util/printplugin.js"></script>        
@@ -70,9 +65,7 @@ and open the template in the editor.
         <br>
         <br>
         <div class="panel body">
-
             <div class="margen">
-
                 <div class="movil">
                     <ul class="list-group" >
                         <li class="list-group-item">
@@ -86,7 +79,6 @@ and open the template in the editor.
                                     <h3 class="panel-title">&nbsp;</h3>
                                     <div class="pull-right">                                    
                                         <button class="btn boton-filtro btn-xs btn-filter"></button>
-                                        
                                     </div>
                                 </div>
                                 <table class="table" id="listProveedores">
@@ -101,7 +93,6 @@ and open the template in the editor.
                                         </tr>
                                     </thead>
                                     <tbody>
-
                                     </tbody>
                                 </table>
                             </div>
@@ -115,21 +106,16 @@ and open the template in the editor.
         <div class="footer-transparent">
             <ul class="list-inline footer-bar">
                 <li>
-                    <a id="btnNewProveedor" class="btn boton-proveedor" onclick="$('#dialogAddProveedor').modal('show');">
-                        
-                    </a>
+                    <a id="btnNewProveedor" class="btn boton-proveedor" onclick="$('#dialogAddProveedor').modal('show');"></a>
                 </li>
             </ul>
         </div>
         <!-- Modals -->   
-
         <div class="modal fade" id="dialogAddProveedor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div align="left" class="modal-header" style="background: #2e6399; width: 100%;">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-
                         <div  class="modal-title" id="myModalLabel" style="width: 100%;">
                             <img src="../images/btn-proveedor-0.png" ><label style="color:#99CC33;font-size: 180%;"></label>
                         </div>
@@ -141,7 +127,6 @@ and open the template in the editor.
                                 <div class="form-group">
                                     <input type="text" class="form-control text-input" id="txtIdentificacionProveedor" placeholder="Identificacion">
                                 </div>
-
                                 <br>
                                 <div class="form-group">
                                     <input type="text" class="form-control text-input" id="txtNombreProveedor" placeholder="Nombre">
@@ -157,65 +142,48 @@ and open the template in the editor.
                                 <br>
                                 <div>
                                     <ul class="list-inline footer-bar">
-
                                         <li>
-                                            <a  class="btn boton-crear" onclick="saveAddProveedor();">
-
-                                            </a>
+                                            <a  class="btn boton-crear" onclick="saveAddProveedor();"></a>
                                         </li>
-
                                     </ul>
                                 </div>
-
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
-        </center>
-        <div class="modal fade" id="dialogAddArt" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+    </center>
+    <div class="modal fade" id="dialogAddArt" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
 
-            <div class="modal-dialog" style="width: 95%;">
-                <div class="modal-content">
-                    <div align="left" class="modal-header" style="background: #2e6399; width: 100%;">
-                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-
-                        <div  class="modal-title" id="myModalLabel" style="width: 100%;">
-                            <img src="../images/icon-encabezadosIte.png" style="height: 35px;"><label style="color:white;font-size: 180%;">Gestionar Item</label>
-                        </div>
+        <div class="modal-dialog" style="width: 95%;">
+            <div class="modal-content">
+                <div align="left" class="modal-header" style="background: #2e6399; width: 100%;">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <div  class="modal-title" id="myModalLabel" style="width: 100%;">
+                        <img src="../images/icon-encabezadosIte.png" style="height: 35px;"><label style="color:white;font-size: 180%;">Gestionar Item</label>
                     </div>
-                    <div class="modal-body" id="divContent">
-                        <div class="panel panel-body body-white">
-                            <div class="margen-white">
-                                
-                                    <div id="agregados" style="width: 45%; float: left;">
-                                        <p style="color: #71a1d1; font-size: 18px;">Agregados</p>
-                                        <table id="tabla-a" class="table" style=" text-align: left;">
-                                            
-                                        </table>
-                                    </div>
-                                    <div id="noagregados" style="width: 45%; float: right;">
-                                        <p style="color: #71a1d1; font-size: 18px;">Items</p>
-                                        <table id="tabla-n" class="table" style=" text-align: left;">
-                                            
-                                        </table>
-                                    </div>
-                            
-                                
+                </div>
+                <div class="modal-body" id="divContent">
+                    <div class="panel panel-body body-white">
+                        <div class="margen-white">
+                            <div id="agregados" style="width: 45%; float: left;">
+                                <p style="color: #71a1d1; font-size: 18px;">Agregados</p>
+                                <table id="tabla-a" class="table" style=" text-align: left;">
 
+                                </table>
+                            </div>
+                            <div id="noagregados" style="width: 45%; float: right;">
+                                <p style="color: #71a1d1; font-size: 18px;">Items</p>
+                                <table id="tabla-n" class="table" style=" text-align: left;">
+
+                                </table>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>
-        
-    
-
-
-
+    </div>
 </body>
 </html>
