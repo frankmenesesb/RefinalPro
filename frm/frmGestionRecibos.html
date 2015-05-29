@@ -8,7 +8,6 @@ and open the template in the editor.
     <head>
         <title>Consulta de recibos</title>
         <meta charset="UTF-8">
-        
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
         <!-- Latest compiled and minified CSS -->
         <link rel="stylesheet" href="../css/bootstrap.min.css">
@@ -22,11 +21,8 @@ and open the template in the editor.
         <script src="../js/util/bootstrap.min.js"></script>
         <script src="../js/util/main.js"></script>
         <script src="../js/get/getArticulos.js"></script>
-
         <script src="../js/get/getRecibos.js"></script>
         <script src="../js/util/printplugin.js"></script>        
-
-
     </head>
     <body>
     <center>
@@ -74,9 +70,6 @@ and open the template in the editor.
                 <br>
 
                 <div class="movil">
-                    
-                   
-
                     <div>
                         <ul class="list-group" >
                             <li class="list-group-item">
@@ -93,7 +86,6 @@ and open the template in the editor.
                                             <button class="btn boton-filtro btn-xs btn-filter"></button>
                                         </div>
                                     </div>
-
                                     <table class="table" id="listRecibos">
                                         <thead>
                                             <tr class="filters" >
@@ -109,14 +101,11 @@ and open the template in the editor.
 
                                         </tbody>
                                     </table>
-
-
                                 </div>
                             </li>
                         </ul>
                         <input type="hidden" class="form-control" name="recibirVariable" id="recibirVariable">
                         <input type="hidden" class="form-control" name="tipoU" id="tipoU">
-
                     </div>
                 </div>
                 <br>
@@ -126,21 +115,15 @@ and open the template in the editor.
             </div>
         </div>
         <br>
-
-
         <!-- Modal -->   
         <div class="modal fade" id="dialogRecibo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-
         </div>
-
         <div id="divContent2"></div>
-
         <div class="modal fade" id="dialogUpdRecibo" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header" style="background: #2e6399; width: 100%;">
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-
                         <div align="left" class="modal-title" id="myModalLabel">
                             <label style="color:white; font-size: 180%;">&nbsp;Actualización Recibo</label>
                         </div>
@@ -167,14 +150,11 @@ and open the template in the editor.
 
                                 <br>
                                 <div class="form-group">
-                                    <a  class="btn boton-listo" id="btnUpdateRec">
-
-                                    </a>
+                                    <a  class="btn boton-listo" id="btnUpdateRec"></a>
                                 </div>
                             </div>
                         </div>
                     </div>
-
                 </div>
             </div>
         </div>

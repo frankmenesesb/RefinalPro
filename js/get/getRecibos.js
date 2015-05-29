@@ -187,6 +187,7 @@ function getAllRecibos() {
                         $('#btnVisRec_' + idRow).on("click", function () {
 
                             //alert( "Vista previa Recibo N° "+idFact+" :)" );
+                            alert(idFact+' '+nomCliente+' '+fechaGenerado);
                             var jsonParams = {
                                 'idRecibo': idFact,
                                 'nomCliente': nomCliente,

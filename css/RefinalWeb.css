@@ -645,3 +645,28 @@ a.boton-proveedor:hover{
     background-position: center;
     
 }
+
+
+a.boton-ver{
+    
+    background: transparent; 
+    background-image: url("../images/btn-ver-0.png"); 
+    background-size: 129px 35px;
+    background-repeat: no-repeat;
+    width: 129px;
+    height: 35px;
+    background-position: center;
+}
+
+a.boton-ver:hover{
+    
+    //background: #CDE6D8;
+    
+    background-image: url(../images/btn-ver-1.png);
+    background-size: 129px 35px;
+    background-repeat: no-repeat;
+    width: 129px;
+    height: 35px;
+    background-position: center;
+    
+}
