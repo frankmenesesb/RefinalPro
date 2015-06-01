@@ -6,12 +6,8 @@
 
 
 
-
 $(function () {
     $(".user_save_button").click(function () {
-
-
-
 
         var strNom = $("#txtNombre2").val();
         var strApe = $("#txtApellido2").val();
@@ -22,18 +18,12 @@ $(function () {
         var strIde = $("#txtIdentificacion2").val();
         var strTel = $("#txtTelefono2").val();
         var strTipo = $("#txtTipo2").val();
-        
-        
-        
-        //cadena que se envia al php
+
+//cadena que se envia al php
         var dataString = {'nombre': strNom, 'apellido': strApe, 'usuario': strLog, 'contrasena': strPass, 'email': strEma
             , 'telefono': strTel, 'tipo': strTipo, 'identificacion': strIde};
-        
-        
-        
-            
-            
-            if (strNom === '') {
+
+        if (strNom === '') {
 
             alert("Ingresa tu nombre..");
             $("#txtNombre2").focus();
@@ -77,7 +67,7 @@ $(function () {
             $("#txtContrasena22").val('');
 
         }
-        else{
+        else {
 //esta es una prueba
             $.ajax({
                 type: "POST",
@@ -87,7 +77,6 @@ $(function () {
                 dataType: 'json',
                 cache: true,
                 success: function (jsonResp, html) {
-
 
                     if (jsonResp.RESPONSE) {
 
@@ -111,8 +100,6 @@ $(function () {
                         $("#txtRespuesta").focus();
                         getAllUsuarios();
 
-
-
                         if (jsonResp.MESSAGE === "") {
 
                             alert('XD');
@@ -131,10 +118,9 @@ $(function () {
                 }
             });
         }
-            
-     
-        
-        
+
         return false;
     });
 });
+
+

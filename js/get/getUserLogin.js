@@ -9,7 +9,16 @@
 $(function () {
     $(".find_button").click(function () {
 
+        login_usuario();
 
+    });
+
+});
+
+
+function login_usuario(){
+    
+    
         //variables de entrada
         var strLog = $("#txtUsuario").val();
         var strPass = $("#txtContrasena").val();
@@ -81,6 +90,7 @@ $(function () {
                                     // Store
                                     localStorage.setItem("id_usuario", id);
                                     localStorage.setItem("nombre", nombre);
+                                    localStorage.setItem("tipo_usuario",tipo);
                                     // Retrieve
 
                                 } else {
@@ -123,8 +133,6 @@ $(function () {
                 }
             });
         }
-
-    });
-
-});
+    
+}
 

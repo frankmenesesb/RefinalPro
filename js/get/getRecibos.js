@@ -29,7 +29,7 @@ $(document).ready(function () {
     $('.filterable .filters input').keyup(function (e) {
         /* Ignore tab key */
         var code = e.keyCode || e.which;
-        if (code == '9')
+        if (code === '9')
             return;
         /* Useful DOM data and selectors */
         var $input = $(this),
@@ -88,8 +88,8 @@ $(document).ready(function () {
 
 
     });
-    
-    
+
+
 
 });
 
@@ -150,7 +150,7 @@ function getAllRecibos() {
                             html += '<img src="../images/icon activo.png" alt="Smiley face" height="32" width="31" title="Generado">';
                         } else if (estado === "Anulado") {
                             html += '<img src="../images/icon inactivo.png" alt="Smiley face" height="32" width="31" title="Anulado">';
-                        } else if (estado === "Entregado"){
+                        } else if (estado === "Entregado") {
                             html += '<img src="../images/icon entregado.png" alt="Smiley face" height="32" width="31" title="Entregado">';
                         }
                         html += '</td>';
@@ -158,9 +158,10 @@ function getAllRecibos() {
                         html += '<a id="btnVisRec_' + i + '"><span style="background-size: 110px; height: 35px; background-image: url(\'../images/btn-ver-0.png\'); display:block; background-repeat: no-repeat;" ></span></a>';
                         //html += '<input type="button" id="btnReimprRec_'+i+'" class="glyphicon glyphicon-file"/>';
                         html += '</td>';
-                        if(pageName === "frmGestionRecibos.html"){
+                        if (pageName === "frmGestionRecibos.html") {
                             html += '<td>';
-                            html += "<a id='btnUpdRec_" + i + "' onclick='updRecibo(" + JSON.stringify(jsonResp.DATA[i]) + ");'><span style='background-size: 110px; height: 35px; background-image: url(\"../images/btn-editar-0.png\"); display:block; background-repeat: no-repeat;' ></span></a></li>";
+                            html += "<a id='btnUpdRec_" + i + "' onclick='updRecibo(\"" + id_rec_enc + "\",\"" + estado + "\",\"" + fecha + "\");'><span style='background-size: 110px; height: 35px; background-image: url(\"../images/btn-editar-0.png\"); display:block; background-repeat: no-repeat;' ></span></a>";
+                            //alert("<a id='btnUpdRec_" + i + "' onclick='updRecibo(" + id_rec_enc + ");'><span style='background-size: 110px; height: 35px; background-image: url(\"../images/btn-editar-0.png\"); display:block; background-repeat: no-repeat;' ></span></a>");
                             html += '</td>';
                         }
                         html += '</tr>';
@@ -187,7 +188,7 @@ function getAllRecibos() {
                         $('#btnVisRec_' + idRow).on("click", function () {
 
                             //alert( "Vista previa Recibo N° "+idFact+" :)" );
-                            alert(idFact+' '+nomCliente+' '+fechaGenerado);
+                            alert(idFact + ' ' + nomCliente + ' ' + fechaGenerado);
                             var jsonParams = {
                                 'idRecibo': idFact,
                                 'nomCliente': nomCliente,
@@ -512,11 +513,11 @@ function descargarArchivo(contenidoEnBlob, nombreArchivo) {
 }
 ;
 
-function updRecibo(jsonParams) {
-    
-    var id = jsonParams["id_rec_enc"];
-    var estado = jsonParams["estado"];
-    var fecha = jsonParams["fecha"];
+function updRecibo(id_rec, est_rec, fec_rec) {
+
+    var id = id_rec;
+    var estado = est_rec;
+    var fecha = fec_rec;
 
     if (estado === "Generado") {
         estado = "G";
@@ -529,15 +530,23 @@ function updRecibo(jsonParams) {
     $("#txtIdRecibo").val(id);
     $("#selEstadoRec").val(estado);
     $("#txtFechaRec").val(fecha);
-    
+
     $('#dialogUpdRecibo').modal('show');
-    
+
     //btnUpdateRec
-    
+
+
+
+}
+
+$(function () {
     $("#btnUpdateRec").on("click", function () {
 
+        var id = $("#txtIdRecibo").val();
+        var estado = $("#selEstadoRec").val();
+
         //setUdpRec
-        var dataParams = {'idRecibo': id, 'estado': $("#selEstadoRec").val()};
+        var dataParams = {'idRecibo': id, 'estado': estado};
 
         $.ajax({
             type: "POST",
@@ -563,5 +572,4 @@ function updRecibo(jsonParams) {
             }
         });
     });
-
-}
+});

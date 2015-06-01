@@ -37,7 +37,7 @@ window.onload = function ()
     }
     $("#recibirVariable").val(recibiendoVariable);
     $("#nom-user").html(n);
-    
+
 
     updateClock();
     //conecctionStatus();
@@ -208,3 +208,16 @@ $(function () {
     });
 
 });
+
+
+function inicioMenu() {
+
+        if (localStorage.getItem("tipo_usuario") === 'S') {
+            location.href = 'frmMainO.html';
+        }else if (localStorage.getItem("tipo_usuario") === 'A') {
+            location.href = 'frmMainA.html';
+        }else{
+            alter('no tienes usuario Colombiano');
+        }
+
+    }

@@ -21,7 +21,6 @@ and open the template in the editor.
         <link rel="shortcut icon" href="images/LOG.PNG">
     </head>
     <body class="login">
-        
     <center>
         <div class="panel body-login">
             <br>
@@ -41,7 +40,6 @@ and open the template in the editor.
                     <ul class="list-group" >
                         <li class="list-group-item">
                             <div>
-
                                 <br>
                                 <br>
                                 <div style="width: 280px;">
@@ -50,7 +48,7 @@ and open the template in the editor.
                                     </div>
                                     <br>
                                     <div class="input-group input-login">
-                                        <input type="password" class="form-control text-input mi-input" placeholder="Contraseña" id="txtContrasena" >
+                                        <input type="password" class="form-control text-input mi-input" placeholder="Contraseña" id="txtContrasena" onkeypress='if(event.which===13){login_usuario();}'>
                                     </div>
                                     <br>
                                     <br>
@@ -65,7 +63,6 @@ and open the template in the editor.
                             </div>
                         </li>
                     </ul>
-
                 </div>
             </div>
             <br>
