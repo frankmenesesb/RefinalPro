@@ -38,7 +38,6 @@ and open the template in the editor.
                             </button>
                             <a class="navbar-brand boton-refinal-head" onclick="inicioMenu();"></a> 
                         </div>
-
                         <!-- Collect the nav links, forms, and other content for toggling -->
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav">
@@ -123,6 +122,7 @@ and open the template in the editor.
                     <div class="modal-body" id="divContent">
                         <div class="panel panel-body body-white">
                             <div class="margen-white">
+                                
                                 <br>
                                 <div class="form-group">
                                     <input type="text" class="form-control text-input" id="txtIdentificacionProveedor" placeholder="Identificacion">
@@ -137,7 +137,16 @@ and open the template in the editor.
                                 </div>
                                 <br>
                                 <div class="form-group">
-                                    <select id="txtPlazaProveedor" class="form-control"></select>
+                                    <select id="txtPlazaProveedor" class="form-control" ></select>
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    
+                                    <select id="txtRutProveedor" class="form-control">
+                                    <option value="X">¿Tiene Rut?</option>
+                                    <option value="S">Si</option>
+                                    <option value="N">No</option>
+                                    </select>
                                 </div>
                                 <br>
                                 <div>
@@ -147,6 +156,7 @@ and open the template in the editor.
                                         </li>
                                     </ul>
                                 </div>
+                                
                             </div>
                         </div>
                     </div>

@@ -51,7 +51,7 @@ $(document).ready(function () {
 
 
     allProveedores();
-    
+
 //    setSelectProveedores();
 //    
 //
@@ -65,25 +65,25 @@ $(document).ready(function () {
 //        getArticulosProveedor();
 //        
 //    });
-    
+
     /*$('#btnNewProveedor').on('change', function () {
-        alert("x");
-       $('#dialogAddProveedor').modal('show');
-    });*/
-    
+     alert("x");
+     $('#dialogAddProveedor').modal('show');
+     });*/
+
     // 
 });
 
-function dialogItem(id){
-    
-   
+function dialogItem(id) {
+
+
     getArticulosProveedor(id);
     $('#dialogAddArt').modal('show');
-    
+
 }
 
 function allProveedores() {
-    
+
 
     var id;
     var descripcion;
@@ -115,7 +115,7 @@ function allProveedores() {
 
                         id = jsonResp.DATA[i]["id_proveedor"];
                         descripcion = jsonResp.DATA[i]["nombre"];
-                        rut =jsonResp.DATA[i]["rut"];
+                        rut = jsonResp.DATA[i]["rut"];
                         plaza = jsonResp.DATA[i]["nom_plaza"];
 
                         var log = "";
@@ -128,31 +128,31 @@ function allProveedores() {
 
 
                             html += '<tr id="row_' + i + '">';
-                        html += '<td >';
-                        html += '' + id + '';
-                        html += '</td>';
-                        html += '<td>';
-                        html += '' + descripcion + '';
-                        html += '</td>';
-                        html += '<td>';
-                        if(rut==='S'){
-                            html +='<img src="../images/icon activo.png" alt="">';
-                        }else{
-                            html +='<img src="../images/icon inactivo.png" alt="">';
-                        }
-                        html += '</td>';
-                        html += '<td>';
-                        html += '' + plaza + '';
-                        html += '</td>';
-                        html += '<td>';
-                        //alert("<a id='btnUpdArt_"+i+"' class='btn boton-gestionar-item' onclick='dialogItem(\""+id+"\");'></a>");
-                        html +="<a id='btnUpdArt_"+i+"' class='btn boton-gestionar-item' onclick='dialogItem(\""+id+"\");'></a>";
-                        html += '</td>';
-                        
-                        html += '<td>';
-                        html +="<a id='btnUpdArt_"+i+"' class='btn boton-editar' onclick=''></a>";
-                        html += '</td>';
-                        html += '</tr>';
+                            html += '<td >';
+                            html += '' + id + '';
+                            html += '</td>';
+                            html += '<td>';
+                            html += '' + descripcion + '';
+                            html += '</td>';
+                            html += '<td>';
+                            if (rut === 'S') {
+                                html += '<img src="../images/icon activo.png" alt="">';
+                            } else {
+                                html += '<img src="../images/icon inactivo.png" alt="">';
+                            }
+                            html += '</td>';
+                            html += '<td>';
+                            html += '' + plaza + '';
+                            html += '</td>';
+                            html += '<td>';
+                            //alert("<a id='btnUpdArt_"+i+"' class='btn boton-gestionar-item' onclick='dialogItem(\""+id+"\");'></a>");
+                            html += "<a id='btnUpdArt_" + i + "' class='btn boton-gestionar-item' onclick='dialogItem(\"" + id + "\");'></a>";
+                            html += '</td>';
+
+                            html += '<td>';
+                            html += "<a id='btnUpdArt_" + i + "' class='btn boton-editar' onclick=''></a>";
+                            html += '</td>';
+                            html += '</tr>';
 
                         }
                     }
@@ -177,64 +177,88 @@ function allProveedores() {
 
     // });
 
-};
+}
+;
 
 
-function saveAddProveedor(){
-    
-    
+function saveAddProveedor() {
+
+
     var identificacion = $("#txtIdentificacionProveedor").val();
     var nombre = $("#txtNombreProveedor").val();
     var observacion = $("#txtObservacionProveedor").val();
     var rut = $("#txtRutProveedor").val();
     var plaza = $("#txtPlazaProveedor").val();
-    
-    var dataParams = {'identificacion': identificacion, 'nombre': nombre, 'observacion':observacion, 'rut': rut, 'plaza': plaza};
+
+    var dataParams = {'identificacion': identificacion, 'nombre': nombre, 'observacion': observacion, 'rut': rut, 'plaza': plaza};
+
+    if (identificacion === '') {
+
+        alert("Ingresa el nit del proveedor..");
+        $("#txtIdentificacionProveedor").focus();
+
+    } else if (nombre === '') {
+
+        alert("No has ingresado el nombre del proveedor..");
+        $("#txtNombreProveedor").focus();
+
+    } else if (rut === 'X') {
+
+        alert("selecciona si tiene Rut el proveedor :)..");
+        $("#txtRutProveedor").focus();
+
+    } else if (plaza === 'N') {
+
+        alert("Selecciona la plaza del proveedor :)..");
+        $("#txtPlazaProveedor").focus();
+
+    } else {
+
+        $.ajax({
+            type: "POST",
+            url: "http://refinal.frienderco.com/php/set/setProveedor.php",
+            //url: "../php/set/setReciboEnc.php",
+            data: dataParams,
+            dataType: 'json',
+            cache: true,
+            success: function (jsonResp, html) {
+
+                if (jsonResp.RESPONSE) {
+                    alert(jsonResp.MESSAGE);
+
+                    $('#dialogAddProveedor').modal('hide');
+                    $("#txtIdentificacionProveedor").val("");
+                    $("#txtNombreProveedor").val("");
+                    $("#txtObservacionProveedor").val("");
+                    $("#txtRutProveedor").val();
+                    $("#txtPlazaProveedor").val();
 
 
-    $.ajax({
-        type: "POST",
-        url: "http://refinal.frienderco.com/php/set/setProveedor.php",
-        //url: "../php/set/setReciboEnc.php",
-        data: dataParams,
-        dataType: 'json',
-        cache: true,
-        success: function (jsonResp, html) {
+                    allProveedores();
+                }
 
-            if (jsonResp.RESPONSE) {
-                alert(jsonResp.MESSAGE);
-                
-                $('#dialogAddProveedor').modal('hide');
-                $("#txtIdentificacionProveedor").val("");
-                $("#txtNombreProveedor").val("");
-                $("#txtObservacionProveedor").val("");
-                $("#txtRutProveedor").val();
-                $("#txtPlazaProveedor").val();
-                
-                
-                allProveedores();
+
+                else {
+                    alert("Ocurrio Un error:" + jsonResp.MESSAGE);
+                }
+
             }
-            
-            
-            else {
-                alert("Ocurrio Un error:" + jsonResp.MESSAGE);
+            ,
+            error: function (jsonResp) {
+                //alert("Ocurrio Un error Diferente");
+                alert("Falta hacer el update que cambie el estado a las facturas de pendientes a generadas");
             }
-
-        }
-        ,
-        error: function (jsonResp) {
-            //alert("Ocurrio Un error Diferente");
-            alert("Falta hacer el update que cambie el estado a las facturas de pendientes a generadas");
-        }
-    });
+        });
+    }
 }
 
 
 function setSelectPlaza() {
-    var plaza='%';
+    var plaza = '%';
     var dataParams = {'idPlaza': plaza};
+    var options = "";
+    options += '<option value="N">Seleccione Plaza</option>';
 
-    
     $.ajax({
         type: 'POST',
         data: dataParams,
@@ -252,7 +276,7 @@ function setSelectPlaza() {
                 }
                 if (jsonResp.MESSAGE === "") {
 
-                    var options = "";
+
 
                     for (var i = 0; i < jsonResp.DATA.length; i++) {
                         var id = jsonResp.DATA[i]["id_plaza"];
@@ -281,7 +305,7 @@ function setSelectPlaza() {
 
 function getArticulosProveedor(id) {
 
-     
+
 
     //var idProveedor = $("#selProveedores").val();
     var idProveedor = id;
@@ -317,26 +341,26 @@ function getArticulosProveedor(id) {
                         html += '</td>';
                         html += '<td style="width: 10%;">';
                         //html += '<img src="../images/'+ imagen +'.png" alt="Smiley face" height="32" width="31" title="Generado">';
-                        html +='<img src="../images/'+imagen+'" alt="">';
+                        html += '<img src="../images/' + imagen + '" alt="">';
                         html += '</td>';
                         html += '<td style="width: 30%;">';
                         html += '' + descripcion + '';
                         html += '</td>';
-                        
+
                         html += '<td style="width: 10%;">';
                         //html += '<a id="btnRemoveArticulo_"'+i+'><span style="background-position: center bottom; width:60px; background-size:40px; height: 50px; background-image: url(\'../images/btn-plus.png\'); display:block; background-repeat: no-repeat;" title="Agregar articulo"></span></a>';
-                        html += "<a id='btnRemoveArticulo_" + i + "' onclick='removeArticuloProveedor(\"" + idProveedor + "\",\""+id_art+"\");'><span style='background-size: 31px 32px; height: 32px; background-image: url(\"../images/btn-remover.png\"); display:block; background-repeat: no-repeat;' ></span></a>";
+                        html += "<a id='btnRemoveArticulo_" + i + "' onclick='removeArticuloProveedor(\"" + idProveedor + "\",\"" + id_art + "\");'><span style='background-size: 31px 32px; height: 32px; background-image: url(\"../images/btn-remover.png\"); display:block; background-repeat: no-repeat;' ></span></a>";
                         //html += "<a class='boton-eliminar' id='btnRemoveArticulo_" + i + "' onclick='removeArticuloProveedor(" + idProveedor + ","+id_art+");' ></a>";
-                        
+
                         html += '</td>';
                         html += '</tr>';
                         //articulos.add(id);
 
                     }
-                    
-                    
+
+
                     $("#tabla-a").html(html);
-                    
+
 
 
                 } else if (jsonResp.MESSAGE === "EMPTY") {
@@ -346,7 +370,7 @@ function getArticulosProveedor(id) {
                     $("#tabla-a").html(html);
                 }
                 setSelectArticulos(idProveedor);
-                
+
             } else {
                 alert("Ocurrio Un error:" + jsonResp.MESSAGE);
             }
@@ -360,9 +384,9 @@ function getArticulosProveedor(id) {
 }
 
 
-function removeArticuloProveedor(idProveedor,id_articulo){
-    
-    var dataParams = {'idProveedor': idProveedor, 'idArticulo': id_articulo, 'opcion':"DEL"};
+function removeArticuloProveedor(idProveedor, id_articulo) {
+
+    var dataParams = {'idProveedor': idProveedor, 'idArticulo': id_articulo, 'opcion': "DEL"};
 
     $.ajax({
         type: "POST",
@@ -389,7 +413,7 @@ function removeArticuloProveedor(idProveedor,id_articulo){
     });
 }
 
-function setArticulosInterveentor(id,art) {
+function setArticulosInterveentor(id, art) {
 
     var idProveedor = id;
     var idArticulo = art;
@@ -413,8 +437,8 @@ function setArticulosInterveentor(id,art) {
             } else {
                 alert("Ocurrio Un error:" + jsonResp.MESSAGE);
             }
-            
-            
+
+
 
         }
         ,
@@ -426,8 +450,8 @@ function setArticulosInterveentor(id,art) {
 
 
 function setSelectProveedores() {
-    
-    
+
+
     $.ajax({
         type: 'POST',
         //data: dataString,
@@ -474,7 +498,7 @@ function setSelectProveedores() {
 
 
 function setSelectArticulos(id) {
-    
+
     var idProveedor = id;
     var dataParams = {'nit': idProveedor};
     $.ajax({
@@ -499,24 +523,25 @@ function setSelectArticulos(id) {
                     for (var i = 0; i < jsonResp.DATA.length; i++) {
                         var id = jsonResp.DATA[i]["id_art"];
                         var descripcion = jsonResp.DATA[i]["descripcion"];
-                        var imagen= jsonResp.DATA[i]["imagen"];;
+                        var imagen = jsonResp.DATA[i]["imagen"];
+                        ;
                         html += '<tr id="row_' + i + '">';
                         html += '<td style="width: 5%;">';
                         html += '' + id + '';
                         html += '</td>';
                         html += '<td style="width: 5%;">';
                         //html += '<img src="../images/'+ imagen +'.png" alt="Smiley face" height="32" width="31" title="Generado">';
-                        html +='<img src="../images/'+imagen+'" alt="">';
+                        html += '<img src="../images/' + imagen + '" alt="">';
                         html += '</td>';
                         html += '<td style="width: 30%;">';
                         html += '' + descripcion + '';
                         html += '</td>';
-                        
+
                         html += '<td style="width: 5%;">';
                         //html += '<a id="btnRemoveArticulo_"'+i+'><span style="background-position: center bottom; width:60px; background-size:40px; height: 50px; background-image: url(\'../images/btn-plus.png\'); display:block; background-repeat: no-repeat;" title="Agregar articulo"></span></a>';
-                        html += "<a id='btnAddArticulo_" + i + "' onclick='setArticulosInterveentor(" + idProveedor + ","+id+");'><span style='background-size: 31px 32px; height: 32px; background-image: url(\"../images/btn-agregar.png\"); display:block; background-repeat: no-repeat;' ></span></a>";
+                        html += "<a id='btnAddArticulo_" + i + "' onclick='setArticulosInterveentor(" + idProveedor + "," + id + ");'><span style='background-size: 31px 32px; height: 32px; background-image: url(\"../images/btn-agregar.png\"); display:block; background-repeat: no-repeat;' ></span></a>";
                         //html += "<a class='boton-eliminar' id='btnRemoveArticulo_" + i + "' onclick='removeArticuloProveedor(" + idProveedor + ","+id_art+");' ></a>";
-                        
+
                         html += '</td>';
                         html += '</tr>';
                         //articulos.add(id);
