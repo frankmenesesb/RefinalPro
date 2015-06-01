@@ -18,6 +18,13 @@ and open the template in the editor.
         <script src="../js/util/jquery-2.1.3.min.js"></script>
         <script src="../js/util/bootstrap.min.js"></script>
         <script src="../js/util/main.js"></script>
+        <script>
+            var tU=localStorage.getItem("tipo_usuario");
+            
+            if(tU==='S'){
+                location.href = 'frmMainO.html';
+            }
+        </script>
     </head>
     <body class="login">
     <center>
@@ -44,6 +51,7 @@ and open the template in the editor.
                                 <a  class="list-group-item gestionPlaza_button"><img src="../images/btn-adminPla.png" alt="Smiley face" height="42" width="42"/> Gestionar plazas</a>
                                 <a  class="list-group-item gestionProveedores_button"><img src="../images/btn-adminProvee.png" alt="Smiley face" height="42" width="42"/> Gestionar proveedores-articulos</a>                                
                                 <a  class="list-group-item consulta_button"><img src="../images/btn-adminRecib.png" alt="Smiley face" height="42" width="42"/> Ver recibos</a>
+                                <a  class="list-group-item cerrar-sesion"><img src="../images/icon-cerrarSesion.png" alt="Smiley face" height="42" width="42"/> Cerrar Sesión</a>
                                 <input type="hidden" class="form-control" name="recibirVariable" id="recibirVariable">
                                 <input type="hidden" class="form-control" name="tipoU" id="tipoU">
                             </div>
