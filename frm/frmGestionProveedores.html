@@ -163,6 +163,60 @@ and open the template in the editor.
                 </div>
             </div>
         </div>
+        
+        <div class="modal fade" id="dialogUpdProveedor" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div align="left" class="modal-header" style="background: #2e6399; width: 100%;">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                        <div  class="modal-title" id="myModalLabel" style="width: 100%;">
+                            <img src="../images/btn-proveedor-0.png" ><label style="color:#99CC33;font-size: 180%;"></label>
+                        </div>
+                    </div>
+                    <div class="modal-body" id="divContent">
+                        <div class="panel panel-body body-white">
+                            <div class="margen-white">
+                                
+                                <br>
+                                <div class="form-group">
+                                    <input type="text" class="form-control text-input" id="txtUpdIdentificacionProveedor" placeholder="Identificacion" disabled="disabled">
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <input type="text" class="form-control text-input" id="txtUpdNombreProveedor" placeholder="Nombre">
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <input type="text" class="form-control text-input" id="txtUpdObservacionProveedor" placeholder="Observacion">
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    <select id="txtUpdPlazaProveedor" class="form-control" ></select>
+                                </div>
+                                <br>
+                                <div class="form-group">
+                                    
+                                    <select id="txtUpdRutProveedor" class="form-control">
+                                    <option value="X">¿Tiene Rut?</option>
+                                    <option value="S">Si</option>
+                                    <option value="N">No</option>
+                                    </select>
+                                </div>
+                                <br>
+                                <div>
+                                    <ul class="list-inline footer-bar">
+                                        <li>
+                                            <a  class="btn boton-crear" onclick="saveUpdProveedor();"></a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </center>
     <div class="modal fade" id="dialogAddArt" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
 

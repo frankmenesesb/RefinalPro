@@ -91,12 +91,12 @@ function allProveedores() {
     var plaza;
     var html;
 
-    //var dataString = {'identificacion': strIde};
+    var dataString = {'identificacion': "NULL"};
 
 
     $.ajax({
         type: 'POST',
-        //data: dataString,
+        data: dataString,
         dataType: 'json',
         url: "http://refinal.frienderco.com/php/get/getProveedor.php",
         //url: "../php/get/getArticulos.php",
@@ -107,7 +107,7 @@ function allProveedores() {
 
                 if (jsonResp.MESSAGE === "undefined" || jsonResp.MESSAGE === undefined) {
 
-                    alert('Error no hay articulos!!');
+                    alert('Error no hay proveedores!!');
                 }
                 if (jsonResp.MESSAGE === "") {
 
@@ -146,11 +146,10 @@ function allProveedores() {
                             html += '</td>';
                             html += '<td>';
                             //alert("<a id='btnUpdArt_"+i+"' class='btn boton-gestionar-item' onclick='dialogItem(\""+id+"\");'></a>");
-                            html += "<a id='btnUpdArt_" + i + "' class='btn boton-gestionar-item' onclick='dialogItem(\"" + id + "\");'></a>";
+                            html += "<a id='btnUpdGes_" + i + "' class='btn boton-gestionar-item' onclick='dialogItem(\"" + id + "\");'></a>";
                             html += '</td>';
-
                             html += '<td>';
-                            html += "<a id='btnUpdArt_" + i + "' class='btn boton-editar' onclick=''></a>";
+                            html += "<a id='btnUpdPro_"+i+"' class='btn boton-editar' onclick='updProveedor("+JSON.stringify(jsonResp.DATA[i])+");'></a></li>";
                             html += '</td>';
                             html += '</tr>';
 
@@ -252,6 +251,18 @@ function saveAddProveedor() {
     }
 }
 
+function updProveedor(jsonParams){    
+    
+    $("#txtUpdIdentificacionProveedor").val(jsonParams.id_proveedor);
+    $("#txtUpdNombreProveedor").val(jsonParams.nombre);
+    $("#txtUpdObservacionProveedor").val(jsonParams.observacion);
+    $("#txtUpdRutProveedor").val(jsonParams.rut);
+    $("#txtUpdPlazaProveedor").val(jsonParams.id_plaza);
+    
+    $('#dialogUpdProveedor').modal('show'); 
+}
+
+
 
 function setSelectPlaza() {
     var plaza = '%';
@@ -286,6 +297,7 @@ function setSelectPlaza() {
                     }
 
                     $('#txtPlazaProveedor').html(options);
+                    $('#txtUpdPlazaProveedor').html(options);
 
                 } else if (jsonResp.MESSAGE === "EMPTY") {
                     alert("Error: no se encontro datos de articulos!!");
@@ -564,6 +576,33 @@ function setSelectArticulos(id) {
     });
 }
 
+function saveUpdProveedor() {
+    
+    var dataParams = {'id_proveedor': $("#txtUpdIdentificacionProveedor").val(), 'nombre': $("#txtUpdNombreProveedor").val(), 'observacion':  $("#txtUpdObservacionProveedor").val(), 'estado': $("#selImagenesUpd").val(), 'rut': $("#txtUpdRutProveedor").val(), 'id_plaza': $("#txtUpdPlazaProveedor").val()};
+
+    $.ajax({
+        type: "POST",
+        url: "http://refinal.frienderco.com/php/set/setUpdProveedor.php",
+        data: dataParams,
+        dataType: 'json',
+        cache: true,
+        success: function (jsonResp, html) {
+
+            if (jsonResp.RESPONSE) {
+                $('#dialogUpdProveedor').modal('hide');
+                allProveedores();
+
+            } else {
+                alert("Ocurrio Un error:" + jsonResp.MESSAGE);
+            }
+
+        }
+        ,
+        error: function (jsonResp) {
+            alert("Ocurrio Un error Diferente");
+        }
+    });
+}
 
 
 

@@ -77,7 +77,7 @@ $(document).ready(function () {
                 var idFact = $(this).find('td').eq(0).text();
                 var nomCliente = $(this).find('td').eq(1).text();
                 var fechaGenerado = $(this).find('td').eq(2).text();
-                var estado = $(this).find('td').eq(3).text();
+                var estado = $(this).find('td').eq(3).find('img').attr('title');
 
                 arrayRecibos.push([idFact, nomCliente, fechaGenerado, estado]);
                 //arrayRecibos.push(idFact);
