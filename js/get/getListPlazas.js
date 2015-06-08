@@ -53,7 +53,9 @@ $(document).ready(function() {
 function getAllPlazas(){
     
     var dataParams = {'idPlaza': "NULL"};
-
+    
+    $("#listPlazas tbody").html('<tr><td colspan="5" align="center"><img src="../images/Loading_bar.gif" alt="Smiley face" title="Cargando"></center></td></tr>');
+    
             $.ajax({
                 type: 'POST',
                 data: dataParams,

@@ -93,6 +93,7 @@ function allProveedores() {
 
     var dataString = {'identificacion': "NULL"};
 
+    $("#listProveedores tbody").html('<tr><td colspan="6" align="center"><img src="../images/Loading_bar.gif" alt="Smiley face" title="Cargando"></center></td></tr>');
 
     $.ajax({
         type: 'POST',
@@ -136,9 +137,9 @@ function allProveedores() {
                             html += '</td>';
                             html += '<td>';
                             if (rut === 'S') {
-                                html += '<img src="../images/icon activo.png" alt="">';
+                                html += '<p hidden>Si</p><img src="../images/icon activo.png" alt="">';
                             } else {
-                                html += '<img src="../images/icon inactivo.png" alt="">';
+                                html += '<p hidden>No</p><img src="../images/icon inactivo.png" alt="">';
                             }
                             html += '</td>';
                             html += '<td>';

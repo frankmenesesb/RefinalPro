@@ -62,7 +62,9 @@ $(document).ready(function() {
 function getAllUsuarios(){
     
     var dataParams = {'idUsuario': 0};
-
+    
+    $("#listUsuarios tbody").html('<tr><td colspan="5" align="center"><img src="../images/Loading_bar.gif" alt="Smiley face" title="Cargando"></center></td></tr>');
+    
             $.ajax({
                 type: 'POST',
                 data: dataParams,

@@ -97,6 +97,8 @@ $(document).ready(function () {
 function getAllRecibos() {
 
     var dataParams = {'idRecibo': "NULL"};
+    
+    $("#listRecibos tbody").html('<tr><td colspan="7" align="center"><img src="../images/Loading_bar.gif" alt="Smiley face" title="Cargando"></center></td></tr>');
 
     $.ajax({
         type: 'POST',
@@ -108,7 +110,6 @@ function getAllRecibos() {
 
             if (jsonResp.RESPONSE) {
 
-                //alert(JSON.stringify(jsonResp));
 
                 if (jsonResp.MESSAGE === "") {
 
@@ -121,6 +122,8 @@ function getAllRecibos() {
                         var nombre_usuario = jsonResp.DATA[i]["nombre_usuario"];
                         var estado = jsonResp.DATA[i]["estado"];
                         var fecha = jsonResp.DATA[i]["fecha"];
+                        var placa = jsonResp.DATA[i]["id_placa"];
+                        var hora = jsonResp.DATA[i]["hora"];
                         //lblRecPen
 
                         if (estado === "Pendiente") {
@@ -145,13 +148,19 @@ function getAllRecibos() {
                         html += '' + nombre_usuario + '';
                         html += '</td>';
                         html += '<td>';
+                        html += '' + placa + '';
+                        html += '</td>';
+                        html += '<td>';
+                        html += '' + hora + '';
+                        html += '</td>';
+                        html += '<td>';
                         //html += ''+estado+''
                         if (estado === "Generado") {
-                            html += '<img src="../images/icon activo.png" alt="Smiley face" height="32" width="31" title="Generado">';
+                            html += '<p hidden>Generado</p><img src="../images/icon activo.png" alt="Smiley face" height="32" width="31" title="Generado">';
                         } else if (estado === "Anulado") {
-                            html += '<img src="../images/icon inactivo.png" alt="Smiley face" height="32" width="31" title="Anulado">';
+                            html += '<p hidden>Anulado</p><img src="../images/icon inactivo.png" alt="Smiley face" height="32" width="31" title="Anulado">';
                         } else if (estado === "Entregado") {
-                            html += '<img src="../images/icon entregado.png" alt="Smiley face" height="32" width="31" title="Entregado">';
+                            html += '<p hidden>Entregado</p><img src="../images/icon entregado.png" alt="Smiley face" height="32" width="31" title="Entregado">';
                         }
                         html += '</td>';
                         html += '<td>';
