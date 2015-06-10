@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        <title>Lista plazas</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <!-- Latest compiled and minified CSS -->
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/RefinalWeb.css">
+        <!-- Optional theme -->
+        <link rel="stylesheet" href="../css/bootstrap-theme.min.css">
+        <!-- Latest compiled and minified JavaScript -->
+        <script src="../js/util/jquery-2.1.3.min.js"></script>
+        <script src="../js/util/bootstrap.min.js"></script>
+        <script src="../js/util/main.js"></script>
+        
+        <script src="../js/get/getPregunta.js"></script>
+        <script src="../js/get/getRespuestasPreguntas.js"></script>
+        <script>
+            
+            $(function () {
+            mostrarPreguntas();
+            });
+        </script>
+        
+    </head>
+    <body>
+    <center>
+        <div class="super-head">
+            <div class="panel head">
+                <nav class="navbar navbar-default nav-head-re" >
+                    <div class="container-fluid" style="background: white;">
+                        <!-- Brand and toggle get grouped for better mobile display -->
+                        <div class="navbar-header">
+                            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                                <span class="sr-only">Toggle navigation</span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                                <span class="icon-bar"></span>
+                            </button>
+                            <a class="navbar-brand boton-refinal-head" onclick="inicioMenu();"></a>  
+                        </div>
+
+                        <!-- Collect the nav links, forms, and other content for toggling -->
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                            <ul class="nav navbar-nav">
+
+                            </ul>
+                            <ul class="nav navbar-nav navbar-right">
+                                <li><a class="boton-user-sesion"></a></li>
+                                <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button"  style="color: #71a1d1;"><label id="nom-user"></label><span class="caret"></span></a>
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li><a href="frmMainA.html">Inicio</a></li>
+                                        <li class="divider"></li>
+                                        <li><a class="cerrar-sesion">Cerrar Sesión</a></li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div><!-- /.navbar-collapse -->
+                    </div><!-- /.container-fluid -->
+                </nav>
+            </div>
+        </div>
+        <br>
+        <br>
+        <br>
+
+
+
+        <div class="panel body">
+            <div class="margen">
+                <br>
+                <div class="movil">
+                    <div id="notasdatos" style="text-align: left;">
+                        
+                    </div>
+                </div>
+                <br>
+            </div>
+        </div>
+        <div class="footer-transparent">
+            <ul class="list-inline footer-bar">
+                <li>
+                    <a id="btnNewPlaza" class="btn boton-plaza" onclick="$('#dialogAddPlaza').modal('show');">
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <br>
+        <br>
+        <br>
+
+
+
+
+    </center>
+    
+</body>
+</html>
+

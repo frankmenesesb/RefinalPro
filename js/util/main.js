@@ -10,6 +10,8 @@ var titleHeader = "";
 
 window.onload = function ()
 {
+    
+    
 //var recibiendoVariable = location.search.slice( location.search.indexOf("=") + 1,location.search.indexOf("$"));
     var tipoU = location.search.slice(location.search.indexOf("^") + 1, location.search.indexOf("}"));
 
@@ -213,7 +215,7 @@ $(function () {
 function inicioMenu() {
 
         if (localStorage.getItem("tipo_usuario") === 'S') {
-            location.href = 'frmMainO.html';
+            location.href = 'frmMainS.html';
         }else if (localStorage.getItem("tipo_usuario") === 'A') {
             location.href = 'frmMainA.html';
         }else{

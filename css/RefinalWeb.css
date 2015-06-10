@@ -8,6 +8,8 @@ and open the template in the editor.
     Author     : Frank
 */
 
+@charset "utf-8";
+
 body{
    background: #F3F3F3;
 }
