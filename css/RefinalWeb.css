@@ -163,7 +163,8 @@ div.footer {
 div.footer-transparent {
     position: fixed;
     height: 70px;
-    background: transparent;
+    //background: transparent;
+    background: white;
     border: transparent;
     bottom: 0;
     width: 100%;
