@@ -6,7 +6,7 @@
 
 var arrayPendientes = new Array();
 var JSONGLOBAL = {'ALLPENDIENTES': false};
-
+var html4 = "";
 
 var path = window.location.pathname;
 var pageName = path.split("/").pop();
@@ -16,7 +16,7 @@ $(document).ready(function () {
         var $panel = $(this).parents('.filterable'),
                 $filters = $panel.find('.filters input'),
                 $tbody = $panel.find('.table tbody');
-        if ($filters.prop('disabled') == true) {
+        if ($filters.prop('disabled') === true) {
             $filters.prop('disabled', false);
             $filters.first().focus();
         } else {
@@ -97,7 +97,7 @@ $(document).ready(function () {
 function getAllRecibos() {
 
     var dataParams = {'idRecibo': "NULL"};
-    
+
     $("#listRecibos tbody").html('<tr><td colspan="7" align="center"><img src="../images/Loading_bar.gif" alt="Smiley face" title="Cargando"></center></td></tr>');
 
     $.ajax({
@@ -124,6 +124,7 @@ function getAllRecibos() {
                         var fecha = jsonResp.DATA[i]["fecha"];
                         var placa = jsonResp.DATA[i]["id_placa"];
                         var hora = jsonResp.DATA[i]["hora"];
+                        var plaza = jsonResp.DATA[i]["nom_plaza"];
                         //lblRecPen
 
                         if (estado === "Pendiente") {
@@ -145,14 +146,19 @@ function getAllRecibos() {
                         html += '' + fecha + '';
                         html += '</td>';
                         html += '<td>';
+                        html += '' + hora + '';
+                        html += '</td>';
+                        html += '<td>';
                         html += '' + nombre_usuario + '';
+                        html += '</td>';
+                        html += '<td>';
+                        html += '' + plaza + '';
                         html += '</td>';
                         html += '<td>';
                         html += '' + placa + '';
                         html += '</td>';
-                        html += '<td>';
-                        html += '' + hora + '';
-                        html += '</td>';
+                        
+                        
                         html += '<td>';
                         //html += ''+estado+''
                         if (estado === "Generado") {
@@ -164,7 +170,7 @@ function getAllRecibos() {
                         }
                         html += '</td>';
                         html += '<td>';
-                        html += '<a id="btnVisRec_' + i + '"><span style="background-size: 110px; height: 35px; background-image: url(\'../images/btn-ver-0.png\'); display:block; background-repeat: no-repeat;" ></span></a>';
+                        html += '<a id="btnVisRec_' + i + '"  onclick="getRecibo(\'' + id_rec_enc + '\',\'' + fecha + '\',\'' + nombre_usuario + '\',\'' + placa + '\',\'' + hora + '\')"><span style="background-size: 110px; height: 35px; background-image: url(\'../images/btn-ver-0.png\'); display:block; background-repeat: no-repeat;" ></span></a>';
                         //html += '<input type="button" id="btnReimprRec_'+i+'" class="glyphicon glyphicon-file"/>';
                         html += '</td>';
                         if (pageName === "frmGestionRecibos.html") {
@@ -187,29 +193,29 @@ function getAllRecibos() {
 
                     $("#listRecibos tbody").html(html);
 
-                    $("#listRecibos tbody").find("tr").each(function () {
-                        var idRow = $(this).attr('id');
-                        idRow = idRow.replace("row_", "");
-                        var idFact = $(this).find('td').eq(0).text();
-                        var nomCliente = $(this).find('td').eq(1).text();
-                        var fechaGenerado = $(this).find('td').eq(2).text();
-
-                        $('#btnVisRec_' + idRow).on("click", function () {
-
-                            //alert( "Vista previa Recibo N° "+idFact+" :)" );
-                            alert(idFact + ' ' + nomCliente + ' ' + fechaGenerado);
-                            var jsonParams = {
-                                'idRecibo': idFact,
-                                'nomCliente': nomCliente,
-                                'fechaGenerado': fechaGenerado
-                            };
-
-
-                            getRecibo(jsonParams);
-
-                        });
-                        // do something with productId, product, Quantity
-                    });
+//                    $("#listRecibos tbody").find("tr").each(function () {
+//                        var idRow = $(this).attr('id');
+//                        idRow = idRow.replace("row_", "");
+//                        var idFact = $(this).find('td').eq(0).text();
+//                        var nomCliente = $(this).find('td').eq(1).text();
+//                        var fechaGenerado = $(this).find('td').eq(2).text();
+//
+//                        $('#btnVisRec_' + idRow).on("click", function () {
+//
+//                            //alert( "Vista previa Recibo N° "+idFact+" :)" );
+//                            alert(idFact + ' ' + nomCliente + ' ' + fechaGenerado);
+//                            var jsonParams = {
+//                                'idRecibo': idFact,
+//                                'nomCliente': nomCliente,
+//                                'fechaGenerado': fechaGenerado
+//                            };
+//
+//
+//                            getRecibo(jsonParams);
+//
+//                        });
+//                        // do something with productId, product, Quantity
+//                    });
 
                 } else if (jsonResp.MESSAGE === "EMPTY") {
                     alert("Error: no se encontro datos de registro del usuario!!");
@@ -226,9 +232,10 @@ function getAllRecibos() {
 
 }
 
-function getRecibo(jsonParams) {
+function getRecibo(id_rec_enc, fecha, nombre_usuario, placa, hora) {
 
-    var dataParams = {'idRecibo': jsonParams.idRecibo};
+    var dataParams = {'idRecibo': id_rec_enc};
+    
 
     $.ajax({
         type: 'POST',
@@ -239,7 +246,7 @@ function getRecibo(jsonParams) {
         success: function (jsonResp) {
 
             if (jsonResp.RESPONSE) {
-
+                
                 //alert(JSON.stringify(jsonResp));
 
 
@@ -247,13 +254,20 @@ function getRecibo(jsonParams) {
                     //alert(JSON.stringify(jsonResp));
                     var html = '<center><table width="95%" align="center" cellpadding="10" cellspacing="0" style="border:1px solid black;">';
                     html += "<tr align='center' style='border-bottom: solid;'>";
-                    html += "<td style='border-bottom: 1px solid black;'><label style='font-weight: bold;'>Factura No. " + jsonParams.idRecibo + "</label></td>";
-                    html += "<td style='border-bottom: 1px solid black;'><label>" + jsonParams.fechaGenerado + "</label></td>";
+                    html += "<td style='border-bottom: 1px solid black;'><label style='font-weight: bold;'>Factura No. " + id_rec_enc + "</label></td>";
+                    html += "<td style='border-bottom: 1px solid black;'><label>Fecha: " + fecha + " " + hora + "</label></td>";
                     html += "</tr>";
                     html += "<tr align='center'>";
                     html += "<td style='border-bottom: 1px solid black;'><label style='font-weight: bold;'>Usuario:</label></td>";
-                    html += "<td style='border-bottom: 1px solid black;'><label>" + jsonParams.nomCliente + "</label></td>";
+                    html += "<td style='border-bottom: 1px solid black;'><label>" + nombre_usuario + "</label></td>";
                     html += "</tr>";
+                    if (placa.toString() !== '') {
+                        html += "<tr align='center'>";
+                        html += "<td style='border-bottom: 1px solid black;'><label style='font-weight: bold;'>Placa entrega:</label></td>";
+                        html += "<td style='border-bottom: 1px solid black;'><label>" + placa + "</label></td>";
+                        html += "</tr>";
+                    }
+
                     html += "<tr>";
                     html += "<td colspan='2'>";
 
@@ -329,12 +343,16 @@ function getRecibo(jsonParams) {
                         html += '<td style="border-bottom: 1px solid black;"><label id="lblFecha"></label></td>';
                         html += '</tr>';
                         html += '<tr align="center" >';
-                        html += '<td style="border-bottom: 1px solid black;"><label style="font-weight: bold;">Usuario:</label></td>';
+                        html += '<td style="border-bottom: 1px solid black;"><label style="font-weight: bold;">REFINAL</label></td>';
                         html += '<td style="border-bottom: 1px solid black;"><label id="lblNomCliente"></label></td>';
                         html += '</tr>';
                         html += '<tr>';
                         html += '<td colspan="2">';
                         html += '<div id="divContent">' + html2;
+
+                        html += '<div id="divMotivos">';
+                        html += '</div>';
+
                         html += '</div>';
                         html += '</td>';
                         html += '</tr>';
@@ -349,6 +367,8 @@ function getRecibo(jsonParams) {
 
                         $("#dialogRecibo").html(html);
                         $('#dialogRecibo').modal('show');
+                        
+                        motivos(id_rec_enc);
 
                         $("#btnImprimir").on("click", function () {
 
@@ -373,6 +393,8 @@ function getRecibo(jsonParams) {
                 } else if (jsonResp.MESSAGE === "EMPTY") {
                     alert("Error: no se encontro datos de registro del usuario!!");
                 }
+                
+                
             } else {
                 alert("Ocurrio Un error:" + jsonResp.MESSAGE);
             }
@@ -582,3 +604,68 @@ $(function () {
         });
     });
 });
+
+
+function motivos(id_rec_enc) {
+
+    var id = id_rec_enc;
+    html4 = "";
+    html4 +="<br><br><center><label>Motivos cambios de estado:</label></center><br>";
+    html4 += '<table  width="95%" align="center" cellpadding="10" cellspacing="0" style="border:1px solid black;">';
+    html4 += '<tr align="center" style="border-bottom: solid;"><td style="border: 1px solid black;">Usuario</td>';
+    html4 += '<td style="border: 1px solid black;">Estado</td>';
+    html4 += '<td style="border: 1px solid black;">Observacion</td></tr>';
+    //setUdpRec
+    
+                    
+    
+    var dataParams = {'idRecibo': id};
+
+    $.ajax({
+        type: "POST",
+        url: "http://refinal.frienderco.com/php/get/getMotivosRec.php",
+        data: dataParams,
+        dataType: 'json',
+        cache: true,
+        success: function (jsonResp, html) {
+
+            if (jsonResp.RESPONSE) {
+                for (var i = 0; i < jsonResp.DATA.length; i++) {
+                var usuario = jsonResp.DATA[i]["nombre_usu"];
+                var observacion = jsonResp.DATA[i]["observacion"];
+               var estado = jsonResp.DATA[i]["estado"];
+                
+                
+
+                
+                    html4 += '<tr align="center" style="border-bottom: solid;">';
+                    
+                    html4 += '<td style="border: 1px solid black;">';
+                    html4 += ""+usuario;
+                    html4 += "</td>";
+                    html4 += '<td style="border: 1px solid black;">';
+                    html4 += ""+estado;
+                    html4 += "</td>";
+                    html4 += '<td style="border: 1px solid black;">';
+                    html4 += ""+observacion;
+                    html4 += "</td>";
+                    html4 += "</tr>";
+                }
+
+                html4 += '</table><br>';
+                
+                $("#divMotivos").html(html4);
+
+            } else {
+                alert("Ocurrio Un error:" + jsonResp.MESSAGE);
+                
+            }
+            
+        }
+        ,
+        error: function (jsonResp) {
+            alert("Ocurrio Un error Diferente");
+            $("#divMotivos").html('');
+        }
+    });
+}

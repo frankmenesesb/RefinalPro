@@ -80,14 +80,15 @@ $(function () {
                                     alert("Error: usuario y contraseña invalidos ");
 
                                 } else {
-
+                                    
                                     $("#txtNombre").val(nombre);
                                     $("#txtApellido").val(apellido);
                                     $("#txtUsuario").val(login);
                                     $("#txtEmail").val(email);
                                     $("#txtTelefono").val(telefono);
                                     $("#txtTipo").val(tipo);
-                                    $("txtContrasena").val(password);
+                                    $("#txtContrasena").val(password);
+                                    $("#txtContrasena2").val(password);
                                 }
                             }
 

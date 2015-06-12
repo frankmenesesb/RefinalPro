@@ -185,7 +185,8 @@ function updUsuario(jsonParams){
                             $("#txtEmail").val(email);
                             $("#txtTelefono").val(telefono);
                             $("#txtTipo").val(tipo);
-                            $("txtContrasena").val(password);
+                            $("#txtContrasena").val(password);
+                            $("#txtContrasena2").val(password);
                         }
                     }
 
