@@ -77,7 +77,8 @@ $(document).ready(function () {
                 var idFact = $(this).find('td').eq(0).text();
                 var nomCliente = $(this).find('td').eq(1).text();
                 var fechaGenerado = $(this).find('td').eq(2).text();
-                var estado = $(this).find('td').eq(3).find('img').attr('title');
+                var estado = $(this).find('td').eq(3).text();
+                //var estado = $(this).find('td').eq(3).find('img').attr('title');
 
                 arrayRecibos.push([idFact, nomCliente, fechaGenerado, estado]);
                 //arrayRecibos.push(idFact);
@@ -161,8 +162,8 @@ function getAllRecibos() {
                         html += '<td style="width: 5%;">';
                         html += '' + placa + '';
                         html += '</td>';
-                        
-                        
+
+
                         html += '<td style="width: 5%;">';
                         //html += ''+estado+''
                         if (estado === "Generado") {
@@ -239,7 +240,7 @@ function getAllRecibos() {
 function getRecibo(id_rec_enc, fecha, nombre_usuario, placa, hora, nom_proveedor) {
 
     var dataParams = {'idRecibo': id_rec_enc};
-    
+
 
     $.ajax({
         type: 'POST',
@@ -250,7 +251,7 @@ function getRecibo(id_rec_enc, fecha, nombre_usuario, placa, hora, nom_proveedor
         success: function (jsonResp) {
 
             if (jsonResp.RESPONSE) {
-                
+
                 //alert(JSON.stringify(jsonResp));
 
 
@@ -374,7 +375,7 @@ function getRecibo(id_rec_enc, fecha, nombre_usuario, placa, hora, nom_proveedor
 
                         $("#dialogRecibo").html(html);
                         $('#dialogRecibo').modal('show');
-                        
+
                         motivos(id_rec_enc);
 
                         $("#btnImprimir").on("click", function () {
@@ -384,7 +385,7 @@ function getRecibo(id_rec_enc, fecha, nombre_usuario, placa, hora, nom_proveedor
                             //window.document.write(ficha);
                             //window.document.title = "Reporte Factura";
                             window.print();
-                            
+
 
 //                            setTimeout(function () {
 //                                alert(window.location.href);
@@ -401,8 +402,8 @@ function getRecibo(id_rec_enc, fecha, nombre_usuario, placa, hora, nom_proveedor
                 } else if (jsonResp.MESSAGE === "EMPTY") {
                     alert("Error: no se encontro datos de registro del usuario!!");
                 }
-                
-                
+
+
             } else {
                 alert("Ocurrio Un error:" + jsonResp.MESSAGE);
             }
@@ -618,15 +619,15 @@ function motivos(id_rec_enc) {
 
     var id = id_rec_enc;
     html4 = "";
-    html4 +="<br><br><center><label>Motivos cambios de estado:</label></center><br>";
+    html4 += "<br><br><center><label>Motivos cambios de estado:</label></center><br>";
     html4 += '<table  width="95%" align="center" cellpadding="10" cellspacing="0" style="border:1px solid black;">';
     html4 += '<tr align="center" style="border-bottom: solid;"><td style="border: 1px solid black;">Usuario</td>';
     html4 += '<td style="border: 1px solid black;">Estado</td>';
     html4 += '<td style="border: 1px solid black;">Observacion</td></tr>';
     //setUdpRec
-    
-                    
-    
+
+
+
     var dataParams = {'idRecibo': id};
 
     $.ajax({
@@ -639,36 +640,36 @@ function motivos(id_rec_enc) {
 
             if (jsonResp.RESPONSE) {
                 for (var i = 0; i < jsonResp.DATA.length; i++) {
-                var usuario = jsonResp.DATA[i]["nombre_usu"];
-                var observacion = jsonResp.DATA[i]["observacion"];
-               var estado = jsonResp.DATA[i]["estado"];
-                
-                
+                    var usuario = jsonResp.DATA[i]["nombre_usu"];
+                    var observacion = jsonResp.DATA[i]["observacion"];
+                    var estado = jsonResp.DATA[i]["estado"];
 
-                
+
+
+
                     html4 += '<tr align="center" style="border-bottom: solid;">';
-                    
+
                     html4 += '<td style="border: 1px solid black;">';
-                    html4 += ""+usuario;
+                    html4 += "" + usuario;
                     html4 += "</td>";
                     html4 += '<td style="border: 1px solid black;">';
-                    html4 += ""+estado;
+                    html4 += "" + estado;
                     html4 += "</td>";
                     html4 += '<td style="border: 1px solid black;">';
-                    html4 += ""+observacion;
+                    html4 += "" + observacion;
                     html4 += "</td>";
                     html4 += "</tr>";
                 }
 
                 html4 += '</table><br>';
-                
+
                 $("#divMotivos").html(html4);
 
             } else {
                 alert("Ocurrio Un error:" + jsonResp.MESSAGE);
-                
+
             }
-            
+
         }
         ,
         error: function (jsonResp) {
