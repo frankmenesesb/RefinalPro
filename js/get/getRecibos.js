@@ -120,6 +120,7 @@ function getAllRecibos() {
 
                         var id_rec_enc = jsonResp.DATA[i]["id_rec_enc"];
                         var nombre_usuario = jsonResp.DATA[i]["nombre_usuario"];
+                        var nombre_proveedor = jsonResp.DATA[i]["nom_proveedor"];
                         var estado = jsonResp.DATA[i]["estado"];
                         var fecha = jsonResp.DATA[i]["fecha"];
                         var placa = jsonResp.DATA[i]["id_placa"];
@@ -139,27 +140,30 @@ function getAllRecibos() {
 
 
                         html += '<tr id="row_' + i + '">';
-                        html += '<td>';
+                        html += '<td style="width: 5%;">';
                         html += '' + id_rec_enc + '';
                         html += '</td>';
-                        html += '<td>';
+                        html += '<td style="width: 5%;">';
                         html += '' + fecha + '';
                         html += '</td>';
-                        html += '<td>';
+                        html += '<td style="width: 5%;">';
                         html += '' + hora + '';
                         html += '</td>';
-                        html += '<td>';
+                        html += '<td style="width: 15%;">';
                         html += '' + nombre_usuario + '';
                         html += '</td>';
-                        html += '<td>';
+                        html += '<td style="width: 10%;">';
                         html += '' + plaza + '';
                         html += '</td>';
-                        html += '<td>';
+                        html += '<td style="width: 15%;">';
+                        html += '' + nombre_proveedor + '';
+                        html += '</td>';
+                        html += '<td style="width: 5%;">';
                         html += '' + placa + '';
                         html += '</td>';
                         
                         
-                        html += '<td>';
+                        html += '<td style="width: 5%;">';
                         //html += ''+estado+''
                         if (estado === "Generado") {
                             html += '<p hidden>Generado</p><img src="../images/icon activo.png" alt="Smiley face" height="32" width="31" title="Generado">';
@@ -169,12 +173,12 @@ function getAllRecibos() {
                             html += '<p hidden>Entregado</p><img src="../images/icon entregado.png" alt="Smiley face" height="32" width="31" title="Entregado">';
                         }
                         html += '</td>';
-                        html += '<td>';
-                        html += '<a id="btnVisRec_' + i + '"  onclick="getRecibo(\'' + id_rec_enc + '\',\'' + fecha + '\',\'' + nombre_usuario + '\',\'' + placa + '\',\'' + hora + '\')"><span style="background-size: 110px; height: 35px; background-image: url(\'../images/btn-ver-0.png\'); display:block; background-repeat: no-repeat;" ></span></a>';
+                        html += '<td style="width: 10%;">';
+                        html += '<a id="btnVisRec_' + i + '"  onclick="getRecibo(\'' + id_rec_enc + '\',\'' + fecha + '\',\'' + nombre_usuario + '\',\'' + placa + '\',\'' + hora + '\',\'' + nombre_proveedor + '\')"><span style="background-size: 110px; height: 35px; background-image: url(\'../images/btn-ver-0.png\'); display:block; background-repeat: no-repeat;" ></span></a>';
                         //html += '<input type="button" id="btnReimprRec_'+i+'" class="glyphicon glyphicon-file"/>';
                         html += '</td>';
                         if (pageName === "frmGestionRecibos.html") {
-                            html += '<td>';
+                            html += '<td style="width: 10%;">';
                             html += "<a id='btnUpdRec_" + i + "' onclick='updRecibo(\"" + id_rec_enc + "\",\"" + estado + "\",\"" + fecha + "\");'><span style='background-size: 110px; height: 35px; background-image: url(\"../images/btn-editar-0.png\"); display:block; background-repeat: no-repeat;' ></span></a>";
                             //alert("<a id='btnUpdRec_" + i + "' onclick='updRecibo(" + id_rec_enc + ");'><span style='background-size: 110px; height: 35px; background-image: url(\"../images/btn-editar-0.png\"); display:block; background-repeat: no-repeat;' ></span></a>");
                             html += '</td>';
@@ -232,7 +236,7 @@ function getAllRecibos() {
 
 }
 
-function getRecibo(id_rec_enc, fecha, nombre_usuario, placa, hora) {
+function getRecibo(id_rec_enc, fecha, nombre_usuario, placa, hora, nom_proveedor) {
 
     var dataParams = {'idRecibo': id_rec_enc};
     
@@ -260,6 +264,10 @@ function getRecibo(id_rec_enc, fecha, nombre_usuario, placa, hora) {
                     html += "<tr align='center'>";
                     html += "<td style='border-bottom: 1px solid black;'><label style='font-weight: bold;'>Usuario:</label></td>";
                     html += "<td style='border-bottom: 1px solid black;'><label>" + nombre_usuario + "</label></td>";
+                    html += "</tr>";
+                    html += "<tr align='center'>";
+                    html += "<td style='border-bottom: 1px solid black;'><label style='font-weight: bold;'>Proveedor:</label></td>";
+                    html += "<td style='border-bottom: 1px solid black;'><label>" + nom_proveedor + "</label></td>";
                     html += "</tr>";
                     if (placa.toString() !== '') {
                         html += "<tr align='center'>";
@@ -359,7 +367,6 @@ function getRecibo(id_rec_enc, fecha, nombre_usuario, placa, hora) {
                         html += '</table>';
                         html += '</div>';
                         html += '<div class="modal-footer">';
-                        html += '<button type="button" class="btn btn-default" data-dismiss="modal">Listo!</button>';
                         html += '<button type="button" class="btn btn-default glyphicon glyphicon-print" data-dismiss="modal" id="btnImprimir">Imprimir</button>';
                         html += '</div>';
                         html += '</div>';
@@ -374,14 +381,15 @@ function getRecibo(id_rec_enc, fecha, nombre_usuario, placa, hora) {
 
                             //$("#dialogRecibo").print();
                             var ficha = $("#divContent2").html();
-                            window.document.write(ficha);
-                            window.document.title = "Reporte Factura";
+                            //window.document.write(ficha);
+                            //window.document.title = "Reporte Factura";
                             window.print();
+                            
 
-                            setTimeout(function () {
-                                alert(window.location.href);
-                                window.location.href = '../frm/frmRecibos.html';
-                            }, 3000);
+//                            setTimeout(function () {
+//                                alert(window.location.href);
+//                                window.location.href = '../frm/frmRecibos.html';
+//                            }, 3000);
 
 
                         });

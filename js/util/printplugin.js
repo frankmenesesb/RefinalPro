@@ -1,6 +1,6 @@
 function PrintPlugin() {}
 PrintPlugin.prototype.print = function(printHTML, success, fail, options) {
-    if (typeof printHTML != 'string'){
+    if (typeof printHTML !== 'string'){
         console.log("Print function requires an HTML string. Not an object");
         return;
     }
@@ -21,7 +21,9 @@ PrintPlugin.prototype.isPrintingAvailable = function(callback) {
 
 
   window.print = function() {
+      
 		var htmlTag = document.body.parentNode;
+                
 		var docHtml = htmlTag.innerHTML;
                 //var docHtml = "<labe>Hola</label>";
 		var win = window.parent || window;
