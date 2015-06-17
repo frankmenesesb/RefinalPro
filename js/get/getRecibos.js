@@ -75,12 +75,17 @@ $(document).ready(function () {
 
             if ($('#' + idRow).is(':visible')) {
                 var idFact = $(this).find('td').eq(0).text();
-                var nomCliente = $(this).find('td').eq(1).text();
-                var fechaGenerado = $(this).find('td').eq(2).text();
-                var estado = $(this).find('td').eq(3).text();
+                var fechaGenerado = $(this).find('td').eq(1).text();
+                
+                var horaGenerado = $(this).find('td').eq(2).text();
+                var nomRecolector = $(this).find('td').eq(3).text();
+                var plaza = $(this).find('td').eq(4).text();
+                var nomProveedor = $(this).find('td').eq(5).text();
+                var estado = $(this).find('td').eq(6).text();
+                
                 //var estado = $(this).find('td').eq(3).find('img').attr('title');
 
-                arrayRecibos.push([idFact, nomCliente, fechaGenerado, estado]);
+                arrayRecibos.push([idFact,fechaGenerado, horaGenerado,nomRecolector, plaza, nomProveedor, estado]);
                 //arrayRecibos.push(idFact);
             }
         });

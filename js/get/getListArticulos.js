@@ -47,6 +47,7 @@ $(document).ready(function() {
     });
     getAllArticulos();
     setSelectImagenes();
+    setSelectPadres();
     
     $('#dialogUpdUsuario').modal('hide');
     $('#dialogInsUsuario').modal('hide');
@@ -83,7 +84,8 @@ function getAllArticulos(){
                                 var descripcion = jsonResp.DATA[i]["descripcion"];
                                 var observacion = jsonResp.DATA[i]["observacion"];
                                 var imagen = jsonResp.DATA[i]["imagen"];
-                                
+                                var padre =jsonResp.DATA[i]["padre"];
+                                var tipo =jsonResp.DATA[i]["tipo"];
                                 var jsonParams = {
                                    'idArticulo': id,
                                    'indexRow': i
@@ -95,7 +97,7 @@ function getAllArticulos(){
                                 html += ''+id+'';
                                 html += '</td>';
                                 html += '<td>';
-                                html += ''+descripcion+''
+                                html += ''+descripcion+'';
                                 html += '</td>';
                                 html += '<td>';
                                 html += ''+observacion+'';
@@ -107,7 +109,11 @@ function getAllArticulos(){
                                 html += "<a id='btnUpdArt_"+i+"' class='btn boton-editar' onclick='modalUpdArticulo("+JSON.stringify(jsonParams)+");'></a>";
                                 html += '</td>';
                                 html += '<td>';
+                                if(tipo.toString()!=="P"){
                                 html += "<a id='btnRemoveArticulo_" + i + "' onclick='removeArticulo(" + id + ");'><span style='background-size: 35px; height: 35px; background-image: url(\"../images/icon inactivo.png\"); display:block; background-repeat: no-repeat;' ></span></a>";
+                                }else{
+                                   html+=" Categoria Principal";
+                                }
                                 html += '</td>';
                                 html += '</tr>';
 
@@ -265,8 +271,9 @@ function saveAddArticulo(){
     var nombre = $("#txtNombreArticuloNew").val();
     var observacion = $("#txtObservacionArticuloNew").val();
     var imagen = $("#selImagenesNew").val();
+    var padre = $("#txtPadre").val();
     
-    var dataParams = {'identificacion': identificacion, 'nombre': nombre, 'observacion':observacion, 'imagen':imagen};
+    var dataParams = {'identificacion': identificacion, 'nombre': nombre, 'observacion':observacion, 'imagen':imagen, 'padre':padre};
 
 
     $.ajax({
@@ -285,6 +292,7 @@ function saveAddArticulo(){
                 $("#txtIdentificacionArticuloNew").val("");
                 $("#txtNombreArticuloNew").val("");
                 $("#txtObservacionArticuloNew").val("");
+                $("#txtPadre").val('N');
 
             } else {
                 alert("Ocurrio Un error:" + jsonResp.MESSAGE);
@@ -323,6 +331,59 @@ function removeArticulo(idArticulo){
         ,
         error: function (jsonResp) {
             alert("Ocurrio Un error Diferente");
+        }
+    });
+}
+
+
+function setSelectPadres() {
+    var urlima;
+    
+    $.ajax({
+        type: 'POST',
+        //data: dataString,
+        dataType: 'json',
+        url: "http://refinal.frienderco.com/php/get/getArticulosPadre.php",
+        //url: "../php/get/getArticulos.php",
+        success: function (jsonResp) {
+
+            if (jsonResp.RESPONSE) {
+
+
+                if (jsonResp.MESSAGE === "undefined" || jsonResp.MESSAGE === undefined) {
+
+                    alert('Error no hay imagenes!!');
+                }
+                if (jsonResp.MESSAGE === "") {
+
+                    var options = "<option value='N'>Seleccione Categoria</option>";
+                    
+                    for (var i = 0; i < jsonResp.DATA.length; i++) {
+                        var imagen = jsonResp.DATA[i]["imagen"];
+                        var id = jsonResp.DATA[i]["id_art"];
+                        var nombre = jsonResp.DATA[i]["descripcion"];
+                        urlima="'../images/"+imagen+"'";
+                        var span="</span>  <span style='display:inline-block; width:100px;'>  美金</span>";
+                        //options += '<option value="" data-content="'+urlima+' '+span+'"></option>';
+                        options += '<option value="' + id + '" style="background-image:url('+urlima+'); background-repeat:no-repeat; height:40px; background-position: right;">'+nombre+'</option>';
+                        
+                        //options += '<option value="' + imagen + '" style="background-image:url(../images/'+imagen+');no-repeat; height:100px;">'+imagen+'</option>';
+                    }
+
+                    $('#txtPadre').html(options);
+                                       
+
+                } else if (jsonResp.MESSAGE === "EMPTY") {
+                    alert("Error: no se encontro datos de articulos!!");
+                }
+            } else {
+                alert("Ocurrio Un error:" + jsonResp.MESSAGE);
+            }
+
+
+        },
+        error: function (jsonResp) {
+            alert("Ocurrio Un error");
         }
     });
 }
