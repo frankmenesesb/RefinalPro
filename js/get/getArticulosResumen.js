@@ -52,13 +52,10 @@ var recibiendoVariable = location.search.slice( location.search.indexOf("=") + 1
 
 
 
-
+                    articulos.
                         can = jsonResp.DATA[i]["can_res"];
                         descripcion = jsonResp.DATA[i]["descripcion"];
                         
-                        
-
-
 
                         var log = "";
                         if ((descripcion === null || descripcion === "") || (can === null || can=== "")) {
@@ -81,11 +78,7 @@ var recibiendoVariable = location.search.slice( location.search.indexOf("=") + 1
                             html += '</td>';
                             html += '</tr>';
                             //articulos.add(id);
-
-
-
-
-
+                           
 
                         }
                     }
