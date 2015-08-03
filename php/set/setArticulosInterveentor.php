@@ -11,8 +11,9 @@ include("../config.php");
 
     $strMessage = "";
 
-$idRecibo = $_REQUEST['idRecibo'];
-$estado = $_REQUEST['estado'];
+$idProveedor= $_REQUEST['idProveedor'];
+$idArticulo = $_REQUEST['idArticulo'];
+$opcion= $_REQUEST['opcion'];
 
 
 
@@ -29,14 +30,19 @@ if (!$link) {
 mysqli_select_db($link,"refinal");
 
 
-
-		$query = sprintf("UPDATE rec_enc SET estado = '$estado' WHERE id_rec_enc=$idRecibo ");
+		if($opcion == "DEL"){
+			$query = sprintf("DELETE FROM art_prov
+					  WHERE id_proveedor = $idProveedor AND id_art = $idArticulo");
+		}else{
+			$query = sprintf("INSERT INTO art_prov(id_proveedor, id_art)						
+			VALUES ($idProveedor,$idArticulo)");
+		}
 			
 		
 		$result = mysqli_query($link,$query);
 		
-		
-		if(mysqli_affected_rows($link)){
+		$data = mysqli_affected_rows($link);
+		if(mysqli_affected_rows($link)>0){
 		 $strMessage = "Datos actualizados con exito!!";
 		
 		   
@@ -59,9 +65,9 @@ if($blRespUpd === false){
 }
 
 $arrayResp = array(
-    'RESPONSE'  => $blResp,
+    'RESPONSE'  => $result,
     'MESSAGE'   => $strMessage,
-    'DATA'      => $arrayPendientes
+    'DATA'      => $data
 );
 
 echo json_encode($arrayResp);

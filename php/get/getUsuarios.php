@@ -1,23 +1,14 @@
 <?php
-
-// Activando Cors
-
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-
     include("../config.php");
 
     $blResp = false;
 
     $strMessage = "";
 
-    $login = htmlspecialchars(trim($_REQUEST['usuario']));
-    $pass1 = trim($_REQUEST['contrasena']);
-    
-    //variable donde traigo la identificacion
-    //$identificacion = htmlspecialchars(trim($_REQUEST['identificacion']));
-    
-    
+    $idUsuario = intval($_REQUEST['idUsuario']);
+        
     $con = mysqli_connect($datos[0],$datos[1],$datos[2],$datos[3]);
     $blResp = true;
     
@@ -29,11 +20,12 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 
     mysqli_select_db($con,"ajax_demo");
 
+if($idUsuario !== 0){
+	$sql="select id_usuario, identificacion, nombre, apellido, case tipo when 'R' then 'Recolector' when 'A' then 'Administrador' when 'S' then 'Oficina' end as tipo from usuario where id_usuario = $idUsuario";
+}else{
+	$sql="select id_usuario, identificacion, nombre, apellido, case tipo when 'R' then 'Recolector' when 'A' then 'Administrador' when 'S' then 'Oficina' end as tipo from usuario";
+}
 
-$sql="SELECT u.id_usuario, u.nombre, u.apellido, u.usuario, u.tipo, u.telefono, u.email, u.identificacion
-FROM usuario u WHERE u.usuario= '$login' and u.password = '$pass1'";
-
-//$sql="SELECT id, nombre, apellidos, login, foto FROM usuarios WHERE login= '$login' and password='$pass1'";
 $result = mysqli_query($con,$sql);
 
 $arrayData = array();

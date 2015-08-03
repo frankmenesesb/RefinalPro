@@ -11,8 +11,10 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 
     $strMessage = "";
 
-    $login = htmlspecialchars(trim($_REQUEST['usuario']));
-    $pass1 = trim($_REQUEST['contrasena']);
+    //$q = intval($_REQUEST['strUser']);
+    
+    //$login = htmlspecialchars(trim($_REQUEST['usuario']));
+    //$pass1 = sha1(md5(trim($_REQUEST['contrasena'])));
     
     //variable donde traigo la identificacion
     //$identificacion = htmlspecialchars(trim($_REQUEST['identificacion']));
@@ -30,10 +32,9 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
     mysqli_select_db($con,"ajax_demo");
 
 
-$sql="SELECT u.id_usuario, u.nombre, u.apellido, u.usuario, u.tipo, u.telefono, u.email, u.identificacion
-FROM usuario u WHERE u.usuario= '$login' and u.password = '$pass1'";
-
-//$sql="SELECT id, nombre, apellidos, login, foto FROM usuarios WHERE login= '$login' and password='$pass1'";
+$sql="SELECT u.id_usuario, u.nombre, u.apellido, u.usuario, u.tipo, u.telefono, u.email, u.identificacion, u.password
+FROM usuario u";
+//$sql="SELECT id, nombre, apellidos, login, foto FROM usuarios";
 $result = mysqli_query($con,$sql);
 
 $arrayData = array();

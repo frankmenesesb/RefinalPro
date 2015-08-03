@@ -99,7 +99,7 @@ function allProveedores() {
         type: 'POST',
         data: dataString,
         dataType: 'json',
-        url: "http://refinal.frienderco.com/php/get/getProveedor.php",
+        url: "http://refinalapp.fluxusmedia.co/php/get/getProveedor.php",
         //url: "../php/get/getArticulos.php",
         success: function (jsonResp) {
 
@@ -216,7 +216,7 @@ function saveAddProveedor() {
 
         $.ajax({
             type: "POST",
-            url: "http://refinal.frienderco.com/php/set/setProveedor.php",
+            url: "http://refinalapp.fluxusmedia.co/php/set/setProveedor.php",
             //url: "../php/set/setReciboEnc.php",
             data: dataParams,
             dataType: 'json',
@@ -275,7 +275,7 @@ function setSelectPlaza() {
         type: 'POST',
         data: dataParams,
         dataType: 'json',
-        url: "http://refinal.frienderco.com/php/get/getPlazas.php",
+        url: "http://refinalapp.fluxusmedia.co/php/get/getPlazas.php",
         //url: "../php/get/getArticulos.php",
         success: function (jsonResp) {
 
@@ -329,7 +329,7 @@ function getArticulosProveedor(id) {
         type: 'POST',
         data: dataParams,
         dataType: 'json',
-        url: "http://refinal.frienderco.com/php/get/getArticulosProveedor.php",
+        url: "http://refinalapp.fluxusmedia.co/php/get/getArticulosProveedor.php",
         //url: "../php/get/getUser.php",
         success: function (jsonResp) {
 
@@ -403,7 +403,7 @@ function removeArticuloProveedor(idProveedor, id_articulo) {
 
     $.ajax({
         type: "POST",
-        url: "http://refinal.frienderco.com/php/set/setArticulosInterveentor.php",
+        url: "http://refinalapp.fluxusmedia.co/php/set/setArticulosInterveentor.php",
         //url: "../php/set/setReciboEnc.php",
         data: dataParams,
         dataType: 'json',
@@ -436,7 +436,7 @@ function setArticulosInterveentor(id, art) {
 
     $.ajax({
         type: "POST",
-        url: "http://refinal.frienderco.com/php/set/setArticulosInterveentor.php",
+        url: "http://refinalapp.fluxusmedia.co/php/set/setArticulosInterveentor.php",
         //url: "../php/set/setReciboEnc.php",
         data: dataParams,
         dataType: 'json',
@@ -469,7 +469,7 @@ function setSelectProveedores() {
         type: 'POST',
         //data: dataString,
         dataType: 'json',
-        url: "http://refinal.frienderco.com/php/get/getGestionProveedores.php",
+        url: "http://refinalapp.fluxusmedia.co/php/get/getGestionProveedores.php",
         //url: "../php/get/getArticulos.php",
         success: function (jsonResp) {
 
@@ -518,7 +518,7 @@ function setSelectArticulos(id) {
         type: 'POST',
         data: dataParams,
         dataType: 'json',
-        url: "http://refinal.frienderco.com/php/get/getArticulosDProveedor.php",
+        url: "http://refinalapp.fluxusmedia.co/php/get/getArticulosDProveedor.php",
         //url: "../php/get/getArticulos.php",
         success: function (jsonResp) {
 
@@ -583,7 +583,7 @@ function saveUpdProveedor() {
 
     $.ajax({
         type: "POST",
-        url: "http://refinal.frienderco.com/php/set/setUpdProveedor.php",
+        url: "http://refinalapp.fluxusmedia.co/php/set/setUpdProveedor.php",
         data: dataParams,
         dataType: 'json',
         cache: true,

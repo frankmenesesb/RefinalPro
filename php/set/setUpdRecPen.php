@@ -1,18 +1,22 @@
 <?php
 
 
+// Activando Cors
+
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 
 
 include("../config.php");
 
+
+
+
     $blResp = false;
 
     $strMessage = "";
 
-$idRecibo = $_REQUEST['idRecibo'];
-$estado = $_REQUEST['estado'];
+$arrayPendientes = $_REQUEST['arrayPendientes'];
 
 
 
@@ -30,14 +34,15 @@ mysqli_select_db($link,"refinal");
 
 
 
-		$query = sprintf("UPDATE rec_enc SET estado = '$estado' WHERE id_rec_enc=$idRecibo ");
+	for($i=0;count($arrayPendientes);$i++){
+		$query = sprintf("UPDATE rec_enc SET estado = 'G' WHERE id_rec_enc=$arrayPendientes[$i]");
 			
 		
 		$result = mysqli_query($link,$query);
 		
 		
 		if(mysqli_affected_rows($link)){
-		 $strMessage = "Datos actualizados con exito!!";
+		 $strMessage = "El usuario ha sido guardado con exito!!";
 		
 		   
 		} else {
@@ -46,6 +51,7 @@ mysqli_select_db($link,"refinal");
 		}
 
 	
+}    
 
 
 

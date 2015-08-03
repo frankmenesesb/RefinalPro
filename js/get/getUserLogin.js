@@ -53,7 +53,7 @@ function login_usuario(){
                 type: 'POST',
                 data: dataString,
                 dataType: 'json',
-                url: "http://refinal.frienderco.com/php/get/getUserLogin.php",
+                url: "http://refinalapp.fluxusmedia.co/php/get/getUserLogin.php",
                 success: function (jsonResp) {
 
                     if (jsonResp.RESPONSE) {

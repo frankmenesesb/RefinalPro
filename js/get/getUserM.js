@@ -36,7 +36,7 @@ if (operacion ==='M'){
                 //data: dataString,
                 dataType: 'json',
                 
-                url: "http://refinal.frienderco.com/php/get/getUserAll.php",
+                url: "http://refinalapp.fluxusmedia.co/php/get/getUserAll.php",
                 //url: "../php/get/getUser.php",
                 success: function (jsonResp) {
 

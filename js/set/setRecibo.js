@@ -48,7 +48,7 @@ $(function () {
 //esta es una prueba
             $.ajax({
                 type: "POST",
-                url: "http://refinal.frienderco.com/php/set/setReciboEnc.php",
+                url: "http://refinalapp.fluxusmedia.co/php/set/setReciboEnc.php",
                 //url: "../php/set/setReciboEnc.php",
                 data: dataString,
                 dataType: 'json',

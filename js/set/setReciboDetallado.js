@@ -9,7 +9,7 @@ function detallado(articulo, cantidad) {
 //esta es una prueba
     $.ajax({
         type: "POST",
-        url: "http://refinal.frienderco.com/php/set/setReciboDet.php",
+        url: "http://refinalapp.fluxusmedia.co/php/set/setReciboDet.php",
         //url: "../php/set/setReciboDet.php",
         data: dataString,
         dataType: 'json',

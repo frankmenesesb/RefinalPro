@@ -39,7 +39,7 @@ $(function () {
                 data: dataString,
                 dataType: 'json',
                 
-                url: "http://refinal.frienderco.com/php/get/getUser.php",
+                url: "http://refinalapp.fluxusmedia.co/php/get/getUser.php",
                 //url: "../php/get/getUser.php",
                 success: function (jsonResp) {
 

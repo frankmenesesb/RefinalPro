@@ -26,7 +26,7 @@ $(function () {
         type: 'POST',
         //data: dataString,
         dataType: 'json',
-        url: "http://refinal.frienderco.com/php/get/getProveedor.php",
+        url: "http://refinalapp.fluxusmedia.co/php/get/getProveedor.php",
         //url: "../php/get/getArticulos.php",
         success: function (jsonResp) {
 

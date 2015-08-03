@@ -110,7 +110,7 @@ function getAllRecibos() {
         type: 'POST',
         data: dataParams,
         dataType: 'json',
-        url: "http://refinal.frienderco.com/php/get/getRecibosEnc.php",
+        url: "http://refinalapp.fluxusmedia.co/php/get/getRecibosEnc.php",
         //url: "../php/get/getUser.php",
         success: function (jsonResp) {
 
@@ -180,7 +180,7 @@ function getAllRecibos() {
                         }
                         html += '</td>';
                         html += '<td style="width: 10%;">';
-                        html += '<a id="btnVisRec_' + i + '"  onclick="getRecibo(\'' + id_rec_enc + '\',\'' + fecha + '\',\'' + nombre_usuario + '\',\'' + placa + '\',\'' + hora + '\',\'' + nombre_proveedor + '\')"><span style="background-size: 110px; height: 35px; background-image: url(\'../images/btn-ver-0.png\'); display:block; background-repeat: no-repeat;" ></span></a>';
+                        html += '<a id="btnVisRec_' + i + '"  onclick="getRecibo(\'' + id_rec_enc + '\',\'' + fecha + '\',\'' + nombre_usuario + '\',\'' + placa + '\',\'' + hora + '\',\'' + nombre_proveedor + '\',\'' + plaza + '\')"><span style="background-size: 110px; height: 35px; background-image: url(\'../images/btn-ver-0.png\'); display:block; background-repeat: no-repeat;" ></span></a>';
                         //html += '<input type="button" id="btnReimprRec_'+i+'" class="glyphicon glyphicon-file"/>';
                         html += '</td>';
                         if (pageName === "frmGestionRecibos.html") {
@@ -242,7 +242,7 @@ function getAllRecibos() {
 
 }
 
-function getRecibo(id_rec_enc, fecha, nombre_usuario, placa, hora, nom_proveedor) {
+function getRecibo(id_rec_enc, fecha, nombre_usuario, placa, hora, nom_proveedor, nom_plaza) {
 
     var dataParams = {'idRecibo': id_rec_enc};
 
@@ -251,7 +251,7 @@ function getRecibo(id_rec_enc, fecha, nombre_usuario, placa, hora, nom_proveedor
         type: 'POST',
         data: dataParams,
         dataType: 'json',
-        url: "http://refinal.frienderco.com/php/get/getReciboDet.php",
+        url: "http://refinalapp.fluxusmedia.co/php/get/getReciboDet.php",
         //url: "../php/get/getUser.php",
         success: function (jsonResp) {
 
@@ -274,6 +274,10 @@ function getRecibo(id_rec_enc, fecha, nombre_usuario, placa, hora, nom_proveedor
                     html += "<tr align='center'>";
                     html += "<td style='border-bottom: 1px solid black;'><label style='font-weight: bold;'>Proveedor:</label></td>";
                     html += "<td style='border-bottom: 1px solid black;'><label>" + nom_proveedor + "</label></td>";
+                    html += "</tr>";
+                    html += "<tr align='center'>";
+                    html += "<td style='border-bottom: 1px solid black;'><label style='font-weight: bold;'>Plaza:</label></td>";
+                    html += "<td style='border-bottom: 1px solid black;'><label>" + nom_plaza + "</label></td>";
                     html += "</tr>";
                     if (placa.toString() !== '') {
                         html += "<tr align='center'>";
@@ -474,7 +478,7 @@ function setUpdRecPen(arrayPendientes) {
 
     $.ajax({
         type: "POST",
-        url: "http://refinal.frienderco.com/php/set/setUpdRecPen.php",
+        url: "http://refinalapp.fluxusmedia.co/php/set/setUpdRecPen.php",
         //url: "../php/set/setReciboEnc.php",
         data: dataParams,
         dataType: 'json',
@@ -504,7 +508,7 @@ function generarArchivoPlano(arrayRecibos) {
 
     $.ajax({
         type: "POST",
-        url: "http://refinal.frienderco.com/php/get/getRecArchivoPlano.php",
+        url: "http://refinalapp.fluxusmedia.co/php/get/getRecArchivoPlano.php",
         data: dataParams,
         dataType: 'json',
         cache: true,
@@ -595,7 +599,7 @@ $(function () {
 
         $.ajax({
             type: "POST",
-            url: "http://refinal.frienderco.com/php/set/setUdpRec.php",
+            url: "http://refinalapp.fluxusmedia.co/php/set/setUdpRec.php",
             data: dataParams,
             dataType: 'json',
             cache: true,
@@ -637,7 +641,7 @@ function motivos(id_rec_enc) {
 
     $.ajax({
         type: "POST",
-        url: "http://refinal.frienderco.com/php/get/getMotivosRec.php",
+        url: "http://refinalapp.fluxusmedia.co/php/get/getMotivosRec.php",
         data: dataParams,
         dataType: 'json',
         cache: true,

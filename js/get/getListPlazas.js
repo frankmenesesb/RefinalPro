@@ -60,7 +60,7 @@ function getAllPlazas(){
                 type: 'POST',
                 data: dataParams,
                 dataType: 'json',                
-                url: "http://refinal.frienderco.com/php/get/getPlazas.php",
+                url: "http://refinalapp.fluxusmedia.co/php/get/getPlazas.php",
                 success: function (jsonResp) {
                     
                     if (jsonResp.RESPONSE) {
@@ -128,7 +128,7 @@ function modalUpdPlaza(jsonParams){
         type: 'POST',
         data: jsonParams,
         dataType: 'json',
-        url: "http://refinal.frienderco.com/php/get/getPlazas.php",
+        url: "http://refinalapp.fluxusmedia.co/php/get/getPlazas.php",
         success: function (jsonResp) {
 
             if (jsonResp.RESPONSE) {
@@ -175,7 +175,7 @@ function btnUpdPlaza() {
 
     $.ajax({
         type: "POST",
-        url: "http://refinal.frienderco.com/php/set/setUdpPlaza.php",
+        url: "http://refinalapp.fluxusmedia.co/php/set/setUdpPlaza.php",
         data: dataParams,
         dataType: 'json',
         cache: true,
@@ -209,7 +209,7 @@ function saveAddPlaza(){
 
     $.ajax({
         type: "POST",
-        url: "http://refinal.frienderco.com/php/set/setPlaza.php",
+        url: "http://refinalapp.fluxusmedia.co/php/set/setPlaza.php",
         //url: "../php/set/setReciboEnc.php",
         data: dataParams,
         dataType: 'json',
@@ -242,7 +242,7 @@ function removePlaza(idPlaza){
 
     $.ajax({
         type: "POST",
-        url: "http://refinal.frienderco.com/php/set/setDelPlazas.php",
+        url: "http://refinalapp.fluxusmedia.co/php/set/setDelPlazas.php",
         //url: "../php/set/setReciboEnc.php",
         data: dataParams,
         dataType: 'json',

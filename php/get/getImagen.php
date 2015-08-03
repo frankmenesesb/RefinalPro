@@ -1,18 +1,23 @@
 <?php
 
-// Activando Cors
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-
     include("../config.php");
 
     $blResp = false;
 
     $strMessage = "";
 
-    $login = htmlspecialchars(trim($_REQUEST['usuario']));
-    $pass1 = trim($_REQUEST['contrasena']);
+    //$q = intval($_REQUEST['strUser']);
+    
+    //$login = htmlspecialchars(trim($_REQUEST['usuario']));
+    //$pass1 = sha1(md5(trim($_REQUEST['contrasena'])));
     
     //variable donde traigo la identificacion
     //$identificacion = htmlspecialchars(trim($_REQUEST['identificacion']));
@@ -30,9 +35,7 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
     mysqli_select_db($con,"ajax_demo");
 
 
-$sql="SELECT u.id_usuario, u.nombre, u.apellido, u.usuario, u.tipo, u.telefono, u.email, u.identificacion
-FROM usuario u WHERE u.usuario= '$login' and u.password = '$pass1'";
-
+$sql="select a.id_art, a.descripcion, a.imagen from articulos a order by a.id_art";
 //$sql="SELECT id, nombre, apellidos, login, foto FROM usuarios WHERE login= '$login' and password='$pass1'";
 $result = mysqli_query($con,$sql);
 
@@ -60,4 +63,3 @@ $arrayResp = array(
 
 echo json_encode($arrayResp);
 
-?>

@@ -31,7 +31,7 @@ $(function () {
         type: 'POST',
         data: dataString,
         dataType: 'json',
-        url: "http://refinal.frienderco.com/php/get/getReciboGenerado.php",
+        url: "http://refinalapp.fluxusmedia.co/php/get/getReciboGenerado.php",
         //url: "../php/get/getArticulos.php",
         success: function (jsonResp) {
 

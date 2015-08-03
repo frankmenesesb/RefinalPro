@@ -1,21 +1,19 @@
 <?php
-
-// Activando Cors
-
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-
     include("../config.php");
 
     $blResp = false;
 
     $strMessage = "";
 
-    $login = htmlspecialchars(trim($_REQUEST['usuario']));
-    $pass1 = trim($_REQUEST['contrasena']);
+    //$q = intval($_REQUEST['strUser']);
+    
+    //$login = htmlspecialchars(trim($_REQUEST['usuario']));
+    //$pass1 = sha1(md5(trim($_REQUEST['contrasena'])));
     
     //variable donde traigo la identificacion
-    //$identificacion = htmlspecialchars(trim($_REQUEST['identificacion']));
+    $nit = htmlspecialchars(trim($_REQUEST['nit']));
     
     
     $con = mysqli_connect($datos[0],$datos[1],$datos[2],$datos[3]);
@@ -30,9 +28,7 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
     mysqli_select_db($con,"ajax_demo");
 
 
-$sql="SELECT u.id_usuario, u.nombre, u.apellido, u.usuario, u.tipo, u.telefono, u.email, u.identificacion
-FROM usuario u WHERE u.usuario= '$login' and u.password = '$pass1'";
-
+$sql="select a.id_art, a.descripcion, a.imagen from articulos a order by a.id_art";
 //$sql="SELECT id, nombre, apellidos, login, foto FROM usuarios WHERE login= '$login' and password='$pass1'";
 $result = mysqli_query($con,$sql);
 

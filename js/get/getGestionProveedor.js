@@ -89,7 +89,7 @@
 //
 //    $.ajax({
 //        type: "POST",
-//        url: "http://refinal.frienderco.com/php/set/setProveedor.php",
+//        url: "http://refinalapp.fluxusmedia.co/php/set/setProveedor.php",
 //        //url: "../php/set/setReciboEnc.php",
 //        data: dataParams,
 //        dataType: 'json',

@@ -60,7 +60,7 @@ $arrayData = array();
 
 
 if(mysqli_affected_rows($link)){
- $strMessage = "El usuario ha sido guardado con exito!!";
+ $strMessage = "El usuario ha sido guardado con exito";
 
    
 } else {

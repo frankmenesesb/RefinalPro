@@ -70,7 +70,7 @@ function getAllUsuarios(){
                 data: dataParams,
                 dataType: 'json',
                 
-                url: "http://refinal.frienderco.com/php/get/getUsuarios.php",
+                url: "http://refinalapp.fluxusmedia.co/php/get/getUsuarios.php",
                 success: function (jsonResp) {
                     
                     if (jsonResp.RESPONSE) {
@@ -144,7 +144,7 @@ function updUsuario(jsonParams){
         data: jsonParams,
         dataType: 'json',
 
-        url: "http://refinal.frienderco.com/php/get/getUser.php",
+        url: "http://refinalapp.fluxusmedia.co/php/get/getUser.php",
         //url: "../php/get/getUser.php",
         success: function (jsonResp) {
 
@@ -259,7 +259,7 @@ function setUpdRecPen(arrayPendientes){
             
             $.ajax({
                 type: "POST",
-                url: "http://refinal.frienderco.com/php/set/setUpdRecPen.php",
+                url: "http://refinalapp.fluxusmedia.co/php/set/setUpdRecPen.php",
                 //url: "../php/set/setReciboEnc.php",
                 data: dataParams,
                 dataType: 'json',

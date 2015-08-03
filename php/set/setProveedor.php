@@ -1,24 +1,30 @@
 <?php
 
 
+// Activando Cors
+
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
 
 
 include("../config.php");
 
+
+
+
     $blResp = false;
 
     $strMessage = "";
 
-$idRecibo = $_REQUEST['idRecibo'];
-$estado = $_REQUEST['estado'];
+$identificacion = htmlspecialchars(trim($_REQUEST['identificacion']));
+$nombre = htmlspecialchars(trim($_REQUEST['nombre']));
+$observacion = htmlspecialchars(trim($_REQUEST['observacion']));
+
 
 
 
 $link = mysqli_connect($datos[0],$datos[1],$datos[2],$datos[3]);
 $blResp = true;
-$blRespUpd = true;
 
 if (!$link) {
         $blResp = false;
@@ -29,14 +35,15 @@ if (!$link) {
 mysqli_select_db($link,"refinal");
 
 
-
-		$query = sprintf("UPDATE rec_enc SET estado = '$estado' WHERE id_rec_enc=$idRecibo ");
+		
+		$query = sprintf("INSERT INTO proveedor(id_proveedor, nombre, observacion, estado)						
+		VALUES ($identificacion,'$nombre','$observacion ','A')");
 			
 		
 		$result = mysqli_query($link,$query);
 		
-		
-		if(mysqli_affected_rows($link)){
+		$data = mysqli_affected_rows($link);
+		if(mysqli_affected_rows($link)>0){
 		 $strMessage = "Datos actualizados con exito!!";
 		
 		   
@@ -59,13 +66,11 @@ if($blRespUpd === false){
 }
 
 $arrayResp = array(
-    'RESPONSE'  => $blResp,
+    'RESPONSE'  => $result,
     'MESSAGE'   => $strMessage,
-    'DATA'      => $arrayPendientes
+    'DATA'      => $data
 );
 
 echo json_encode($arrayResp);
-
-//echo $_REQUEST['arrayPendientes'];
 
 ?>

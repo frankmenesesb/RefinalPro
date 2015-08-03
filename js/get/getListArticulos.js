@@ -66,7 +66,7 @@ function getAllArticulos(){
                 data: dataParams,
                 dataType: 'json',
                 
-                url: "http://refinal.frienderco.com/php/get/getArticulos.php",
+                url: "http://refinalapp.fluxusmedia.co/php/get/getArticulos.php",
                 success: function (jsonResp) {
                     
                     if (jsonResp.RESPONSE) {
@@ -143,7 +143,7 @@ function modalUpdArticulo(jsonParams){
         type: 'POST',
         data: jsonParams,
         dataType: 'json',
-        url: "http://refinal.frienderco.com/php/get/getArticulos.php",
+        url: "http://refinalapp.fluxusmedia.co/php/get/getArticulos.php",
         success: function (jsonResp) {
 
             if (jsonResp.RESPONSE) {
@@ -193,7 +193,7 @@ function setSelectImagenes() {
         type: 'POST',
         //data: dataString,
         dataType: 'json',
-        url: "http://refinal.frienderco.com/php/get/getImagen.php",
+        url: "http://refinalapp.fluxusmedia.co/php/get/getImagen.php",
         //url: "../php/get/getArticulos.php",
         success: function (jsonResp) {
 
@@ -242,7 +242,7 @@ function btnUpdArticulo() {
 
     $.ajax({
         type: "POST",
-        url: "http://refinal.frienderco.com/php/set/setUdpArticulo.php",
+        url: "http://refinalapp.fluxusmedia.co/php/set/setUdpArticulo.php",
         data: dataParams,
         dataType: 'json',
         cache: true,
@@ -278,7 +278,7 @@ function saveAddArticulo(){
 
     $.ajax({
         type: "POST",
-        url: "http://refinal.frienderco.com/php/set/setArticulo.php",
+        url: "http://refinalapp.fluxusmedia.co/php/set/setArticulo.php",
         //url: "../php/set/setReciboEnc.php",
         data: dataParams,
         dataType: 'json',
@@ -312,7 +312,7 @@ function removeArticulo(idArticulo){
 
     $.ajax({
         type: "POST",
-        url: "http://refinal.frienderco.com/php/set/setDelArticulos.php",
+        url: "http://refinalapp.fluxusmedia.co/php/set/setDelArticulos.php",
         //url: "../php/set/setReciboEnc.php",
         data: dataParams,
         dataType: 'json',
@@ -343,7 +343,7 @@ function setSelectPadres() {
         type: 'POST',
         //data: dataString,
         dataType: 'json',
-        url: "http://refinal.frienderco.com/php/get/getArticulosPadre.php",
+        url: "http://refinalapp.fluxusmedia.co/php/get/getArticulosPadre.php",
         //url: "../php/get/getArticulos.php",
         success: function (jsonResp) {
 
