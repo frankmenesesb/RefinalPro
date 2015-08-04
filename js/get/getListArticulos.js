@@ -123,7 +123,7 @@ function getAllArticulos(){
                         
                         
                         } else if (jsonResp.MESSAGE === "EMPTY") {
-                            alert("Error: no se encontro datos de registro del usuario!!");
+                            alert("Error: no se encontro datos articulos!!");
                         }
                     } else {
                         alert("Ocurrio Un error:" + jsonResp.MESSAGE);
