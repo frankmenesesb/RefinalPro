@@ -11,6 +11,8 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 
     $strMessage = "";
 
+    //$q = intval($_REQUEST['strUser']);
+    
     $login = htmlspecialchars(trim($_REQUEST['usuario']));
     $pass1 = trim($_REQUEST['contrasena']);
     

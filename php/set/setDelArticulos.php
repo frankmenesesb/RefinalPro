@@ -1,5 +1,14 @@
 <?php
 
+/* 
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+
+
+
+
 
 // Activando Cors
 
@@ -16,13 +25,14 @@ include("../config.php");
 
     $strMessage = "";
 
-$arrayPendientes = $_REQUEST['arrayPendientes'];
+
+$identificacion = htmlspecialchars(trim($_REQUEST['idArticulo']));
+
 
 
 
 $link = mysqli_connect($datos[0],$datos[1],$datos[2],$datos[3]);
 $blResp = true;
-$blRespUpd = true;
 
 if (!$link) {
         $blResp = false;
@@ -32,26 +42,26 @@ if (!$link) {
 
 mysqli_select_db($link,"refinal");
 
+    
+    
+
+$query = "delete from articulos where id_art = $identificacion and tipo not in ('P')";
+
+$result = mysqli_query($link,$query);
 
 
-	for($i=0;count($arrayPendientes);$i++){
-		$query = sprintf("UPDATE rec_enc SET estado = 'G' WHERE id_rec_enc=$arrayPendientes[$i]");
-			
-		
-		$result = mysqli_query($link,$query);
-		
-		
-		if(mysqli_affected_rows($link)){
-		 $strMessage = "El usuario ha sido guardado con exito!!";
-		
-		   
-		} else {
-		 $strMessage = "EMPTY";
-		$blRespUpd  = false;
-		}
+$arrayData = array();
 
-	
-}    
+
+if(mysqli_affected_rows($link)){
+ $strMessage = "El articulo ha sido borrado con exito";
+
+   
+} else {
+ $strMessage = "EMPTY";
+}
+
+
 
 
 
@@ -59,19 +69,10 @@ mysqli_select_db($link,"refinal");
 
 mysqli_close($link);
 
-if($blRespUpd === false){
-	$strMessage = "Algo salio mal :C";
-	$blResp = false;
-}
-
 $arrayResp = array(
     'RESPONSE'  => $blResp,
     'MESSAGE'   => $strMessage
-    'DATA'      => $arrayPendientes
+    //'DATA'      => $arrayData
 );
 
 echo json_encode($arrayResp);
-
-//echo $_REQUEST['arrayPendientes'];
-
-?>

@@ -43,7 +43,8 @@ if(mysqli_num_rows($result)){
         
 
 $query = sprintf("INSERT INTO rec_enc(observacion,id_usuario,estado,fecha,hora,id_proveedor)
-VALUES ('','$login','G',now(),curtime(),'$proveedor')");
+VALUES ('','$login','G',now(),now(),'$proveedor')");
+
 
 $result = mysqli_query($link,$query);
 

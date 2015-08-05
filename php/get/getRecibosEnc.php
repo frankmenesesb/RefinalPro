@@ -21,9 +21,9 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
     mysqli_select_db($con,"ajax_demo");
 
 if($idRecibo !== 0){
-	$sql="select id_rec_enc, id_usuario, estado, DATE_FORMAT(fecha,'%d %b %y') as fecha, hora from rec_enc where id_rec_enc = $idRecibo";
+	$sql="select id_rec_enc, id_usuario, estado, DATE_FORMAT(fecha,'%d %b %y') as fecha, DATE_FORMAT(hora, '%H:%i:%s') as hora from rec_enc where id_rec_enc = $idRecibo";
 }else{
-	$sql="select id_rec_enc, (select CONCAT(nombre, ' ', apellido) from usuario where usuario.id_usuario = rec_enc.id_usuario) as nombre_usuario, case estado when 'G' then 'Generado' when 'A' then 'Anulado' when 'E' then 'Entregado' end as estado, DATE_FORMAT(fecha,'%d %b %y') as fecha, hora from rec_enc";
+	$sql="select id_rec_enc, (select CONCAT(nombre, ' ', apellido) from usuario where usuario.id_usuario = rec_enc.id_usuario) as nombre_usuario, case estado when 'G' then 'Generado' when 'A' then 'Anulado' when 'E' then 'Entregado' end as estado, DATE_FORMAT(fecha,'%d %b %y') as fecha, DATE_FORMAT(hora, '%H:%i:%s') as hora from rec_enc";
 }
 
 

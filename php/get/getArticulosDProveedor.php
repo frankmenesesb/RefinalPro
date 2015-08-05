@@ -27,11 +27,9 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 
     mysqli_select_db($con,"ajax_demo");
 
-
 $sql="select a.id_art, a.descripcion, a.imagen from articulos a
         where a.id_art not in (select ap.id_art from art_prov ap where ap.id_proveedor = $nit)
-      order by a.id_art;";
-//$sql="SELECT id, nombre, apellidos, login, foto FROM usuarios WHERE login= '$login' and password='$pass1'";
+      order by a.id_art";
 $result = mysqli_query($con,$sql);
 
 $arrayData = array();

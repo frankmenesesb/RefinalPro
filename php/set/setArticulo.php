@@ -11,20 +11,15 @@ include("../config.php");
 
 
 
-
     $blResp = false;
 
     $strMessage = "";
 
 $nombre = htmlspecialchars(trim($_REQUEST['nombre']));
-$apell = htmlspecialchars(trim($_REQUEST['apellido']));
-$login = htmlspecialchars(trim($_REQUEST['usuario']));
-$pass1 = trim($_REQUEST['contrasena']);
-$pass2 = trim($_REQUEST['contrasena']);
-$email = htmlspecialchars(trim($_REQUEST['email']));
-$tipo = htmlspecialchars(trim($_REQUEST['tipo']));
-$telefono = htmlspecialchars(trim($_REQUEST['telefono']));
+$observacion = htmlspecialchars(trim($_REQUEST['observacion']));
 $identificacion = htmlspecialchars(trim($_REQUEST['identificacion']));
+$imagen = htmlspecialchars(trim($_REQUEST['imagen']));
+$padre = htmlspecialchars(trim($_REQUEST['padre']));
 
 
 
@@ -39,18 +34,13 @@ if (!$link) {
     }
 
 mysqli_select_db($link,"refinal");
-$query = sprintf("SELECT usuario FROM usuario WHERE usuario='$login'");
+$query = sprintf("SELECT id_art FROM articulos WHERE id_art=$identificacion");
 $result = mysqli_query($link,$query);
 if(mysqli_num_rows($result)){
-    
-    mysqli_free_result($result);
-if($pass1 != $pass2){
-$strMessage = "los password deben considir por favor ingresalos de nuevo!!";
+    $strMessage = "Articulo ya existe por favor intentalo de nuevo!!";
 } else {
-    
-    
-//$pass1 = sha1(md5($pass1));
-$query = sprintf("update usuario set nombre = '$nombre', apellido='$apell', usuario='$login', password='$pass1', email='$email', telefono='$telefono', tipo='$tipo' where identificacion ='$identificacion'");
+
+$query = sprintf("INSERT INTO articulos (id_art, descripcion, observacion, imagen, padre, tipo) VALUES ($identificacion,'$nombre','$observacion','$imagen','$padre','H')");
 
 $result = mysqli_query($link,$query);
 
@@ -59,7 +49,7 @@ $arrayData = array();
 
 
 if(mysqli_affected_rows($link)){
- $strMessage = "El usuario ha sido guardado con exito!!";
+ $strMessage = "El Articulo ha sido guardado con exito";
 
    
 } else {
@@ -69,9 +59,10 @@ if(mysqli_affected_rows($link)){
 
 
 
-    
+
+
 }
-}
+
 
 mysqli_close($link);
 
@@ -82,4 +73,3 @@ $arrayResp = array(
 );
 
 echo json_encode($arrayResp);
-?>

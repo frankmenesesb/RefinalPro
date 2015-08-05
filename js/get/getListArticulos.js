@@ -106,7 +106,7 @@ function getAllArticulos(){
                                 html +='<img src="../images/'+imagen+'" alt="">';
                                 html += '</td>';
                                 html += '<td width="20%">';                                
-                                html += "<a id='btnUpdArt_"+i+"' class='btn boton-editar' onclick='modalUpdArticulo("+JSON.stringify(jsonParams)+");'></a>";
+                                html += "<a id='btnUpdArt_"+i+"' class='btn boton-editar' onclick='modalUpdArticulo("+id+");'></a>";
                                 html += '</td>';
                                 html += '<td>';
                                 if(tipo.toString()!=="P"){
@@ -275,7 +275,7 @@ function saveAddArticulo(){
     
     var dataParams = {'identificacion': identificacion, 'nombre': nombre, 'observacion':observacion, 'imagen':imagen, 'padre':padre};
 
-
+    
     $.ajax({
         type: "POST",
         url: "http://refinalapp.fluxusmedia.co/php/set/setArticulo.php",
