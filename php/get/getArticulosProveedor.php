@@ -7,7 +7,7 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 
     $strMessage = "";
 
-    $idProveedor = intval($_REQUEST['idProveedor']);
+    $idProveedor = intval($_REQUEST['idproveedor']);
     
     
     $con = mysqli_connect($datos[0],$datos[1],$datos[2],$datos[3]);

@@ -1,4 +1,5 @@
 <?php
+
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
     include("../config.php");
@@ -7,13 +8,13 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 
     $strMessage = "";
 
-    //$q = intval($_REQUEST['strUser']);
+    $plaza = intval($_REQUEST['plaza']);
     
     //$login = htmlspecialchars(trim($_REQUEST['usuario']));
     //$pass1 = sha1(md5(trim($_REQUEST['contrasena'])));
     
     //variable donde traigo la identificacion
-    $nit = htmlspecialchars(trim($_REQUEST['nit']));
+    //$identificacion = htmlspecialchars(trim($_REQUEST['identificacion']));
     
     
     $con = mysqli_connect($datos[0],$datos[1],$datos[2],$datos[3]);
@@ -28,9 +29,7 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
     mysqli_select_db($con,"ajax_demo");
 
 
-$sql="select a.id_art, a.descripcion, a.imagen from articulos a
-        where a.id_art not in (select ap.id_art from art_prov ap where ap.id_proveedor = $nit)
-      order by a.id_art;";
+$sql="select p.id_proveedor, p.nombre from proveedor p where p.id_plaza = $plaza order by p.nombre";
 //$sql="SELECT id, nombre, apellidos, login, foto FROM usuarios WHERE login= '$login' and password='$pass1'";
 $result = mysqli_query($con,$sql);
 
@@ -57,5 +56,3 @@ $arrayResp = array(
 );
 
 echo json_encode($arrayResp);
-
-?>
