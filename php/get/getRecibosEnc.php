@@ -23,7 +23,18 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 if($idRecibo !== 0){
 	$sql="select id_rec_enc, id_usuario, estado, DATE_FORMAT(fecha,'%d %b %y') as fecha, DATE_FORMAT(hora, '%H:%i:%s') as hora from rec_enc where id_rec_enc = $idRecibo";
 }else{
-	$sql="select id_rec_enc, (select CONCAT(nombre, ' ', apellido) from usuario where usuario.id_usuario = rec_enc.id_usuario) as nombre_usuario, case estado when 'G' then 'Generado' when 'A' then 'Anulado' when 'E' then 'Entregado' end as estado, DATE_FORMAT(fecha,'%d %b %y') as fecha, DATE_FORMAT(hora, '%H:%i:%s') as hora from rec_enc";
+	$sql="select re.id_rec_enc,
+CONCAT(u.nombre,' ',u.apellido) as nombre_usuario,
+case re.estado when 'G' then 'Generado' when 'A' then 'Anulado' when 'E' then 'Entregado' end as estado,
+DATE_FORMAT(fecha,'%d %b %y') as fecha, 
+DATE_FORMAT(hora, '%H:%i:%s') as hora,
+p.nombre as nom_plaza,
+pr.nombre as nom_proveedor,
+re.id_placa
+from rec_enc re, usuario u, plaza p, proveedor pr
+where u.id_usuario = re.id_usuario
+and pr.id_proveedor=re.id_proveedor
+and p.id_plaza = pr.id_plaza";
 }
 
 

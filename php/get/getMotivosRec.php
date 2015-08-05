@@ -1,3 +1,4 @@
+
 <?php
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
@@ -6,15 +7,9 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
     $blResp = false;
 
     $strMessage = "";
-
-    //$q = intval($_REQUEST['strUser']);
     
-    //$login = htmlspecialchars(trim($_REQUEST['usuario']));
-    //$pass1 = sha1(md5(trim($_REQUEST['contrasena'])));
     
-    //variable donde traigo la identificacion
-    //$identificacion = htmlspecialchars(trim($_REQUEST['identificacion']));
-    
+    $idRecibo = intval($_REQUEST['idRecibo']);   
     
     $con = mysqli_connect($datos[0],$datos[1],$datos[2],$datos[3]);
     $blResp = true;
@@ -25,11 +20,14 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
         $strMesage = "No fue posible conectarse: ".mysqli_error($con);
     }
 
-    mysqli_select_db($con,"ajax_demo");
+    mysqli_select_db($con,"refinalapp");
 
-$sql="select p.rut, p.id_plaza, p.id_proveedor, p.nombre, pl.nombre nom_plaza from proveedor p, plaza pl  where pl.id_plaza = p.id_plaza order by p.nombre";
-//$sql="select p.id_proveedor, p.nombre from proveedor p order by p.nombre";
-//$sql="SELECT id, nombre, apellidos, login, foto FROM usuarios WHERE login= '$login' and password='$pass1'";
+
+$sql="select m.id_recibo u.nombre, m.observacion, m.estado "
+        . "from motivos m, usuario u "
+        . "where m.id_recibo = $idRecibo "
+        . "and u.id_usuario = m.id_usuario";
+
 $result = mysqli_query($con,$sql);
 
 $arrayData = array();
@@ -55,5 +53,3 @@ $arrayResp = array(
 );
 
 echo json_encode($arrayResp);
-
-?>
