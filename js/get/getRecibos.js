@@ -102,7 +102,10 @@ $(document).ready(function () {
 
 function getAllRecibos() {
 
-    var dataParams = {'idRecibo': "NULL"};
+    //alert('entro');
+    var usuarioFiltro = $("#txtFiltroUsuario").val();
+    //alert('entro con '+usuarioFiltro);
+    var dataParams = {'idRecibo': "NULL", 'usuario': usuarioFiltro};
 
     $("#listRecibos tbody").html('<tr><td colspan="7" align="center"><img src="../images/Loading_bar.gif" alt="Smiley face" title="Cargando"></center></td></tr>');
 

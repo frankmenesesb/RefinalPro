@@ -67,17 +67,51 @@ and open the template in the editor.
         <div class="panel body">
             <br>
             <div class="margen">
+
                 <br>
 
                 <div class="movil">
                     <div>
+                        <ul class="list-group" >
+                            
+                            <li class="list-group-item">
+                                <div align="left">
+                                    <label style="color: silver; font-size: 18px;">Puede filtrar su informacion con los siguientes campos.</label>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-4"><input type="text" class="form-control" id="txtFiltroUsuario" placeholder="Usuario" onkeypress="getAllRecibos();"></div>
+                                    
+                                    <div class="col-md-4"><input type="text" class="form-control" id="txtFiltroProveedor" placeholder="Proveedor" onkeypress="getAllRecibos();"></div>
+                                    <div class="col-md-4"><input type="text" class="form-control" id="txtFiltroPlaza" placeholder="Plaza" onkeypress="getAllRecibos();"></div>
+
+                                </div>
+                                <br>
+
+
+                            </li>
+                        </ul>
+                        <input type="hidden" class="form-control" name="recibirVariable" id="recibirVariable">
+                        <input type="hidden" class="form-control" name="tipoU" id="tipoU">
+                    </div>
+                </div>
+
+                <br>
+
+
+                <div class="movil">
+                    <div>
+                        
                         <ul class="list-group" >
                             <li class="list-group-item">
                                 <div align="left">
                                     <img src="../images/icon 09.png" alt="Smiley face" height="42" width="42"><label style="color:#99CC33;font-size: 180%;">&nbsp;Listado de recibos</label>
                                     <br />
                                 </div>
+                                <br>
+
                             </li>
+                           
                             <li class="list-group-item">
                                 <div class="panel panel-primary filterable">
                                     <div class="panel-heading" style="background: #2e6399;">
@@ -96,7 +130,7 @@ and open the template in the editor.
                                                 <th><input type="text" class="form-control" placeholder="Plaza" style="font-size: 10px;" disabled></th>
                                                 <th><input type="text" class="form-control" placeholder="Proveedor" style="font-size: 10px;" disabled></th>
                                                 <th><input type="text" class="form-control" placeholder="Placa" style="font-size: 10px;" disabled></th>
-                                                
+
                                                 <th><input type="text" class="form-control" placeholder="Estado" style="font-size: 10px;" disabled></th>
                                                 <th><input type="text" class="form-control" placeholder="Recibo" style="font-size: 10px;" disabled></th>
                                                 <th><input type="text" class="form-control" placeholder="Actualizar" style="font-size: 10px;" disabled></th>
