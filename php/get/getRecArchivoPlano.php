@@ -1,5 +1,4 @@
 <?php
-
 // Activando Cors
 
 header("Access-Control-Allow-Origin: *");
@@ -28,11 +27,11 @@ for ($i = 0; $i < count($arrayRecibos); $i++) {
     }
 
     mysqli_select_db($con, "ajax_demo");
-    
-     $sql = "select  IFNULL((select rd.cantidad from rec_det rd where rd.id_rec_enc = $idRecibo and rd.id_art = a.id_art),0) as cantidad, a.descripcion
+
+    $sql = "select  IFNULL((select rd.cantidad from rec_det rd where rd.id_rec_enc = $idRecibo and rd.id_art = a.id_art),0) as cantidad, a.descripcion
 from articulos a 
 order by a.id_art;";
-    
+
     $result = mysqli_query($con, $sql);
 
     $arrayDataAux = array();
@@ -45,8 +44,8 @@ order by a.id_art;";
 }
 $encPrincipal = "csc,fecha,hora,usuario,plaza,proveedor,placa";
 $arrayText = "";
-$arrayText .= $encPrincipal;
-$arrayText .= "\n";
+//$arrayText .= $encPrincipal;
+//$arrayText .= "\n";
 
 for ($j = 0; $j < count($arrayData); $j++) {
 
@@ -57,9 +56,22 @@ for ($j = 0; $j < count($arrayData); $j++) {
     $detAux = "";
 
     for ($k = 0; $k < count($arrayData[$j][1]); $k++) {
-        $detAux .= "," . $arrayData[$j][1][$k]["nombreArticulo"] . "," . $arrayData[$j][1][$k]["cantidad"];
+
+        if ($j == 0) {
+            $encPrincipal.="," . $arrayData[$j][1][$k]["descripcion"];
+            //$arrayText .= $encPrincipal;
+            //$arrayText .= "\n";
+        }
+
+        //$detAux .= "," . $arrayData[$j][1][$k]["nombreArticulo"] . "," . $arrayData[$j][1][$k]["cantidad"];
+        $detAux .= "," . $arrayData[$j][1][$k]["cantidad"];
     }
 
+    if ($j == 0) {
+            //$encPrincipal.="," . $arrayData[$j][1][$k]["descripcion"];
+            $arrayText .= $encPrincipal;
+            $arrayText .= "\n";
+        }
 
     $arrayText .= $encAux . $detAux;
     $arrayText .= "\n";

@@ -11,9 +11,8 @@ include("../config.php");
 
     $strMessage = "";
 
-$idRecibo = $_REQUEST['idRecibo'];
-$estado = $_REQUEST['estado'];
-$observacion = $_REQUEST['observacion'];
+$placa = $_REQUEST['placa'];
+
 $usuario = $_REQUEST['usuario'];
 
 
@@ -31,14 +30,14 @@ mysqli_select_db($link,"refinal");
 
 
 
-		$query = sprintf("UPDATE rec_enc SET estado = '$estado' WHERE id_rec_enc=$idRecibo ");
+		$query = "UPDATE rec_enc SET id_placa = '$placa', estado='E' WHERE id_usuario=$usuario and estado = 'G';";
 			
 		
 		$result = mysqli_query($link,$query);
 		
 		
 		if(mysqli_affected_rows($link)){
-		 $strMessage = "Datos actualizados con exito!!";
+		 $strMessage = "Entrega a placa ".$placa." con exito!!";
 		
 		   
 		} else {
@@ -46,28 +45,7 @@ mysqli_select_db($link,"refinal");
 		$blRespUpd  = false;
 		}
                 
-                
-                $query1 = sprintf("insert into motivos(id_recibo, id_usuario, observacion, estado) values($idRecibo,$usuario,'$observacion','$estado')");
-			
-		
-		$result1 = mysqli_query($link,$query1);
-		
-		
-		if(mysqli_affected_rows($link)){
-		 $strMessage = "Datos actualizados con exito!!";
-		
-		   
-		} else {
-		 $strMessage = "EMPTY";
-		$blRespUpd  = false;
-		}
-
-
-	
-
-
-
-
+             
 
 mysqli_close($link);
 

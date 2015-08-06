@@ -23,7 +23,7 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
     mysqli_select_db($con,"refinalapp");
 
 
-$sql="select m.id_recibo u.nombre, m.observacion, m.estado "
+$sql="select m.id_recibo, u.nombre nombre_usu, m.observacion, m.estado "
         . "from motivos m, usuario u "
         . "where m.id_recibo = $idRecibo "
         . "and u.id_usuario = m.id_usuario";
