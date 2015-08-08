@@ -29,6 +29,7 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 
 $sql="select a.id_art, a.descripcion, a.imagen from articulos a
         where a.id_art not in (select ap.id_art from art_prov ap where ap.id_proveedor = $nit)
+            and a.tipo = 'H'
       order by a.id_art";
 $result = mysqli_query($con,$sql);
 

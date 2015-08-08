@@ -104,8 +104,10 @@ function getAllRecibos() {
 
     //alert('entro');
     var usuarioFiltro = $("#txtFiltroUsuario").val();
+    var proveedorFiltro = $("#txtFiltroProveedor").val();
+    var plazaFiltro = $("#txtFiltroPlaza").val();
     //alert('entro con '+usuarioFiltro);
-    var dataParams = {'idRecibo': "NULL", 'usuario': usuarioFiltro};
+    var dataParams = {'idRecibo': "NULL", 'usuario': usuarioFiltro, 'nom_prov':proveedorFiltro,'nom_plaza':plazaFiltro};
 
     $("#listRecibos tbody").html('<tr><td colspan="7" align="center"><img src="../images/Loading_bar.gif" alt="Smiley face" title="Cargando"></center></td></tr>');
 
@@ -254,7 +256,7 @@ function getRecibo(id_rec_enc, fecha, nombre_usuario, placa, hora, nom_proveedor
         type: 'POST',
         data: dataParams,
         dataType: 'json',
-        url: "http://refinalapp.fluxusmedia.co/php/get/getReciboDet.php",
+        url: "http://refinalapp.fluxusmedia.co/php/get/getReciboReal.php",
         //url: "../php/get/getUser.php",
         success: function (jsonResp) {
 

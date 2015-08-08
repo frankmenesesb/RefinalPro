@@ -22,7 +22,13 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
     mysqli_select_db($con,"ajax_demo");
 
 
-$sql="SELECT articulos.id_art, articulos.descripcion, articulos.imagen FROM articulos, art_prov	WHERE art_prov.id_proveedor = $idProveedor AND articulos.id_art = art_prov.id_art ORDER BY articulos.id_art";
+$sql="SELECT a.id_art, "
+        . "case a.tipo when 'H' then (select ar.descripcion from articulos ar where ar.id_art = a.padre) when 'P' then a.descripcion end as descripcion, "
+        . "a.imagen "
+        . "FROM articulos a, art_prov ap	"
+        . "WHERE ap.id_proveedor = $idProveedor "
+        . "AND a.id_art = ap.id_art "
+        . "ORDER BY a.id_art";
 
 $result = mysqli_query($con,$sql);
 
