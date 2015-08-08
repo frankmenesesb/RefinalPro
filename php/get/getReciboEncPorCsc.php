@@ -27,7 +27,7 @@ $sql="select re.id_rec_enc,re.observacion,
     re.estado,
     re.fecha,
     re.id_proveedor,
-    (select p.nombre from proveedor p where p.id_proveedor=re.id_proveedor) nom_prov
+    (select p.nombre from proveedor p where p.id_proveedor=re.id_proveedor) nom_prov,
     (select pl.nombre from plaza pl where pl.id_plaza=(select pr.id_plaza from proveedor pr where pr.id_proveedor=re.id_proveedor)) nom_plaza
     from rec_enc re
 where re.id_rec_enc = $csc;";

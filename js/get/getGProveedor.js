@@ -511,7 +511,7 @@ function setSelectProveedores() {
 
 
 function setSelectArticulos(id) {
-
+    var html = "";
     var idProveedor = id;
     var dataParams = {'nit': idProveedor};
     $.ajax({
@@ -531,7 +531,7 @@ function setSelectArticulos(id) {
                 }
                 if (jsonResp.MESSAGE === "") {
 
-                    var html = "";
+                    
 
                     for (var i = 0; i < jsonResp.DATA.length; i++) {
                         var id = jsonResp.DATA[i]["id_art"];
@@ -563,7 +563,8 @@ function setSelectArticulos(id) {
                     $('#tabla-n').html(html);
 
                 } else if (jsonResp.MESSAGE === "EMPTY") {
-                    alert("Error: no se encontro datos de articulos!!");
+                    //alert("Error: no se encontro datos de articulos!!");
+                    $('#tabla-n').html(html);
                 }
             } else {
                 alert("Ocurrio Un error:" + jsonResp.MESSAGE);

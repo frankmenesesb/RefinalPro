@@ -256,7 +256,7 @@ function getRecibo(id_rec_enc, fecha, nombre_usuario, placa, hora, nom_proveedor
         type: 'POST',
         data: dataParams,
         dataType: 'json',
-        url: "http://refinalapp.fluxusmedia.co/php/get/getReciboReal.php",
+        url: "http://refinalapp.fluxusmedia.co/php/get/getReciboDetReal.php",
         //url: "../php/get/getUser.php",
         success: function (jsonResp) {
 

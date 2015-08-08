@@ -20,7 +20,7 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 
     mysqli_select_db($con,"ajax_demo");
 
-$sql="select a.descripcion as nombreArticulo, "
+$sql="select case a.tipo when 'H' then (select ar.descripcion from articulos ar where ar.id_art = a.padre) when 'P' then a.descripcion end as nombreArticulo, "
         . "rd.cantidad "
         . "from rec_det rd, articulos a "
         . "where rd.id_rec_enc = $idRecibo "
