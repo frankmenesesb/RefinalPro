@@ -89,6 +89,7 @@ function allProveedores() {
     var descripcion;
     var rut;
     var plaza;
+    var estado;
     var html;
 
     var dataString = {'identificacion': "NULL"};
@@ -118,6 +119,7 @@ function allProveedores() {
                         descripcion = jsonResp.DATA[i]["nombre"];
                         rut = jsonResp.DATA[i]["rut"];
                         plaza = jsonResp.DATA[i]["nom_plaza"];
+                        estado = jsonResp.DATA[i]["estado_prov"];
 
                         var log = "";
                         if ((descripcion === null || descripcion === "") || (id === null || id === "")) {
@@ -144,6 +146,9 @@ function allProveedores() {
                             html += '</td>';
                             html += '<td>';
                             html += '' + plaza + '';
+                            html += '</td>';
+                            html += '<td>';
+                            html += '' + estado + '';
                             html += '</td>';
                             html += '<td>';
                             //alert("<a id='btnUpdArt_"+i+"' class='btn boton-gestionar-item' onclick='dialogItem(\""+id+"\");'></a>");

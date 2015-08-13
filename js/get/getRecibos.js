@@ -81,11 +81,12 @@ $(document).ready(function () {
                 var nomRecolector = $(this).find('td').eq(3).text();
                 var plaza = $(this).find('td').eq(4).text();
                 var nomProveedor = $(this).find('td').eq(5).text();
-                var estado = $(this).find('td').eq(6).text();
+                var placa = $(this).find('td').eq(6).text();
+                var estado=$(this).find('td').eq(7).text();
                 
                 //var estado = $(this).find('td').eq(3).find('img').attr('title');
 
-                arrayRecibos.push([idFact,fechaGenerado, horaGenerado,nomRecolector, plaza, nomProveedor, estado]);
+                arrayRecibos.push([idFact,fechaGenerado, horaGenerado,nomRecolector, plaza, nomProveedor, placa, estado]);
                 //arrayRecibos.push(idFact);
             }
         });

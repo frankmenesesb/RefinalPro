@@ -42,7 +42,7 @@ order by a.id_art;";
 
     array_push($arrayData, array($arrayRecibos[$i], $arrayDataAux));
 }
-$encPrincipal = "csc,fecha,hora,usuario,plaza,proveedor,placa";
+$encPrincipal = "csc,fecha,hora,usuario,plaza,proveedor,placa,estado";
 $arrayText = "";
 //$arrayText .= $encPrincipal;
 //$arrayText .= "\n";
