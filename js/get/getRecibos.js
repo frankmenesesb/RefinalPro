@@ -107,8 +107,12 @@ function getAllRecibos() {
     var usuarioFiltro = $("#txtFiltroUsuario").val();
     var proveedorFiltro = $("#txtFiltroProveedor").val();
     var plazaFiltro = $("#txtFiltroPlaza").val();
+    var fechaIFiltro = $("#txtFiltroFechaIni").val();
+    var fechaFFiltro = $("#txtFiltroFechaFin").val();
+    var estadoFiltro = $("#txtFiltroEstado").val();
+    var placaFiltro = $("#txtFiltroPlaca").val();
     //alert('entro con '+usuarioFiltro);
-    var dataParams = {'idRecibo': "NULL", 'usuario': usuarioFiltro, 'nom_prov':proveedorFiltro,'nom_plaza':plazaFiltro};
+    var dataParams = {'idRecibo': "NULL", 'usuario': usuarioFiltro, 'nom_prov':proveedorFiltro,'nom_plaza':plazaFiltro, 'placa':placaFiltro, 'estado': estadoFiltro, 'fec_ini': fechaIFiltro, 'fec_fin': fechaFFiltro };
 
     $("#listRecibos tbody").html('<tr><td colspan="7" align="center"><img src="../images/Loading_bar.gif" alt="Smiley face" title="Cargando"></center></td></tr>');
 

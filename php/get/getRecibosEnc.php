@@ -12,6 +12,10 @@ $idRecibo = intval($_REQUEST['idRecibo']);
 $usuario = ($_REQUEST['usuario']);
 $plaza = ($_REQUEST['nom_plaza']);
 $proveedor = ($_REQUEST['nom_prov']);
+$fechaIni = date($_REQUEST['fec_ini']);
+$fechaFin = date($_REQUEST['fec_fin']);
+$placa = ($_REQUEST['placa']);
+$estado = ($_REQUEST['estado']);
 
 $con = mysqli_connect($datos[0], $datos[1], $datos[2], $datos[3]);
 $blResp = true;
@@ -41,7 +45,7 @@ where re.id_rec_enc = $idRecibo
 adn u.id_usuario = re.id_usuario
 and pr.id_proveedor=re.id_proveedor
 and p.id_plaza = pr.id_plaza";
-} else if ($usuario != null or $plaza != null or $proveedor != null) {
+} else if ($usuario != null or $plaza != null or $proveedor != null or $placa != null or $estado != null) {
     
     if ($usuario == null){
         $usuario='';
@@ -51,6 +55,14 @@ and p.id_plaza = pr.id_plaza";
     }
     if ($proveedor == null){
         $proveedor='';
+    }
+    
+    if ($placa == null){
+        $placa='';
+    }
+    
+    if ($estado == null){
+        $estado='';
     }
     
     
@@ -72,7 +84,63 @@ AND re.id_usuario = u.id_usuario
 AND p.nombre like '%$plaza%'
 AND pr.id_plaza = p.id_plaza
 AND pr.nombre like '%$proveedor%'
-AND re.id_proveedor = pr.id_proveedor";
+AND re.estado like '%$estado%'
+AND re.placa like '%$placa%'
+AND re.id_proveedor = pr.id_proveedor"
+            . " order by re.id_rec_enc desc";
+}else if ($fechaIni != null or $fechaFin != null ) {
+    
+    if ($usuario == null){
+        $usuario='';
+    }
+    if ($plaza == null){
+        $plaza='';
+    }
+    if ($proveedor == null){
+        $proveedor='';
+    }
+    
+    if($fechaIni == null){
+        $fechaIni=$fechaFin;
+    }
+    
+    if($fechaFin == null){
+        $fechaFin=$fechaIni;
+    }
+    
+    if ($placa == null){
+        $placa='';
+    }
+    
+    if ($estado == null){
+        $estado='';
+    }
+    
+    
+    
+    $sql = "SELECT re.id_rec_enc, CONCAT( u.nombre,  ' ', u.apellido ) AS nombre_usuario, 
+CASE re.estado
+WHEN  'G' THEN  'Generado'
+WHEN  'A' THEN  'Anulado'
+WHEN  'E' THEN  'Entregado'
+END AS estado, 
+DATE_FORMAT( fecha,  '%d %b %y' ) AS fecha, 
+DATE_FORMAT( hora,  '%H:%i:%s' ) AS hora, 
+p.nombre AS nom_plaza, 
+pr.nombre AS nom_proveedor, 
+re.id_placa
+FROM rec_enc re, usuario u, plaza p, proveedor pr
+WHERE u.nombre like '%$usuario%'
+AND re.id_usuario = u.id_usuario
+AND p.nombre like '%$plaza%'
+AND pr.id_plaza = p.id_plaza
+AND pr.nombre like '%$proveedor%'
+AND re.estado like '%$estado%'
+AND re.placa like '%$placa%'
+AND re.id_proveedor = pr.id_proveedor"
+            . "AND cast(re.fecha as char)  >= '%$fechaIni%' "
+            . "AND cast(re.fecha as char) <= '%$fechaFin%'"
+            . " order by re.id_rec_enc desc";
 } else {
     
     $sql = "select re.id_rec_enc,
@@ -86,7 +154,7 @@ re.id_placa
 from rec_enc re, usuario u, plaza p, proveedor pr
 where u.id_usuario = re.id_usuario
 and pr.id_proveedor=re.id_proveedor
-and p.id_plaza = pr.id_plaza";
+and p.id_plaza = pr.id_plaza order by re.id_rec_enc desc";
 }
 
 

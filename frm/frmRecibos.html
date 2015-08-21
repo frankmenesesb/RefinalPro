@@ -69,6 +69,32 @@ and open the template in the editor.
                 <div class="movil">
                     <div>
                         <ul class="list-group" >
+                            
+                            <li class="list-group-item">
+                                <div align="left">
+                                    <label style="color: silver; font-size: 18px;">Puede filtrar su informacion con los siguientes campos.</label>
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col-md-4"><input type="text" class="form-control" id="txtFiltroUsuario" placeholder="Usuario" onkeypress="getAllRecibos();"></div>
+                                    
+                                    <div class="col-md-4"><input type="text" class="form-control" id="txtFiltroProveedor" placeholder="Proveedor" onkeypress="getAllRecibos();"></div>
+                                    <div class="col-md-4"><input type="text" class="form-control" id="txtFiltroPlaza" placeholder="Plaza" onkeypress="getAllRecibos();"></div>
+
+                                </div>
+                                <br>
+
+
+                            </li>
+                        </ul>
+                        <input type="hidden" class="form-control" name="recibirVariable" id="recibirVariable">
+                        <input type="hidden" class="form-control" name="tipoU" id="tipoU">
+                    </div>
+                </div>
+                <br>
+                <div class="movil">
+                    <div>
+                        <ul class="list-group" >
                             <li class="list-group-item">
                                 <div align="left">
                                     <img src="../images/icon 09.png" alt="Smiley face" height="42" width="42"><label style="color:#99CC33;font-size: 180%;">&nbsp;Listado de recibos</label>
@@ -76,9 +102,9 @@ and open the template in the editor.
                                     <div class="panel panel-primary filterable">
                                         <div class="panel-heading">
                                             <h3 class="panel-title">&nbsp;</h3>
-                                            <div class="pull-right">                                    
+                                            <!-- <div class="pull-right">                                    
                                                 <button class="btn boton-filtro btn-xs btn-filter"></button>
-                                            </div>
+                                            </div>-->
                                         </div>
                                         <table class="table" id="listRecibos">
                                             <thead>
@@ -111,6 +137,7 @@ and open the template in the editor.
             <div class="footer-transparent">
                 <br>
                 <a id="btnPrueba" class="btn boton-descargar"></a>
+                <a id="btnPrueba" class="btn boton-descargar-cont"></a>
             </div>
         </div>
         <br>
