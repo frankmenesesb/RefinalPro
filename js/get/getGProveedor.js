@@ -557,7 +557,7 @@ function setSelectArticulos(id) {
 
                         html += '<td style="width: 5%;">';
                         //html += '<a id="btnRemoveArticulo_"'+i+'><span style="background-position: center bottom; width:60px; background-size:40px; height: 50px; background-image: url(\'../images/btn-plus.png\'); display:block; background-repeat: no-repeat;" title="Agregar articulo"></span></a>';
-                        html += "<a id='btnAddArticulo_" + i + "' onclick='setArticulosInterveentor(" + idProveedor + "," + id + ");'><span style='background-size: 31px 32px; height: 32px; background-image: url(\"../images/btn-agregar.png\"); display:block; background-repeat: no-repeat;' ></span></a>";
+                        html += "<a id='btnAddArticulo_" + i + "' onclick='setArticulosInterveentor(\"" + idProveedor + "\",\""+ id +"\");'><span style='background-size: 31px 32px; height: 32px; background-image: url(\"../images/btn-agregar.png\"); display:block; background-repeat: no-repeat;' ></span></a>";
                         //html += "<a class='boton-eliminar' id='btnRemoveArticulo_" + i + "' onclick='removeArticuloProveedor(" + idProveedor + ","+id_art+");' ></a>";
 
                         html += '</td>';

@@ -34,13 +34,13 @@ if (!$link) {
     }
 
 mysqli_select_db($link,"refinal");
-$query = sprintf("SELECT id_art FROM articulos WHERE id_art=$identificacion");
+$query = sprintf("SELECT id_art FROM articulos WHERE id_art='$identificacion'");
 $result = mysqli_query($link,$query);
 if(mysqli_num_rows($result)){
     $strMessage = "Articulo ya existe por favor intentalo de nuevo!!";
 } else {
 
-$query = sprintf("INSERT INTO articulos (id_art, descripcion, observacion, imagen, padre, tipo) VALUES ($identificacion,'$nombre','$observacion','$imagen','$padre','H')");
+$query = sprintf("INSERT INTO articulos (id_art, descripcion, observacion, imagen, padre, tipo) VALUES ('$identificacion','$nombre','$observacion','$imagen','$padre','H')");
 
 $result = mysqli_query($link,$query);
 

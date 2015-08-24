@@ -45,7 +45,7 @@ mysqli_select_db($link,"refinal");
     
     
 
-$query = "delete from articulos where id_art = $identificacion and tipo not in ('P')";
+$query = "delete from articulos where id_art = '$identificacion' and tipo = 'H';";
 
 $result = mysqli_query($link,$query);
 

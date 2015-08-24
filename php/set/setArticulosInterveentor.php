@@ -32,10 +32,10 @@ mysqli_select_db($link,"refinal");
 
 		if($opcion == "DEL"){
 			$query = sprintf("DELETE FROM art_prov
-					  WHERE id_proveedor = $idProveedor AND id_art = $idArticulo");
+					  WHERE id_proveedor = $idProveedor AND id_art = '$idArticulo'");
 		}else{
 			$query = sprintf("INSERT INTO art_prov(id_proveedor, id_art)						
-			VALUES ($idProveedor,$idArticulo)");
+			VALUES ($idProveedor,'$idArticulo')");
 		}
 			
 		
