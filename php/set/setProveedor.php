@@ -19,6 +19,8 @@ include("../config.php");
 $identificacion = htmlspecialchars(trim($_REQUEST['identificacion']));
 $nombre = htmlspecialchars(trim($_REQUEST['nombre']));
 $observacion = htmlspecialchars(trim($_REQUEST['observacion']));
+$rut = htmlspecialchars(trim($_REQUEST['rut']));
+$plaza = htmlspecialchars(trim($_REQUEST['plaza']));
 
 
 
@@ -36,8 +38,8 @@ mysqli_select_db($link,"refinal");
 
 
 		
-		$query = sprintf("INSERT INTO proveedor(id_proveedor, nombre, observacion, estado)						
-		VALUES ($identificacion,'$nombre','$observacion ','A')");
+		$query = sprintf("INSERT INTO proveedor(id_proveedor, nombre, observacion, estado, id_plaza, rut)						
+		VALUES ($identificacion,'$nombre','$observacion ','A',$plaza,'$rut')");
 			
 		
 		$result = mysqli_query($link,$query);
