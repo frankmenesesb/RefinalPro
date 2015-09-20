@@ -106,11 +106,11 @@ function getAllArticulos(){
                                 html +='<img src="../images/'+imagen+'" alt="">';
                                 html += '</td>';
                                 html += '<td width="20%">';                                
-                                html += "<a id='btnUpdArt_"+i+"' class='btn boton-editar' onclick='modalUpdArticulo("+id+");'></a>";
+                                html += "<a id='btnUpdArt_"+i+"' class='btn boton-editar' onclick='modalUpdArticulo(\""+id+"\");'></a>";
                                 html += '</td>';
                                 html += '<td>';
                                 if(tipo.toString()!=="P"){
-                                html += "<a id='btnRemoveArticulo_" + i + "' onclick='removeArticulo(" + id + ");'><span style='background-size: 35px; height: 35px; background-image: url(\"../images/icon inactivo.png\"); display:block; background-repeat: no-repeat;' ></span></a>";
+                                html += "<a id='btnRemoveArticulo_" + i + "' onclick='removeArticulo(\"" + id + "\");'><span style='background-size: 35px; height: 35px; background-image: url(\"../images/icon inactivo.png\"); display:block; background-repeat: no-repeat;' ></span></a>";
                                 }else{
                                    html+=" Categoria Principal";
                                 }
