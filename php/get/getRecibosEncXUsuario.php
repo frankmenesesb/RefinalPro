@@ -33,8 +33,8 @@ from rec_enc re, usuario u, plaza p, proveedor pr
 where re.id_usuario = '$usuario'
 and u.id_usuario = re.id_usuario
 and pr.id_proveedor=re.id_proveedor
-and p.id_plaza = pr.id_plaza"
-                . "and re.estado not in ('G')";
+and p.id_plaza = pr.id_plaza "
+                . "and re.estado not in ('E')";
 
 
 

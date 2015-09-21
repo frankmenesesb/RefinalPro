@@ -35,7 +35,7 @@ if ($idRecibo >= 1) {
     $sql = "select re.id_rec_enc,
 CONCAT(u.nombre,' ',u.apellido) as nombre_usuario,
 case re.estado when 'G' then 'Generado' when 'A' then 'Anulado' when 'E' then 'Entregado' end as estado,
-DATE_FORMAT(fecha,'%d %b %y') as fecha, 
+DATE_FORMAT( fecha,  '%d/%m/%Y' ) AS fecha, 
 DATE_FORMAT(hora, '%H:%i:%s') as hora,
 p.nombre as nom_plaza,
 pr.nombre as nom_proveedor,
@@ -62,7 +62,7 @@ and p.id_plaza = pr.id_plaza";
     }
     
     if ($estado == null){
-        $estado='';
+        $estado='%';
     }
     
     
@@ -73,7 +73,7 @@ WHEN  'G' THEN  'Generado'
 WHEN  'A' THEN  'Anulado'
 WHEN  'E' THEN  'Entregado'
 END AS estado, 
-DATE_FORMAT( fecha,  '%d %b %y' ) AS fecha, 
+DATE_FORMAT( fecha,  '%d/%m/%Y' ) AS fecha, 
 DATE_FORMAT( hora,  '%H:%i:%s' ) AS hora, 
 p.nombre AS nom_plaza, 
 pr.nombre AS nom_proveedor, 
@@ -85,7 +85,7 @@ AND p.nombre like '%$plaza%'
 AND pr.id_plaza = p.id_plaza
 AND pr.nombre like '%$proveedor%'
 AND re.estado like '%$estado%'
-AND re.placa like '%$placa%'
+AND re.id_placa like '%$placa%'
 AND re.id_proveedor = pr.id_proveedor"
             . " order by re.id_rec_enc desc";
 }else if ($fechaIni != null or $fechaFin != null ) {
@@ -113,7 +113,7 @@ AND re.id_proveedor = pr.id_proveedor"
     }
     
     if ($estado == null){
-        $estado='';
+        $estado='%';
     }
     
     
@@ -124,7 +124,7 @@ WHEN  'G' THEN  'Generado'
 WHEN  'A' THEN  'Anulado'
 WHEN  'E' THEN  'Entregado'
 END AS estado, 
-DATE_FORMAT( fecha,  '%d %b %y' ) AS fecha, 
+DATE_FORMAT( fecha,  '%d/%m/%Y' ) AS fecha, 
 DATE_FORMAT( hora,  '%H:%i:%s' ) AS hora, 
 p.nombre AS nom_plaza, 
 pr.nombre AS nom_proveedor, 
@@ -136,17 +136,16 @@ AND p.nombre like '%$plaza%'
 AND pr.id_plaza = p.id_plaza
 AND pr.nombre like '%$proveedor%'
 AND re.estado like '%$estado%'
-AND re.placa like '%$placa%'
-AND re.id_proveedor = pr.id_proveedor"
-            . "AND cast(re.fecha as char)  >= '%$fechaIni%' "
-            . "AND cast(re.fecha as char) <= '%$fechaFin%'"
+AND re.id_placa like '%$placa%'
+AND re.id_proveedor = pr.id_proveedor "
+            . "AND DATE_FORMAT( re.fecha,  '%d/%m/%Y' ) between '$fechaIni' and '$fechaFin'"
             . " order by re.id_rec_enc desc";
 } else {
     
     $sql = "select re.id_rec_enc,
 CONCAT(u.nombre,' ',u.apellido) as nombre_usuario,
 case re.estado when 'G' then 'Generado' when 'A' then 'Anulado' when 'E' then 'Entregado' end as estado,
-DATE_FORMAT(fecha,'%d %b %y') as fecha, 
+DATE_FORMAT( fecha,  '%d/%m/%Y' ) AS fecha, 
 DATE_FORMAT(hora, '%H:%i:%s') as hora,
 p.nombre as nom_plaza,
 pr.nombre as nom_proveedor,

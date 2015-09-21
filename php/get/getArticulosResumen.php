@@ -29,12 +29,15 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 
 
 $sql="select case a.tipo when 'H' then (select ar.descripcion from articulos ar where ar.id_art = a.padre) when 'P' then a.descripcion end as descripcion, 
-    sum(rd.cantidad) can_res, a.imagen 
-from articulos a, rec_det rd, rec_enc re
+    sum(rd.cantidad) can_res, a.imagen,
+    u.nombre nom_usuario,
+    CURDATE() fecha
+from articulos a, rec_det rd, rec_enc re, usuario u
 where a.id_art = rd.id_art
 and re.id_rec_enc = rd.id_rec_enc
 and re.id_usuario = $login
 and re.estado = 'G'
+and u.id_usuario = re.id_usuario
 group by rd.id_art
 order by rd.id_art";
 //$sql="SELECT id, nombre, apellidos, login, foto FROM usuarios WHERE login= '$login' and password='$pass1'";
